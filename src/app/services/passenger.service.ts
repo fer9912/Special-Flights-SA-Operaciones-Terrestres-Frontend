@@ -1,16 +1,16 @@
 import { PassengerModel } from "src/model/passenger.model";
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
-export class PassengerService{  
-    static getPassenger(id: number): PassengerModel{
-        if(0 == id){
-            return {idPassenger: 0,name: "Ejemplo"};
-        }
-        if(1 == id){
-            return {idPassenger: 1,name: "Jano"};
-        }
-        if(2 == id){
-            return {idPassenger: 2,name: "Fernando"};
-        }        
-        return {idPassenger: null ,name: "No existe el pasajero"};
+@Injectable({
+    providedIn: "root"
+  })
+export class PassengerService{ 
+    url: string = 'http://grops-backend-dnj2km2huq-rj.a.run.app/passenger';
+    constructor(private http: HttpClient) {}
+
+    getPassenger(id: number): Observable<PassengerModel>{
+        return this.http.get<PassengerModel>(this.url + '/get?id=' + id);
     }
 }

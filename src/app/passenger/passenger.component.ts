@@ -13,14 +13,16 @@ export class PassengerComponent implements OnInit {
     idPassenger: 0,
     name: "Ejemplo"
   };
-  constructor() { 
+  constructor(public passengerService : PassengerService) { 
   }
 
   ngOnInit(): void {
   }
 
-  search(){      
-    this.passenger = PassengerService.getPassenger(this.id);
+  search(){
+    this.passengerService.getPassenger(this.id).subscribe(data => {
+      this.passenger = data;
+    });
   }
 
 }

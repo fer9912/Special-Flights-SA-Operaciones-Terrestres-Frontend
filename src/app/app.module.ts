@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { PassengerComponent } from './passenger/passenger.component';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
+import { HttpClientModule } from "@angular/common/http";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,8 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
