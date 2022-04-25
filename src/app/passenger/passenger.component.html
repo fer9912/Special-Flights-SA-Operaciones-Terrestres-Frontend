@@ -1,0 +1,9 @@
+<h2>Search passenger</h2>
+<div>
+    <label>id:
+        <input [(ngModel)]="id" placeholder="Enter id to search"/>
+    </label>
+    <br>
+    <button (click)="search()" type="button" style="margin: 10px 10px 10px;">Buscar</button>    
+    <p>{{passenger.idPassenger + " - " + passenger.name}}</p>
+</div>
