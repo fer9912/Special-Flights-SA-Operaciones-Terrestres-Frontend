@@ -9,11 +9,13 @@ import { PassengerComponent } from './passenger/passenger.component';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { HttpClientModule } from "@angular/common/http";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PassengerComponent
+    PassengerComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
