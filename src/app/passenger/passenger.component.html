@@ -6,4 +6,6 @@
     <br>
     <button (click)="search()" type="button" style="margin: 10px 10px 10px;">Buscar</button>    
     <p>{{passenger.idPassenger + " - " + passenger.name}}</p>
+    <br>
+    <span *ngIf="id ==3 && passenger.idPassenger == 3">El mas capo!!</span>
 </div>
