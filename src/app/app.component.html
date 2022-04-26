@@ -1,6 +1,14 @@
-<h1>{{title}}</h1>
-<nav>
-    <a routerLink="">Home</a> <br>
-    <a routerLink="/passenger">Passenger</a> <br>    
-</nav>
+<body class="news">
+    <header>
+      <div class="nav">        
+        <ul>
+          <li class="home"><a class="active" routerLink="">Home</a></li>
+          <li class="passenger"><a routerLink="/passenger">Passenger</a></li>
+          <li class="about"><a href="#">About</a></li>
+          <li class="news"><a href="#">Newsletter</a></li>
+          <li class="contact"><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+  </body>
 <router-outlet></router-outlet>
