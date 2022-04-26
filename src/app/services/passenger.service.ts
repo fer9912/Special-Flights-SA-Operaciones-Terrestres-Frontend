@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
     providedIn: "root"
   })
 export class PassengerService{ 
-    url: string = 'http://grops-backend-dnj2km2huq-rj.a.run.app/passenger';
+    url: string = 'https://grops-backend-dnj2km2huq-rj.a.run.app/passenger';
     constructor(private http: HttpClient) {}
 
     getPassenger(id: number): Observable<PassengerModel>{
