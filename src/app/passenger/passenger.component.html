@@ -1,8 +1,10 @@
 <div class="login-page">
     <div class="form">          
         <p style="margin-top:-10px;font-family: 'Oswald', sans-serif; font-size: 24px;">Search Passenger</p>
-        <input [(ngModel)]="id" placeholder="Enter id to search"/>
+        <input [(ngModel)]="id" placeholder="Enter id"/>
+        <input [(ngModel)]="name" placeholder="Enter name"/>
         <button (click)="search()" type="button" >Buscar</button>   
+        <button style="margin-top: 8px ;" (click)="save()" type="button" >Guardar</button>   
         <p style="font-family: 'Oswald', sans-serif; font-size: 24px;">{{passenger.idPassenger + " - " + passenger.name}}</p> 
     </div>
   </div>
