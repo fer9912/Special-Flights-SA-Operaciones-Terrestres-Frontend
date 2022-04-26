@@ -1,12 +1,8 @@
-
-<div style="margin: 20px 20px 20px 20px">
-    <h2>Search passenger</h2>
-    <label>id:
+<div class="login-page">
+    <div class="form">          
+        <p style="margin-top:-10px;font-family: 'Oswald', sans-serif; font-size: 24px;">Search Passenger</p>
         <input [(ngModel)]="id" placeholder="Enter id to search"/>
-    </label>
-    <br>
-    <button (click)="search()" type="button" style="margin: 10px 10px 10px;">Buscar</button>    
-    <p>{{passenger.idPassenger + " - " + passenger.name}}</p>
-    <br>
-    <span *ngIf="id ==3 && passenger.idPassenger == 3">El mas capo!!</span>
-</div>
+        <button (click)="search()" type="button" >Buscar</button>   
+        <p style="font-family: 'Oswald', sans-serif; font-size: 24px;">{{passenger.idPassenger + " - " + passenger.name}}</p> 
+    </div>
+  </div>
