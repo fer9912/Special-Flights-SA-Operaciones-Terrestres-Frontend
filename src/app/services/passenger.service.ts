@@ -1,4 +1,4 @@
-import { PassengerModel } from "src/model/passenger.model";
+import { PassengerModel } from "src/app/model/passenger.model";
 import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
