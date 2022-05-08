@@ -12,13 +12,15 @@ import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import { FlightRouteMasterComponent } from './flight-route-master/flight-route-master.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FlightQueryComponent } from './flight-query/flight-query.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PassengerComponent,
     LoginComponent,
-    FlightRouteMasterComponent
+    FlightRouteMasterComponent,
+    FlightQueryComponent
   ],
   imports: [
     BrowserModule,
