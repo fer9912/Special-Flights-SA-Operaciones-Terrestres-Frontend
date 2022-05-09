@@ -10,12 +10,14 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
+import { CheckListVueloComponent } from './check-list-vuelo/check-list-vuelo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PassengerComponent,
-    LoginComponent
+    LoginComponent,
+    CheckListVueloComponent
   ],
   imports: [
     BrowserModule,
