@@ -12,6 +12,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import { FlightRouteMasterComponent } from './flight-route-master/flight-route-master.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatTableModule} from '@angular/material/table';
 import { FlightQueryComponent } from './flight-query/flight-query.component';
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FlightQueryComponent } from './flight-query/flight-query.component';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
