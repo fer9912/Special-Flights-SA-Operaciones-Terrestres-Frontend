@@ -1,40 +1,44 @@
 .flight-query-page {
-    width: 360px;
+    width: 500px;
     padding: 8% 0 0;
     margin: auto;
-  }
-  .form {
+}
+
+.form {
     position: relative;
     z-index: 1;
     background: #FFFFFF;
-    max-width: 360px;
+    max-width: 600px;
     margin: 0 auto 100px;
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  }
-  .demo-table {
+}
+
+.demo-table {
     width: 100%;
-  }
-  
-  .mat-column-demo-position {
-    width: 32px;
-    border-right: 1px solid currentColor;
-    padding-right: 24px;
-    text-align: center;
-  }
-  
-  .mat-column-demo-name {
+}
+
+.mat-column-demo-codigo {
     padding-left: 16px;
     font-size: 20px;
-  }
-  
-  .mat-column-demo-weight {
-    font-style: italic;
-  }
-  
-  .mat-column-demo-symbol {
-    width: 32px;
-    text-align: center;
-    font-weight: bold;
-  }
+}
+
+.mat-column-demo-salida {
+    padding-left: 16px;
+    font-size: 20px;
+}
+
+.mat-column-demo-destino {
+    padding-left: 16px;
+    font-size: 20px;
+}
+
+.mat-column-demo-dia {
+    padding-left: 16px;
+    font-size: 20px;
+}
+.mat-column-demo-hora {
+    padding-left: 16px;
+    font-size: 20px;
+}
