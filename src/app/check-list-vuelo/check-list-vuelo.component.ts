@@ -102,7 +102,8 @@ export class CheckListVueloComponent implements OnInit {
 
   }
   save() {
-
+    this.checkFlight = new CheckFlightModel();
+  
     console.info(this.id);
     this.checkFlight.idCheckFlight = 1;
     console.info(this.checkFlight.idCheckFlight);

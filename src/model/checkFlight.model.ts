@@ -1,4 +1,4 @@
-export interface CheckFlightModel {
+export class CheckFlightModel {
   idCheckFlight: number;
   a1:	boolean;
   a2:	boolean;
