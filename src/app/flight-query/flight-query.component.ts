@@ -9,6 +9,17 @@ export interface Vuelo {
 
 const ELEMENT_DATA: Vuelo[] = [
   { codigo: 'AA0001', salida: 'AEP', destino: 'COR', diaSem: 'Lunes' , hora:'18:50'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
   { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'}
 ];
 
