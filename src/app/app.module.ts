@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PassengerComponent } from './passenger/passenger.component';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { CommonModule } from '@angular/common';  
 
 import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
@@ -14,6 +15,7 @@ import { FlightRouteMasterComponent } from './flight-route-master/flight-route-m
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatTableModule} from '@angular/material/table';
 import { FlightQueryComponent } from './flight-query/flight-query.component';
+import { CheckListFlightComponent } from './check-list-flight/check-list-flight.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { FlightQueryComponent } from './flight-query/flight-query.component';
     PassengerComponent,
     LoginComponent,
     FlightRouteMasterComponent,
-    FlightQueryComponent
+    FlightQueryComponent,
+    CheckListFlightComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { FlightQueryComponent } from './flight-query/flight-query.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MatTooltipModule,
-    MatTableModule
+    MatTableModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
