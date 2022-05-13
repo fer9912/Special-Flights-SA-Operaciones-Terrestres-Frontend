@@ -1,8 +1,10 @@
 export interface AircraftModel {
-    code: string;
+    id: number;
     model: string;
     fuelConsumption: number;
     passengerCapacity: number;
     wightTolerance: number;
+    lubricantConsumption: number;
+    maxDistance: number;
     crew: string;
   }

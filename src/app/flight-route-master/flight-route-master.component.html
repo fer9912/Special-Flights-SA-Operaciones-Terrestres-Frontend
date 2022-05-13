@@ -41,7 +41,7 @@
                 <div class="styled-select slate" style="margin-left: 0px; float: left">
                     <select [(ngModel)]="selectedAircraft" (change)="disableAircraft()">
                         <option  [ngValue]="null">Seleccione una Aeronave</option>
-                        <option  *ngFor="let d of aircrafts" [ngValue]="d">{{d.code + " - " + d.model}}</option>
+                        <option  *ngFor="let d of aircrafts" [ngValue]="d">{{d.model}}</option>
                      </select>  
                 </div> 
             </div>

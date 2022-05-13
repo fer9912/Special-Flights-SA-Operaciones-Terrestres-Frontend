@@ -5,4 +5,6 @@ export interface AirportModel {
     state: string;
     name: string;
     oaci: string;
+    lat: number;
+    lon: number;
   }

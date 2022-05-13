@@ -140,7 +140,7 @@ export class FlightRouteMasterComponent implements OnInit {
         }
       }
       this.duration = data.duration;
-      this.aircraft = data.aircraft.code +"("+data.aircraft.model+")";
+      this.aircraft = data.aircraft.model;
       this.day = data.day;
       this.distance = data.distance;
     });
