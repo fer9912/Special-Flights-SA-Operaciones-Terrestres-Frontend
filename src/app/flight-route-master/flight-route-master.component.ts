@@ -46,8 +46,11 @@ export class FlightRouteMasterComponent implements OnInit {
   }
 
   includeDestination() { 
-    if(!this.destinationsToInclude.includes(this.selectedDestinationToInclude) && !this.destinationsToExclude.includes(this.selectedDestinationToInclude)){
+    if(!this.destinationsToInclude.includes(this.selectedDestinationToInclude) && !this.destinationsToExclude.includes(this.selectedDestinationToInclude) && this.destinationsToInclude.length < 4){
       this.destinationsToInclude.push(this.selectedDestinationToInclude);
+      if( this.destinationsToInclude.length >3){
+        this.disabledInclude = true;
+      }
     }
   }
   excludeDestination() { 
@@ -65,7 +68,7 @@ export class FlightRouteMasterComponent implements OnInit {
   }
 
   disableInclude() {
-    if(this.selectedDestinationToInclude == null){
+    if(this.selectedDestinationToInclude == null || this.destinationsToInclude.length >3){
       this.disabledInclude = true;
     }else{
       this.disabledInclude = false;
@@ -81,8 +84,11 @@ export class FlightRouteMasterComponent implements OnInit {
   }
 
   removeToIncludeList(){
-    for(let destination of this.removeToInclude){
+    for(let destination of this.removeToInclude){      
       this.removeToList(this.destinationsToInclude, destination);
+    }
+    if(this.destinationsToInclude.length < 4){
+      this.disabledInclude = false;
     }
   }
 
@@ -102,14 +108,7 @@ export class FlightRouteMasterComponent implements OnInit {
   generate(){
     if(this.destinationsToInclude.length > 1){   
       this.generatedRoute = "";
-      //this.generateRoute();
-      for (let i = 0; i < this.destinationsToInclude.length; i++) { 
-        this.generatedRoute += this.destinationsToInclude[i].city +"("+ this.destinationsToInclude[i].iata +")"
-        if(i < this.destinationsToInclude.length -1){
-          this.generatedRoute += " - ";
-        }
-      }
-      this.showGeneratedRoute = true;
+      this.generateRoute();      
     }else{
       this.showErrorPopup = true;
     }
@@ -139,10 +138,10 @@ export class FlightRouteMasterComponent implements OnInit {
           this.generatedRoute += " - ";
         }
       }
-      this.duration = data.duration;
       this.aircraft = data.aircraft.model;
       this.day = data.day;
-      this.distance = data.distance;
+      this.distance = data.distance;      
+      this.showGeneratedRoute = true;
     });
   }
 }

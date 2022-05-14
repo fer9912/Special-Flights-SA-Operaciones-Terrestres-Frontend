@@ -18,12 +18,14 @@ export class CheckListFlightComponent implements OnInit {
   flight: FlightModel;
   checkFlight: CheckFlightModel;
   idCheckFlight: number;
-  id: number = 0;
+  code: string;
   origin: string;
   destination: string;
-  departure: Date;
-  arrival: Date;
+  flightDate: Date;
+  day: string;
+  hour: string;
   aircraft: string;
+  company: string;
   route: string;
   status: string;
   a1: boolean;
@@ -89,9 +91,9 @@ export class CheckListFlightComponent implements OnInit {
 
   search() {
 
-    this.checkFlightService.getCheckFlight(this.id).subscribe(data => {
+    this.checkFlightService.getCheckFlight(this.code).subscribe(data => {
       this.checkFlight = data;
-      this.id = data.idCheckFlight;
+      this.code = data.code;
       this.a1 = data.a1;
       this.a2 = data.a2;
       this.a3 = data.a3;
@@ -148,13 +150,14 @@ export class CheckListFlightComponent implements OnInit {
       this.e1 = data.e1;
 
     }, (error) => {
-      this.flightService.getFlight(this.id).subscribe(data => {
+      this.flightService.getFlight(this.code).subscribe(data => {
         this.flight = data;
-        this.id = data.idFlight;
+        this.code = data.code;
         this.origin = data.origin;
         this.destination = data.destination;
-        this.departure = data.departure;
-        this.arrival = data.arrival;
+        this.flightDate = data.date;
+        this.day = data.day;
+        this.hour = data.hour;
         this.aircraft = data.aircraft;
         this.route = data.route;
         this.status = data.status;
@@ -175,13 +178,15 @@ export class CheckListFlightComponent implements OnInit {
         this.showErrorVuelo = false;
       });
     }, () => {
-      this.flightService.getFlight(this.id).subscribe(data => {
+      this.flightService.getFlight(this.code).subscribe(data => {
         this.flight = data;
-        this.id = data.idFlight;
+        this.code = data.code;
         this.origin = data.origin;
         this.destination = data.destination;
-        this.departure = data.departure;
-        this.arrival = data.arrival;
+        this.flightDate = data.date;
+        this.day = data.day;        
+        this.hour = data.hour;  
+        this.company = data.company;
         this.aircraft = data.aircraft;
         this.route = data.route;
         this.status = data.status;
@@ -194,14 +199,14 @@ export class CheckListFlightComponent implements OnInit {
       }, () => {
         if (this.status != "ENDED") {
           console.info(this.status);
-          console.info(this.id);
+          console.info(this.code);
 
           this.showErrorCheckVuelo = false;
           this.showErrorVuelo = false;
           this.showCheckList = true;
         } else {
           console.info(this.status);
-          console.info(this.id);
+          console.info(this.code);
           this.showErrorCheckVuelo = true;
           this.showErrorVuelo = false;
           this.showCheckList = false;
@@ -213,7 +218,7 @@ export class CheckListFlightComponent implements OnInit {
   }
   save() {
     this.checkFlight = new CheckFlightModel();
-    this.checkFlight.idCheckFlight = this.id;
+    this.checkFlight.code = this.code;
     this.checkFlight.a1 = this.a1;
     this.checkFlight.a2 = this.a2;
     this.checkFlight.a3 = this.a3;

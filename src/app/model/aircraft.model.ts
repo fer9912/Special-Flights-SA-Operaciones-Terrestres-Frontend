@@ -6,5 +6,4 @@ export interface AircraftModel {
     wightTolerance: number;
     lubricantConsumption: number;
     maxDistance: number;
-    crew: string;
   }

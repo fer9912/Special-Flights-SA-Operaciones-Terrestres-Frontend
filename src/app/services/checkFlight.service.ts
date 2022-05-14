@@ -13,12 +13,12 @@ const httpOptions = {
   })
 export class CheckFlightService{
 
-    url: string = 'https://grops-backend-dnj2km2huq-rj.a.run.app/checkFlight';
+    url: string = 'http://localhost:8080/checkFlight';
    
     constructor(private http: HttpClient) {}
 
-    getCheckFlight(id: number): Observable<CheckFlightModel>{
-        return this.http.get<CheckFlightModel>(this.url + '/get?id=' + id);
+    getCheckFlight(code: string): Observable<CheckFlightModel>{
+        return this.http.get<CheckFlightModel>(this.url + '/get?code=' + code);
     }
 
     saveCheckFlight(checkFlightModel: CheckFlightModel): Observable<CheckFlightModel>{

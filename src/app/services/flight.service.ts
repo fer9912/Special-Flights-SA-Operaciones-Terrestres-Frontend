@@ -12,12 +12,12 @@ const httpOptions = {
     providedIn: "root"
   })
 export class FlightService{ 
-    url: string = 'https://grops-backend-dnj2km2huq-rj.a.run.app/flight';
+    url: string = 'http://localhost:8080/flight';
    
     constructor(private http: HttpClient) {}
 
-    getFlight(id: number): Observable<FlightModel>{
-        return this.http.get<FlightModel>(this.url + '/get?id=' + id);
+    getFlight(code: string): Observable<FlightModel>{
+        return this.http.get<FlightModel>(this.url + '/get?code=' + code);
     }
 
 
