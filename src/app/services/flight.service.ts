@@ -12,7 +12,7 @@ const httpOptions = {
     providedIn: "root"
   })
 export class FlightService{ 
-    url: string = 'http://localhost:8080/flight';
+    url: string = 'https://grops-backend-dnj2km2huq-rj.a.run.app/flight';
    
     constructor(private http: HttpClient) {}
 

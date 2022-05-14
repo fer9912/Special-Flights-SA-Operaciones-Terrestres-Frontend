@@ -13,7 +13,7 @@ const httpOptions = {
     providedIn: "root"
   })
 export class FlightRouteMasterService{ 
-    url: string = 'http://localhost:8080/flightRouteMaster';
+    url: string = 'https://grops-backend-dnj2km2huq-rj.a.run.app/flightRouteMaster';
    
     constructor(private http: HttpClient) {}
 

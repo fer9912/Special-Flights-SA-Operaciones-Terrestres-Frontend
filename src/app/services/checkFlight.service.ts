@@ -13,7 +13,7 @@ const httpOptions = {
   })
 export class CheckFlightService{
 
-    url: string = 'http://localhost:8080/checkFlight';
+    url: string = 'https://grops-backend-dnj2km2huq-rj.a.run.app/checkFlight';
    
     constructor(private http: HttpClient) {}
 
