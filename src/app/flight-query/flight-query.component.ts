@@ -32,7 +32,7 @@ const ELEMENT_DATA: Vuelo[] = [
   styleUrls: ['./flight-query.component.css']
 })
 export class FlightQueryComponent implements OnInit {
-  displayedColumns: string[] = ['demo-code','demo-company','demo-day','demo-hour', 'demo-origin', 'demo-destination', 'demo-route', 'demo-aircraft'];
+  displayedColumns: string[] = ['demo-code','demo-company','demo-day','demo-hour','demo-date', 'demo-origin', 'demo-destination', 'demo-route', 'demo-aircraft'];
   dataSource = ELEMENT_DATA;
   vuelos: FlightModel[];
 
