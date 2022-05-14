@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FlightModel } from '../model/flight.model';
+import { FlightService } from '../services/flight.service';
+
 export interface Vuelo {
   codigo: string;
   salida: string;
@@ -8,19 +11,19 @@ export interface Vuelo {
 }
 
 const ELEMENT_DATA: Vuelo[] = [
-  { codigo: 'AA0001', salida: 'AEP', destino: 'COR', diaSem: 'Lunes' , hora:'18:50'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'},
-  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes' , hora:'07:45'}
+  { codigo: 'AA0001', salida: 'AEP', destino: 'COR', diaSem: 'Lunes', hora: '18:50' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' },
+  { codigo: 'AV0204', salida: 'EZE', destino: 'MDZ', diaSem: 'Lunes', hora: '07:45' }
 ];
 
 @Component({
@@ -29,11 +32,17 @@ const ELEMENT_DATA: Vuelo[] = [
   styleUrls: ['./flight-query.component.css']
 })
 export class FlightQueryComponent implements OnInit {
-  displayedColumns: string[] = ['demo-codigo', 'demo-salida', 'demo-destino', 'demo-dia','demo-hora'];
+  displayedColumns: string[] = ['demo-code','demo-company','demo-day','demo-hour', 'demo-origin', 'demo-destination', 'demo-route', 'demo-aircraft'];
   dataSource = ELEMENT_DATA;
-  constructor() { }
+  vuelos: FlightModel[];
+
+
+  constructor(private _flightService: FlightService) { }
 
   ngOnInit(): void {
+    this._flightService.getAllFlights().subscribe((response: FlightModel[]) => {
+      this.vuelos = response;
+    });
   }
 
 }

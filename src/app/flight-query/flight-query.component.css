@@ -8,6 +8,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 40px;
     margin-bottom: 30px;
+    text-align: center;
 }
 .form {
     position: relative;
@@ -17,21 +18,24 @@
     max-height: 50%;
     margin: 0 auto 100px;
     padding: 45px;
-    text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    overflow: auto;
 
     
 }
+.table-container{
+max-height: 300px;
+overflow: auto;
+}
 .header{
-    background-color: #005f5f;
+    background-color: #2a6d59;
     color: aliceblue;
+
 }
 .demo-table {
     width: 100%;
 }
 
-.mat-column-demo-codigo {
+/* .mat-column-demo-codigo {
     padding-left: 16px;
     font-size: 20px;
 }
@@ -53,4 +57,4 @@
 .mat-column-demo-hora {
     padding-left: 16px;
     font-size: 20px;
-}
+} */
