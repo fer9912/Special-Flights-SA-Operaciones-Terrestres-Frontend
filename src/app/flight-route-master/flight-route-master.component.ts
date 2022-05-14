@@ -24,6 +24,8 @@ export class FlightRouteMasterComponent implements OnInit {
   selectedAircraft = null;
   removeToInclude = null;
   removeToExclude = null;
+  
+  showLoadAnimation = false;
   aircraft = "";
   duration = null;  
   distance = null;
@@ -127,6 +129,7 @@ export class FlightRouteMasterComponent implements OnInit {
   }
 
   generateRoute(){
+    this.showLoadAnimation  = true;
     let request : FlightRouteRequestModel = new FlightRouteRequestModel();
     request.excludeDestinations = this.destinationsToExclude;
     request.includeDestinations = this.destinationsToInclude;
@@ -140,7 +143,8 @@ export class FlightRouteMasterComponent implements OnInit {
       }
       this.aircraft = data.aircraft.model;
       this.day = data.day;
-      this.distance = data.distance;      
+      this.distance = data.distance;
+      this.showLoadAnimation  = false; 
       this.showGeneratedRoute = true;
     });
   }
