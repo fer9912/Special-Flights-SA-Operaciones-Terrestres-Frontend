@@ -1,0 +1,33 @@
+<div class="baggage-page">
+    <div class="form">
+        <p class="titulo">Equipaje</p>
+        <table mat-table [dataSource]="dataSource" class="demo-table">
+            <!-- Columna Codigo -->
+            <ng-container matColumnDef="demo-id">
+                <th mat-header-cell *matHeaderCellDef class="header"> Codigo </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Columna salida -->
+            <ng-container matColumnDef="demo-tipo">
+                <th mat-header-cell *matHeaderCellDef class="header"> Tipo </th>
+                <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+            </ng-container>
+
+            <!-- Columna destino -->
+            <ng-container matColumnDef="demo-peso">
+                <th mat-header-cell *matHeaderCellDef class="header" > Peso </th>
+                <td mat-cell *matCellDef="let element"> {{element.peso}} </td>
+            </ng-container>
+
+            <!-- Columna Dia -->
+            <ng-container matColumnDef="demo-pasajero">
+                <th mat-header-cell *matHeaderCellDef class="header"> Pasajero </th>
+                <td mat-cell *matCellDef="let element"> {{element.pasajero}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

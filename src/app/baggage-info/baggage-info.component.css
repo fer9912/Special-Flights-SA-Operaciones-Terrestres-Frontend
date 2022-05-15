@@ -1,0 +1,58 @@
+.baggage-page {
+    width: 90%;
+    padding: 8% 0 0;
+    margin: auto;
+    height: 90%;
+}
+.titulo{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.mat-header-cell, mat-cell {
+    justify-content: center;
+    text-align: center;
+  }
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 60%;
+    max-height: 50%;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    overflow: auto;
+
+    
+}
+.header{
+    background-color: #005f5f;
+    color: aliceblue;
+}
+.demo-table {
+    width: 100%;
+}
+
+.mat-column-demo-id {
+    padding-right: 20px;
+    padding-left: 50px;
+    font-size: 20px;
+}
+
+.mat-column-demo-tipo {
+    padding-left: 16px;
+    font-size: 20px;
+}
+
+.mat-column-demo-peso{
+    padding-left: 30px;
+    font-size: 20px;
+}
+
+.mat-column-demo-pasajero {
+    font-size: 20px;
+}
