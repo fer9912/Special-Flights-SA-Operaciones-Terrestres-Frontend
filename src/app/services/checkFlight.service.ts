@@ -17,8 +17,8 @@ export class CheckFlightService{
    
     constructor(private http: HttpClient) {}
 
-    getCheckFlight(id: number): Observable<CheckFlightModel>{
-        return this.http.get<CheckFlightModel>(this.url + '/get?id=' + id);
+    getCheckFlight(code: string): Observable<CheckFlightModel>{
+        return this.http.get<CheckFlightModel>(this.url + '/get?code=' + code);
     }
 
     saveCheckFlight(checkFlightModel: CheckFlightModel): Observable<CheckFlightModel>{

@@ -1,10 +1,12 @@
 export interface FlightModel {
-  idFlight: number;
+  code: string;
   origin: string;
   destination: string;
-  departure: Date;
-  arrival: Date;
+  date: Date;
+	company : string;
+	day: string;
+	hour: string;
+  route: string;  
   aircraft: string;
-  route: string;
   status: string;
   }
