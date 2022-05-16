@@ -1,16 +1,26 @@
-<body class="news">
-    <header>
-      <div class="nav">        
-        <ul>
-          <li class="home"><a routerLink="">Home</a></li>
-          <li class="passenger"><a routerLink="/passenger">Passenger</a></li>
-          <li class="contact"><a routerLink="/flightRouteMaster">Maestro</a></li>
-          <li class="login"><a routerLink="/login">Log In</a></li>
-          <li class="flightQuery"><a routerLink="/flightQuery">Consulta</a></li>
-          <li class="check-list-vuelo"><a routerLink="/check-list-vuelo">CheckVuelo</a></li>
-        </ul>
-      </div>      
-    </header>
-    <router-outlet></router-outlet>
-  </body>
-  
+<body class="news" style="margin-bottom:-850px;">
+  <header *ngIf="userLogged">
+    <div class="nav">        
+      <ul>
+        <li class="home"><a routerLink="">Home</a></li>
+        <li class="contact"><a routerLink="/flightRouteMaster">Maestro</a></li>
+        <li class="flightQuery"><a routerLink="/flightQuery">Consulta</a></li>
+        <li class="check-list-vuelo"><a routerLink="/check-list-vuelo">CheckVuelo</a></li>          
+        <li  (click)="logOut()" class="check-list-vuelo" ><a [routerLink]="" (click)="logOut()">Log Out</a></li>
+      </ul>
+    </div>      
+  </header>
+  <router-outlet></router-outlet>
+</body>
+
+<div class="login-page" *ngIf="!userLogged">
+  <div class="form">     
+    <form class="login-form">
+      <p style="margin-top:-10px;font-family: 'Oswald', sans-serif; font-size: 34px;">LOG IN</p>
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <button (click)="validateUser()">login</button>
+    </form>
+  </div>
+</div>
+<router-outlet></router-outlet>

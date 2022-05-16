@@ -21,7 +21,6 @@ import { CheckListFlightComponent } from './check-list-flight/check-list-flight.
   declarations: [
     AppComponent,
     PassengerComponent,
-    LoginComponent,
     FlightRouteMasterComponent,
     FlightQueryComponent,
     CheckListFlightComponent

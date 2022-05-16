@@ -7,8 +7,6 @@ import { PassengerComponent } from './passenger/passenger.component';
 import { CheckListFlightComponent } from './check-list-flight/check-list-flight.component';
 
 const routes: Routes =[
-  { path: 'passenger', component: PassengerComponent },  
-  { path: 'login', component: LoginComponent },  
   { path: 'flightRouteMaster', component: FlightRouteMasterComponent },
   { path: 'flightQuery', component: FlightQueryComponent },  
   { path: 'check-list-vuelo', component: CheckListFlightComponent }

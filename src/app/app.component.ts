@@ -8,8 +8,15 @@ import {PrimeNGConfig} from 'primeng/api';                  //api
 })
 export class AppComponent implements OnInit {
   title = 'GROPS-FrontEnd';
+  userLogged = false;
   constructor(private primengConfig: PrimeNGConfig) {}
   ngOnInit() {
     this.primengConfig.ripple = true;
-}
+  }
+  validateUser(){
+    this.userLogged = true;
+  }
+  logOut(){
+    this.userLogged = false;
+  }
 }
