@@ -13,12 +13,21 @@
   <router-outlet></router-outlet>
 </body>
 
+<div class="container" *ngIf="showErrorLogin">
+  <div class="boxPopup" id="popup">
+    <div class="msgPopup">¡¡¡Error!!!</div>
+    <div class="descript">Usuario o contraseña invalido.</div>
+    <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 180px;" (click)="showErrorLogin = false;">Cerrar</button>
+  </div>
+</div> 
+
 <div class="login-page" *ngIf="!userLogged">
-  <div class="form">     
+ 
+  <div class="form" *ngIf="!userLogged">     
     <form class="login-form">
       <p style="margin-top:-10px;font-family: 'Oswald', sans-serif; font-size: 34px;">LOG IN</p>
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
+      <input type="text" [(ngModel)]="usuario" [ngModelOptions]="{standalone: true}" placeholder="username"/>
+      <input type="password"  [(ngModel)]="contra" [ngModelOptions]="{standalone: true}" placeholder="passwords"/>
       <button (click)="validateUser()">login</button>
     </form>
   </div>
