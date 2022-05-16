@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PrimeNGConfig} from 'primeng/api';                  //api
 import { UserService } from './services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
   showErrorLogin = false;
   usuario;
   contra;
-  constructor(private primengConfig: PrimeNGConfig, public userService: UserService) {}
+  constructor(private primengConfig: PrimeNGConfig, public userService: UserService, private router:Router) {}
   ngOnInit() {
     this.primengConfig.ripple = true;
   }
@@ -30,5 +31,6 @@ export class AppComponent implements OnInit {
   }
   logOut(){
     this.userLogged = false;
+    this.router.navigate(['']);
   }
 }

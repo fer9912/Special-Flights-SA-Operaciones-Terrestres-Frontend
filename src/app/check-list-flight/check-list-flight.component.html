@@ -1,8 +1,9 @@
 <body>
+  <h3 class="titulo">CheckList de vuelo</h3>
   <section class="task-list current">
     <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 24px;">Vuelo</p>
     <input [(ngModel)]="code" placeholder="Ingrese Codigo de Vuelo" />
-    <button (click)="search()" type="button" style="margin-top:-10px;width:100; margin-left:15px;">Buscar</button>
+    <button (click)="search()" type="button" style="margin-top:-10px;width:85px !important;height:45px !important; margin-left:15px;">Buscar</button>
 
   </section>
   <div class="Error" *ngIf="showErrorCheckVuelo">

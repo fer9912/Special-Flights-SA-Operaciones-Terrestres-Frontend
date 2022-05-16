@@ -3,12 +3,14 @@
 
 /* GENERAL */
 body {
-    width: 60%;
+    width: 820px;
+    height: 600px;
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
     position: relative;
     z-index: 1;
     background: #FFFFFF;
+    margin-top: 50px !important;
     margin: 0 auto 100px;
     padding: 45px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -20,6 +22,24 @@ mark {
     color: #232323;
 }
 
+.titulo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 25%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
 
 .task-list {
     position: relative;
