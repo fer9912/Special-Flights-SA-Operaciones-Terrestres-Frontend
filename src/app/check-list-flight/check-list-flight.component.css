@@ -3,19 +3,29 @@
 
 /* GENERAL */
 body {
-    width: 820px;
+    padding-top: 50px !important;
+    width: 0px;
     height: 600px;
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
     position: relative;
     z-index: 1;
-    background: #FFFFFF;
-    margin-top: 50px !important;
-    margin: 0 auto 100px;
-    padding: 45px;
+    margin: 0 auto 0px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-
+.form {
+    position:absolute;
+    z-index: 1;
+    background: #FFFFFF;
+    width: 1200px;
+    margin: 0px;
+    margin-left: -530px;
+    margin-top: 0px !important;
+    padding: 45px;
+    padding-bottom: 20px;
+    text-align:left;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
 /* CHECKLIST */
 mark {
     background-color: transparent;
@@ -40,6 +50,9 @@ input {
     box-sizing: border-box;
     font-size: 14px;
   }
+.CheckList{
+    width:950px !important;
+}
 
 .task-list {
     position: relative;

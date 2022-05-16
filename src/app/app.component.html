@@ -1,12 +1,12 @@
 <body class="news" style="margin-bottom:-850px;">
   <header *ngIf="userLogged">
     <div class="nav">        
-      <ul>
-        <li class="home"><a routerLink="">Home</a></li>
-        <li class="contact"><a routerLink="/flightRouteMaster">Maestro</a></li>
-        <li class="flightQuery"><a routerLink="/flightQuery">Consulta</a></li>
-        <li class="check-list-vuelo"><a routerLink="/check-list-vuelo">CheckVuelo</a></li>          
-        <li  (click)="logOut()" class="check-list-vuelo" ><a [routerLink]="" (click)="logOut()">Log Out</a></li>
+      <ul >
+        <li class="item" style="margin-top:120px;"><a routerLink="">Inicio</a></li>
+        <li class="item"><a routerLink="/flightRouteMaster">Maestro de rutas de vuelo</a></li>
+        <li class="item"><a routerLink="/flightQuery">Vuelos programados</a></li>
+        <li class="item"><a routerLink="/check-list-vuelo">Check-List de Vuelo</a></li>          
+        <li  (click)="logOut()" class="logout" style="margin-top: 450px;" ><a [routerLink]="" (click)="logOut()">Cerrar Sesion</a></li>
       </ul>
     </div>      
   </header>

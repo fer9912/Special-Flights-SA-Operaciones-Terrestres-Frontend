@@ -10,8 +10,10 @@ body {
 }
  
 .nav ul {
-  height: 60px;
-  list-style: none;
+  width:15%;
+  height: 927px;
+  margin-top: -30px;
+  float: left;
   background-image: url("nav.png");
   text-align: center;
   padding: 0;
@@ -20,20 +22,33 @@ body {
 .nav li {
   font-family: 'Oswald', sans-serif;
   font-size: 1.2em;
+  margin-top:10px;
   line-height: 60px;
   height: 60px;
+  width:286px !important;
+  float:left;
   border-bottom: 1px solid #888;
 }
  
 .nav a {
   text-decoration: none;
+  text-align:start;
+  text-indent: 20px;
   color: #fff;
   display: block;
   transition: .3s background-color;
 }
  
 .nav a:hover {
-  background-color: #005f5f;
+  text-align:center;
+}
+.item:hover {
+  background-color: #005f5f;  
+  text-align:center;
+}
+.logout:hover{
+  background-color: #5f0005 !important;  
+  text-align:center;
 }
  
 .nav a.active {
