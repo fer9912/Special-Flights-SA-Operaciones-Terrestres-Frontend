@@ -5,13 +5,15 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("https://wallpaperaccess.com/full/2138691.jpg");
+  background-image: url("https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=067f0b097deff88a789e125210406ffe");
   background-size: 100%;
 }
  
 .nav ul {
-  height: 60px;
-  list-style: none;
+  width:15%;
+  height: 927px;
+  margin-top: -30px;
+  float: left;
   background-image: url("nav.png");
   text-align: center;
   padding: 0;
@@ -21,20 +23,33 @@ body {
   display: inline-block;
   font-family: 'Oswald', sans-serif;
   font-size: 1.2em;
+  margin-top:10px;
   line-height: 60px;
-  height: 120px;
+  height: 60px;
+  width:286px !important;
+  float:left;
   border-bottom: 1px solid #888;
 }
  
 .nav a {
   text-decoration: none;
+  text-align:start;
+  text-indent: 20px;
   color: #fff;
   display: block;
   transition: .3s background-color;
 }
  
 .nav a:hover {
-  background-color: #005f5f;
+  text-align:center;
+}
+.item:hover {
+  background-color: #005f5f;  
+  text-align:center;
+}
+.logout:hover{
+  background-color: #5f0005 !important;  
+  text-align:center;
 }
  
 .nav a.active {

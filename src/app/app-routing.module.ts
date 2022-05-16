@@ -8,8 +8,6 @@ import { CheckListFlightComponent } from './check-list-flight/check-list-flight.
 import { BaggageInfoComponent } from './baggage-info/baggage-info.component';
 
 const routes: Routes =[
-  { path: 'passenger', component: PassengerComponent },  
-  { path: 'login', component: LoginComponent },  
   { path: 'flightRouteMaster', component: FlightRouteMasterComponent },
   { path: 'flightQuery', component: FlightQueryComponent },  
   { path: 'check-list-vuelo', component: CheckListFlightComponent },

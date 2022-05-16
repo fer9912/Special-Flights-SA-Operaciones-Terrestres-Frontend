@@ -1,8 +1,12 @@
 <body>
+  <div class="form" style="margin-top:-30px;">   
+    <p style="margin-top:-10px;margin-bottom:34px;font-family: 'Segoe UI', sans-serif; font-size: 44px;">Check-List de Vuelo</p>
+  <p style="margin-top:-10px;font-family: 'Segoe UI', sans-serif; font-size: 20px;">En esta pantalla podra hacer el Check-List de un vuelo.</p>
+  <hr>
   <section class="task-list current">
     <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 24px;">Vuelo</p>
     <input [(ngModel)]="code" placeholder="Ingrese Codigo de Vuelo" />
-    <button (click)="search()" type="button" style="margin-top:-10px;width:100; margin-left:15px;">Buscar</button>
+    <button (click)="search()" type="button" style="margin-top:-10px;width:85px !important;height:45px !important; margin-left:15px;">Buscar</button>
 
   </section>
   <div class="Error" *ngIf="showErrorCheckVuelo">
@@ -17,7 +21,7 @@
   <div class="CheckList" *ngIf="showCheckList">
     <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 22px;margin-left: 25px;">{{flight.code + " - " +
       flight.origin + " - " + flight.destination}}</p>
-    <div style="margin-top:0px; margin-left:28px;height:300px;width:750px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+    <div style="margin-top:0px; margin-left:28px;height:450px;width:1150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
       <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 16px;">A.Cabina de vuelo (pilotaje)</p>
       <p style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;">General</p>
       <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
@@ -192,5 +196,5 @@
   </div>
 
 
-
+  </div>
 </body>

@@ -1,17 +1,35 @@
-<body class="news">
-    <header>
-      <div class="nav">        
-        <ul>
-          <li class="home"><a routerLink="">Home</a></li>
-          <li class="passenger"><a routerLink="/passenger">Passenger</a></li>
-          <li class="contact"><a routerLink="/flightRouteMaster">Maestro</a></li>
-          <li class="login"><a routerLink="/login">Log In</a></li>
-          <li class="flightQuery"><a routerLink="/flightQuery">Consulta</a></li>
-          <li class="check-list-vuelo"><a routerLink="/check-list-vuelo">CheckVuelo</a></li>
-          <li width=100px class="baggage-info"><a routerLink="/baggage-info">Equipaje</a></li>
-        </ul>
-      </div>      
-    </header>
-    <router-outlet></router-outlet>
-  </body>
-  
+<body class="news" style="margin-bottom:-850px;">
+  <header *ngIf="userLogged">
+    <div class="nav">        
+      <ul >
+        <li class="item" style="margin-top:120px;"><a routerLink="">Inicio</a></li>
+        <li class="item"><a routerLink="/flightRouteMaster">Maestro de Rutas de Vuelo</a></li>
+        <li class="item"><a routerLink="/flightQuery">Vuelos Programados</a></li>
+        <li class="item"><a routerLink="/check-list-vuelo">Check-List de Vuelo</a></li>   
+        <li width=100px class="baggage-info"><a routerLink="/baggage-info">Equipaje</a></li>       
+        <li  (click)="logOut()" class="logout" style="margin-top: 450px;" ><a [routerLink]="" (click)="logOut()">Cerrar Sesion</a></li>
+      </ul>
+    </div>      
+  </header>
+  <router-outlet></router-outlet>
+</body>
+
+<div class="container" *ngIf="showErrorLogin">
+  <div class="boxPopup" id="popup">
+    <div class="msgPopup">¡¡¡Error!!!</div>
+    <div class="descript">Usuario o contraseña invalido.</div>
+    <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 180px;" (click)="showErrorLogin = false;">Cerrar</button>
+  </div>
+</div> 
+
+<div class="login-page" *ngIf="!userLogged">
+ 
+  <div class="form" *ngIf="!userLogged">     
+    <form class="login-form">
+      <p style="margin-top:-10px;font-family: 'Oswald', sans-serif; font-size: 34px;">LOG IN</p>
+      <input type="text" [(ngModel)]="usuario" [ngModelOptions]="{standalone: true}" placeholder="username"/>
+      <input type="password"  [(ngModel)]="contra" [ngModelOptions]="{standalone: true}" placeholder="passwords"/>
+      <button (click)="validateUser()">login</button>
+    </form>
+  </div>
+</div>

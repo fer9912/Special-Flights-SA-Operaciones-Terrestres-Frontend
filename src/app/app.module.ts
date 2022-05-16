@@ -17,16 +17,17 @@ import {MatTableModule} from '@angular/material/table';
 import { FlightQueryComponent } from './flight-query/flight-query.component';
 import { CheckListFlightComponent } from './check-list-flight/check-list-flight.component';
 import { BaggageInfoComponent } from './baggage-info/baggage-info.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PassengerComponent,
-    LoginComponent,
     FlightRouteMasterComponent,
     FlightQueryComponent,
     CheckListFlightComponent,
     BaggageInfoComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
