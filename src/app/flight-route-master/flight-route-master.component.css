@@ -157,6 +157,7 @@ html,body{
   height: 200px;
   background-color: whitesmoke;
   padding: 7px;
+  margin: 0px;
   border-radius: 4px;
   z-index: 10000;
   box-shadow: 1px 1px 6px grey;

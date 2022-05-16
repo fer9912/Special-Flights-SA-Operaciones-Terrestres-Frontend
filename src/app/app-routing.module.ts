@@ -5,11 +5,13 @@ import { FlightRouteMasterComponent } from './flight-route-master/flight-route-m
 import { LoginComponent } from './login/login.component';
 import { PassengerComponent } from './passenger/passenger.component';
 import { CheckListFlightComponent } from './check-list-flight/check-list-flight.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes =[
   { path: 'flightRouteMaster', component: FlightRouteMasterComponent },
   { path: 'flightQuery', component: FlightQueryComponent },  
-  { path: 'check-list-vuelo', component: CheckListFlightComponent }
+  { path: 'check-list-vuelo', component: CheckListFlightComponent },
+  { path: 'home', component: HomeComponent }
 ];
 
 @NgModule({
