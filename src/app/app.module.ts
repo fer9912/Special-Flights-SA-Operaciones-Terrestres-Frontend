@@ -16,6 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatTableModule} from '@angular/material/table';
 import { FlightQueryComponent } from './flight-query/flight-query.component';
 import { CheckListFlightComponent } from './check-list-flight/check-list-flight.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CheckListFlightComponent } from './check-list-flight/check-list-flight.
     PassengerComponent,
     FlightRouteMasterComponent,
     FlightQueryComponent,
-    CheckListFlightComponent
+    CheckListFlightComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
