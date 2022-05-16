@@ -13,7 +13,7 @@ const httpOptions = {
     providedIn: "root"
   })
 export class UserService{ 
-  url: string = 'http://localhost:8080/user';
+  url: string = 'https://grops-backend-dnj2km2huq-rj.a.run.app/user';
    
     constructor(private http: HttpClient) {}
 
