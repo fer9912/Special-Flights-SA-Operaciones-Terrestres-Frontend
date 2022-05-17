@@ -12,7 +12,7 @@ const routes: Routes =[
   { path: 'flightRouteMaster', component: FlightRouteMasterComponent },
   { path: 'flightQuery', component: FlightQueryComponent },  
   { path: 'check-list-vuelo', component: CheckListFlightComponent },
-  {path: 'baggage-info', component: BaggageInfoComponent}
+  {path: 'baggage-info', component: BaggageInfoComponent},
   { path: 'home', component: HomeComponent }
 ];
 
