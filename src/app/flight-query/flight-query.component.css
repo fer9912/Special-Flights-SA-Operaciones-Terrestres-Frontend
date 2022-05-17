@@ -1,5 +1,5 @@
 .flight-query-page {
-    height: calc(100vh - 60px);
+    height: 800px;
     display: flex;
     align-items: center;
     justify-content: center;

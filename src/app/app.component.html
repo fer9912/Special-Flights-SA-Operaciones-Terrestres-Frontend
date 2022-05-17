@@ -2,7 +2,7 @@
   <header *ngIf="userLogged">
     <div class="nav">        
       <ul >
-        <li class="item" style="margin-top:120px;"><a routerLink="">Inicio</a></li>
+        <li class="item" style="margin-top:120px;"><a routerLink="home">Inicio</a></li>
         <li class="item"><a routerLink="/flightRouteMaster">Maestro de Rutas de Vuelo</a></li>
         <li class="item"><a routerLink="/flightQuery">Vuelos Programados</a></li>
         <li class="item"><a routerLink="/check-list-vuelo">Check-List de Vuelo</a></li>   
@@ -26,10 +26,10 @@
  
   <div class="form" *ngIf="!userLogged">     
     <form class="login-form">
-      <p style="margin-top:-10px;font-family: 'Oswald', sans-serif; font-size: 34px;">LOG IN</p>
+      <p style="margin-top:-10px;margin-bottom: 20px;font-family: 'Oswald', sans-serif; font-size: 34px;">Iniciar Sesion</p>
       <input type="text" [(ngModel)]="usuario" [ngModelOptions]="{standalone: true}" placeholder="username"/>
       <input type="password"  [(ngModel)]="contra" [ngModelOptions]="{standalone: true}" placeholder="passwords"/>
-      <button (click)="validateUser()">login</button>
+      <button (click)="validateUser()">Ingresar</button>
     </form>
   </div>
 </div>
