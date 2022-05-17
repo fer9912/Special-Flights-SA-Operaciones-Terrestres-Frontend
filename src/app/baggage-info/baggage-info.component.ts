@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { BaggageRequest } from '../model/baggage.request.model';
+import { BaggageService } from '../services/baggage.service';
+
 export interface BaggageModel {
-  id: number,
+  id: string,
   idVuelo: string,
   tipo: string,
-  peso: number,
+  peso: string,
   cargaPasajero: string,
   tipoDoc: string,
   doc: string
 }
 
 const ELEMENT_DATA: BaggageModel[] = [
-  { id: 1 , idVuelo: 'AR1215' , tipo: 'Equipaje', peso: 25, cargaPasajero: 'Si', tipoDoc: 'DNI', doc: "41768622"},
+  { id: "1" , idVuelo: 'AR1215' , tipo: 'Equipaje', peso: "25", cargaPasajero: 'Si', tipoDoc: 'DNI', doc: "41768622"},
 ];
 
 
@@ -20,11 +23,27 @@ const ELEMENT_DATA: BaggageModel[] = [
   styleUrls: ['./baggage-info.component.css']
 })
 export class BaggageInfoComponent implements OnInit {
+  BaggageCode: string;
+  PassengerCode: string;
+  FlightCode: string;
+  showTable = false;
+  info: BaggageModel[];
   displayedColumns: string[] = ['demo-id', 'demo-idVuelo', 'demo-tipo', 'demo-peso', 'demo-CargaPas','demo-tipoDoc', 'demo-doc'];
-  dataSource = ELEMENT_DATA;
-  constructor() { }
+  constructor(public baggageservice : BaggageService) { }
 
   ngOnInit(): void {
   }
 
+  search() { 
+      //this.showLoadAnimation  = true;
+      let request : BaggageRequest = new BaggageRequest();
+      request.idEquipaje = this.BaggageCode;
+      request.idPasajero = this.PassengerCode;
+      request.idVuelo = this.FlightCode;
+      this.baggageservice.getBaggage(request).subscribe(data => {
+        this.info = data;
+        this.showTable = true;
+      });
+    
+  }
 }

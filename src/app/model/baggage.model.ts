@@ -1,8 +1,8 @@
 export interface BaggageModel {
-    id: number,
+    id: string,
     idVuelo: string,
     tipo: string,
-    peso: number,
+    peso: string,
     cargaPasajero: string,
     tipoDoc: string,
     doc: string

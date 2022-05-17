@@ -26,7 +26,7 @@ import { HomeComponent } from './home/home.component';
     FlightRouteMasterComponent,
     FlightQueryComponent,
     CheckListFlightComponent,
-    BaggageInfoComponent
+    BaggageInfoComponent,
     HomeComponent
   ],
   imports: [

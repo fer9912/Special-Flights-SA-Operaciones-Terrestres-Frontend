@@ -1,7 +1,15 @@
+
 <div class="baggage-page">
     <div class="form">
         <p class="titulo">Equipaje</p>
-        <table mat-table [dataSource]="dataSource" class="demo-table">
+        <section class="task-list current">
+            <input [(ngModel)]="BaggageCode" placeholder="Ingrese Codigo de Equipaje" />
+            <input [(ngModel)]="PassengerCode" placeholder="Ingrese Identificacion de Pasajero" />
+            <input [(ngModel)]="FlightCode" placeholder="Ingrese Codigo de Vuelo" />
+            <button type="button" (click)="search()" style="margin-top:-10px;width:85px !important;height:45px !important; margin-left:15px;">Buscar</button>
+        
+          </section>
+        <table mat-table [dataSource]="info" class="demo-table" *ngIf="showTable">
             <!-- Columna Codigo -->
             <ng-container matColumnDef="demo-id">
                 <th mat-header-cell *matHeaderCellDef class="header"> Codigo </th>
