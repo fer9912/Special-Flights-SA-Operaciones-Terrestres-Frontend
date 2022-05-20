@@ -3,14 +3,14 @@ import { BaggageRequest } from '../model/baggage.request.model';
 import { BaggageService } from '../services/baggage.service';
 
 export interface BaggageModel {
-  id: string,
-  idVuelo: string,
-  tipo: string,
-  peso: string,
-  estado: string,
-  cargaPasajero: string,
-  tipoDoc: string,
-  doc: string
+  baggageId: string,
+  flightId: string,
+  baggageType: string,
+  weight: string,
+  status: string,
+  isPassengerBaggage: string,
+  docType: string,
+  documentNumber: string
 }
 
 @Component({

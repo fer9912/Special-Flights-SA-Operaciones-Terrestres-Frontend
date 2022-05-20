@@ -1,3 +1,8 @@
+<head>
+  <meta charset="UTF-8">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+ </head>
+
 <body class="news" style="margin-bottom:-850px;">
   <header *ngIf="userLogged">
     <div class="nav">        
@@ -27,8 +32,14 @@
   <div class="form" *ngIf="!userLogged">     
     <form class="login-form">
       <p style="margin-top:-10px;margin-bottom: 20px;font-family: 'Oswald', sans-serif; font-size: 34px;">Iniciar Sesion</p>
-      <input type="text" [(ngModel)]="usuario" [ngModelOptions]="{standalone: true}" placeholder="username"/>
-      <input type="password"  [(ngModel)]="contra" [ngModelOptions]="{standalone: true}" placeholder="passwords"/>
+      <div class="input_box">
+  
+        <input type="text" [(ngModel)]="usuario" [ngModelOptions]="{standalone: true}" placeholder="User" required>
+      </div>
+      <div class="input_box">
+        <input type="password"  [(ngModel)]="contra" [ngModelOptions]="{standalone: true}" placeholder="Password" required>
+        
+      </div>
       <button (click)="validateUser()">Ingresar</button>
     </form>
   </div>
