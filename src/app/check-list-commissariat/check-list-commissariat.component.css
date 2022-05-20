@@ -1,0 +1,145 @@
+/* FONT */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600');
+
+/* GENERAL */
+body {
+    padding-top: 50px !important;
+    width: 0px;
+    height: 600px;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto 0px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form {
+    position:absolute;
+    z-index: 1;
+    background: #FFFFFF;
+    width: 1200px;
+    margin: 0px;
+    margin-left: -530px;
+    margin-top: 0px !important;
+    padding: 45px;
+    padding-bottom: 20px;
+    text-align:left;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+/* CHECKLIST */
+mark {
+    background-color: transparent;
+    color: #232323;
+}
+
+.titulo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 25%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+.CheckList{
+    width:950px !important;
+}
+
+.task-list {
+    position: relative;
+    padding: 15px 25px;
+}
+
+.task-list mark {
+    color: #232323;
+    display: inline-block;
+    margin-bottom: 1px;
+}
+
+
+
+.task-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.task-list ul li {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    padding: 15px 5;
+    position: relative;
+    margin: 50;
+}
+
+.task-list ul li .label {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    margin-bottom: -3px;
+    line-height: 1.2;
+    direction: ltr;
+    text-align: left;
+    opacity: 1;
+    max-width: unset;
+}
+
+.task-list ul li.task-checked .label {
+    opacity: 0.5;
+}
+
+.task-list.current ul li {
+    border-top: 1px solid #b4bbe2;
+}
+
+.task-list.current ul li:first-child {
+    border-top: 0;
+}
+
+.task-list button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #147253;
+    width: 20%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+  .task-list button:hover,.form button:active,.form button:focus {
+    background: #005f5f;
+  }
+
+  .CheckList button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #147253;
+    width: 20%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+  .CheckList button:hover,.form button:active,.form button:focus {
+    background: #005f5f;
+  }
