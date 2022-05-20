@@ -13,7 +13,7 @@ const httpOptions = {
     providedIn: "root"
   })
 export class ParametersService{
-  url: string = 'http://localhost:8080/parameters';
+  url: string = 'https://grops-backend-dnj2km2huq-rj.a.run.app/parameters';
    
     constructor(private http: HttpClient) {}
 
