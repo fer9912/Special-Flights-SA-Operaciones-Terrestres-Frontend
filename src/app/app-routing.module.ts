@@ -5,13 +5,15 @@ import { FlightRouteMasterComponent } from './flight-route-master/flight-route-m
 import { LoginComponent } from './login/login.component';
 import { PassengerComponent } from './passenger/passenger.component';
 import { CheckListFlightComponent } from './check-list-flight/check-list-flight.component';
+import { CheckListCommissariatComponent } from './check-list-commissariat/check-list-commissariat.component';
 import { BaggageInfoComponent } from './baggage-info/baggage-info.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes =[
   { path: 'flightRouteMaster', component: FlightRouteMasterComponent },
   { path: 'flightQuery', component: FlightQueryComponent },  
-  { path: 'check-list-vuelo', component: CheckListFlightComponent },
+  { path: 'check-list-flight', component: CheckListFlightComponent },
+  { path: 'check-list-commissariat', component: CheckListCommissariatComponent },
   {path: 'baggage-info', component: BaggageInfoComponent},
   { path: 'home', component: HomeComponent }
 ];

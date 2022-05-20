@@ -16,6 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatTableModule} from '@angular/material/table';
 import { FlightQueryComponent } from './flight-query/flight-query.component';
 import { CheckListFlightComponent } from './check-list-flight/check-list-flight.component';
+import { CheckListCommissariatComponent } from './check-list-commissariat/check-list-commissariat.component';
 import { BaggageInfoComponent } from './baggage-info/baggage-info.component';
 import { HomeComponent } from './home/home.component';
 
@@ -26,6 +27,7 @@ import { HomeComponent } from './home/home.component';
     FlightRouteMasterComponent,
     FlightQueryComponent,
     CheckListFlightComponent,
+    CheckListCommissariatComponent,
     BaggageInfoComponent,
     HomeComponent
   ],

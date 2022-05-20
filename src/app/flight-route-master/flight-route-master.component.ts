@@ -3,9 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { AirportModel } from 'src/app/model/airport.model';
 import { AircraftModel } from '../model/aircraft.model';
 import { FlightRouteRequestModel } from '../model/flight.route.request.model';
+import { ParametersModel } from '../model/parameters.model';
 import { AircraftService } from '../services/aircraft.service';
 import { AirportService } from '../services/airport.service';
 import { FlightRouteMasterService } from '../services/flight.route.master.service';
+import { ParametersService } from '../services/parameters.service';
 
 @Component({
   selector: 'app-flight-route-master',
@@ -15,6 +17,12 @@ import { FlightRouteMasterService } from '../services/flight.route.master.servic
 export class FlightRouteMasterComponent implements OnInit {
   destinations : AirportModel[];
   selectedDestinationToInclude = null;
+  parametersModel: ParametersModel ;
+  gananciaPorPersona;
+  costoCombustible;
+  costoLubricante;
+  costoInsumos;
+  promedioDePersonas;
   selectedDestinationToExclude = null;
   disabledExclude = false;
   disabledInclude = false;
@@ -32,12 +40,13 @@ export class FlightRouteMasterComponent implements OnInit {
   day = "";
   showErrorPopup = false;
   showGeneratedRoute = false;
+  showParameters = false;
   generatedRoute = "";
   aircrafts : AircraftModel[] = []; 
 
 
 
-  constructor(public airportService : AirportService, public flightRouteMasterService : FlightRouteMasterService,public aircraftService : AircraftService) { }
+  constructor(public airportService : AirportService, public parametersService: ParametersService,public flightRouteMasterService : FlightRouteMasterService,public aircraftService : AircraftService) { }
 
   ngOnInit(): void {
     this.getAirports();
@@ -148,4 +157,34 @@ export class FlightRouteMasterComponent implements OnInit {
       this.showGeneratedRoute = true;
     });
   }
+
+  parameters(){
+    this.parametersService.getParameters().subscribe(data => {
+      this.parametersModel = data;
+      this.gananciaPorPersona = data.gananciaPorPersona;
+      this.costoCombustible = data.costoLitroCombustible;
+      this.costoLubricante = data.costoLitroLubricante;
+      this.costoInsumos = data.costoInsumosPorPersona;   
+      this.promedioDePersonas = data.promedioDePersonas;   
+      this.showParameters = true;
+    });
+  }
+
+  saveParameters(){
+    this.parametersModel.gananciaPorPersona = this.gananciaPorPersona;
+    this.parametersModel.costoLitroCombustible = this.costoCombustible;
+    this.parametersModel.costoLitroLubricante = this.costoLubricante;
+    this.parametersModel.costoInsumosPorPersona = this.costoInsumos;
+    this.parametersModel.promedioDePersonas = this.promedioDePersonas;
+    this.parametersService.saveParameters(this.parametersModel).subscribe(data => {
+      this.gananciaPorPersona = data.gananciaPorPersona;
+      this.costoCombustible = data.costoLitroCombustible;
+      this.costoLubricante = data.costoLitroLubricante;
+      this.costoInsumos = data.costoInsumosPorPersona;
+      this.promedioDePersonas = data.promedioDePersonas;
+      this.showParameters = false;
+    });
+  }
+
+
 }
