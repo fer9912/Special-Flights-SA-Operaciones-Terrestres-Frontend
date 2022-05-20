@@ -12,8 +12,8 @@
                         <option  *ngFor="let d of destinations" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
                      </select>  
                 </div> 
-                <div style="margin: 18px 25px; float: left">
-                    <button [disabled]="disabledInclude" (click)="includeDestination()" type="button" matTooltip="Es importante el orden de inclusión de los destinos">Incluir</button> 
+                <div style="margin: 15px 20px; float: left">
+                    <button [disabled]="disabledInclude" (click)="includeDestination()" type="button" matTooltip="Es importante el orden de inclusión de los destinos"><i class="fa-solid fa-plus" style="margin-right:5px;"></i>Incluir</button> 
                 </div>  
             </div>     
             <div style="max-width: 400px;float: left;margin-left: 110px;" >   
@@ -24,8 +24,8 @@
                         <option  *ngFor="let d of destinations" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
                     </select>  
                 </div> 
-                <div style="margin: 18px 25px; float: left">
-                    <button [disabled]="disabledExclude" (click)="excludeDestination()" type="button" >Excluir</button> 
+                <div style="margin: 15px 20px; float: left">
+                    <button [disabled]="disabledExclude" (click)="excludeDestination()" type="button" ><i class="fa-solid fa-x" style="margin-right:5px;"></i>Excluir</button> 
                 </div>    
             </div>  
         </div> 
@@ -53,16 +53,16 @@
             </div>
         </div>
         <div class="filters" >  
-            <div style="margin: -18px 30px 40px 240px; float: left">
-                <button style="background-color: rgb(112, 42, 42);" (click)="removeToIncludeList()" type="button" matTooltip="Borra de la lista el destino seleccionado">Remover</button> 
+            <div style="margin: -18px -20px 10px 240px; float: left">
+                <button style="background-color: rgb(112, 42, 42);" (click)="removeToIncludeList()" type="button" matTooltip="Borra de la lista el destino seleccionado1"><i class="fa-solid fa-trash" style="margin-right:10px;"></i>Remover</button> 
             </div>
-            <div style="margin: -18px 30px 40px 550px; float: left">
-                <button style="background-color: rgb(112, 42, 42);" (click)="removeToExcludeList()" type="button" matTooltip="Borra de la lista el destino seleccionado">Remover</button> 
+            <div style="margin: -18px -20px 10px 550px; float: left">
+                <button style="background-color: rgb(112, 42, 42);" (click)="removeToExcludeList()" type="button" matTooltip="Borra de la lista el destino seleccionado"><i class="fa-solid fa-trash" style="margin-right:10px;"></i>Remover</button> 
             </div>
         </div>
         <div class="filters" >  
             <div style="margin: -18px 30px 20px 495px; float: left">
-                <button (click)="generate()" type="button">Generar</button> 
+                <button (click)="generate()" type="button"><i class="fa-solid fa-paper-plane" style="margin-right:10px;"></i>Generar</button> 
             </div>                
             
             
