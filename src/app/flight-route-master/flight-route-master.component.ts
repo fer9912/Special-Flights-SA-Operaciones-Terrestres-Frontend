@@ -186,5 +186,19 @@ export class FlightRouteMasterComponent implements OnInit {
     });
   }
 
+  resetParameters(){
+    this.parametersModel.gananciaPorPersona = 65;
+    this.parametersModel.costoLitroCombustible = 150;
+    this.parametersModel.costoLitroLubricante = 10;
+    this.parametersModel.costoInsumosPorPersona = 28;
+    this.parametersModel.promedioDePersonas = 60;
+    this.parametersService.saveParameters(this.parametersModel).subscribe(data => {
+      this.gananciaPorPersona = data.gananciaPorPersona;
+      this.costoCombustible = data.costoLitroCombustible;
+      this.costoLubricante = data.costoLitroLubricante;
+      this.costoInsumos = data.costoInsumosPorPersona;
+      this.promedioDePersonas = data.promedioDePersonas;
+    });
+  }
 
 }
