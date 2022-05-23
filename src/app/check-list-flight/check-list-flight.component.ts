@@ -16,7 +16,7 @@ export class CheckListFlightComponent implements OnInit {
   showErrorCheckVuelo = false;
   showErrorVuelo = false;
   flight: FlightModel;
-  flightSelected: FlightModel;
+  flightSelected: FlightModel = null;
   checkFlight: CheckFlightModel;
   idCheckFlight: number;
   code: string;

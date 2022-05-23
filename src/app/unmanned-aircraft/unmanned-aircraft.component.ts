@@ -152,16 +152,19 @@ export class UnmannedAircraftComponent implements OnInit {
   }
 
   cargarDestinos(){
+    this.selectedDestinationToExclude = null;
     if(this.selectedDestinationToInclude != null){      
       this.airportService.getAirportsNear(this.selectedDestinationToInclude.iata).subscribe(data => {
         if(data != null && data.length > 0){
           this.destinations = data;
           this.disabledInclude = false
         }else{
+          this.disabledGenerate = true;
           this.disabledInclude = true;
         }
       });
     }else{
+      this.disabledGenerate = true;
       this.disabledInclude = true;
     }
   }

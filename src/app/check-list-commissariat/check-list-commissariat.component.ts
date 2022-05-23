@@ -16,7 +16,7 @@ export class CheckListCommissariatComponent implements OnInit {
   showErrorCheckComisariato = false;
   showErrorSupplies = false;
   flight: FlightModel;
-  flightSelected: FlightModel;
+  flightSelected: FlightModel = null;
   supplies: SuppliesModel;
   idSupplies: number;
 	menuEconomy: number;
