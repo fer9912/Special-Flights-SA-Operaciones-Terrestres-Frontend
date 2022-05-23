@@ -24,6 +24,7 @@ export class CheckListCommissariatComponent implements OnInit {
 	menuVegetariano: number;
 	comoditiesEconomy: number;
 	comoditiesBusiness: number;
+
   checkCommissariat: CheckCommissariatModel;
   idCheckCommissariat: number;
   code: string;
@@ -74,62 +75,32 @@ export class CheckListCommissariatComponent implements OnInit {
       this.menuVegetariano= data.menuVegetariano;
       this.comoditiesEconomy= data.comoditiesEconomy;
       this.comoditiesBusiness= data.comoditiesBusiness;
-      this.checkCommissariatService.getCheckFlight(this.code).subscribe(data => {
-        this.clean();
+      console.log(this.idCheckCommissariat);
+    }, (error) => {
+      console.log('An unexpected error occured');
+      this.showErrorSupplies = true;
+      this.showErrorCheckComisariato = false;
+      this.showCheckList = false;
+    }, () => {
+      this.checkCommissariatService.getCheckCommissariat(this.code).subscribe(data => {
         this.checkCommissariat = data;
+        this.idCheckCommissariat = data.idCheckCommissariat;
         this.code = data.code;
         this.a1 = data.a1;
         this.a2 = data.a2;
         this.a3 = data.a3;
         this.a4 = data.a4;
         this.a5 = data.a5;
+        console.log(this.idCheckCommissariat);
   
       }, (error) => {
-          this.flightService.getFlight(this.code).subscribe(data => {
-          this.flight = data;
-          this.code = data.code;
-          this.origin = data.origin;
-          this.destination = data.destination;
-          this.flightDate = data.date;
-          this.day = data.day;
-          this.hour = data.hour;
-          this.aircraft = data.aircraft;
-          this.route = data.route;
-          this.status = data.status;
-        }, (error) => {
-          console.log('An unexpected error occured');
-          this.showErrorSupplies = true;
-          this.showErrorCheckComisariato = false;
-          this.showCheckList = false;
-        }, () => {
           console.log('Complete');
-          this.clean();
-          console.info(this.a1);
-          console.info(this.a2);
           this.showCheckList = true;
           this.showErrorCheckComisariato = false;
           this.showErrorSupplies = false;
-        });
+
       }, () => {
-        this.flightService.getFlight(this.code).subscribe(data => {
-          this.flight = data;
-          this.code = data.code;
-          this.origin = data.origin;
-          this.destination = data.destination;
-          this.flightDate = data.date;
-          this.day = data.day;        
-          this.hour = data.hour;  
-          this.company = data.company;
-          this.aircraft = data.aircraft;
-          this.route = data.route;
-          this.status = data.status;
-        }, (error) => {
-          console.log('An unexpected error occured');
-          this.showErrorSupplies = true;
-          this.showErrorCheckComisariato = false;
-          this.showCheckList = false;
-  
-        }, () => {
+      
           if (this.status != "ENDED") {
             this.showErrorCheckComisariato = false;
             this.showErrorSupplies = false;
@@ -139,28 +110,25 @@ export class CheckListCommissariatComponent implements OnInit {
             this.showErrorSupplies = false;
             this.showCheckList = false;
           }
-        });
   
       });
-    }, (error) => {
-      console.log('An unexpected error occured');
-      this.showErrorSupplies = true;
-      this.showErrorCheckComisariato = false;
-      this.showCheckList = false;
+
     });
 
   }
   save() {
     this.checkCommissariat = new CheckCommissariatModel();
+    this.checkCommissariat.idCheckCommissariat= this.idCheckCommissariat;
     this.checkCommissariat.code = this.code;
     this.checkCommissariat.a1 = this.a1;
     this.checkCommissariat.a2 = this.a2;
     this.checkCommissariat.a3 = this.a3;
     this.checkCommissariat.a4 = this.a4;
     this.checkCommissariat.a5 = this.a5;
+    console.info(this.checkCommissariat);
 
 
-    this.checkCommissariatService.saveCheckFlight(this.checkCommissariat).subscribe(data => {
+    this.checkCommissariatService.saveCheckCommissariat(this.checkCommissariat).subscribe(data => {
       this.checkCommissariat = data;
       console.info(this.checkCommissariat);
     });
@@ -171,6 +139,8 @@ export class CheckListCommissariatComponent implements OnInit {
     this.showCheckList = false;
   }
   clean() {
+    this.idCheckCommissariat = null;
+    this.code = null;
     this.a1 = null;
     this.a2 = null;
     this.a3 = null;
