@@ -5,22 +5,30 @@
   <p style="margin-top:-10px;font-family: 'Segoe UI', sans-serif; font-size: 20px;">En esta pantalla podra hacer el Check-List de un vuelo.</p>
   <hr>
   <section class="task-list current">
+
+    <div style="max-width: 400px;float: left;margin-right: 160px;" >       
     <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 24px;">Vuelo</p>
-    <input [(ngModel)]="code" placeholder="Ingrese Codigo de Vuelo" />
-    <button (click)="search()" type="button" style="margin-top:-10px;width:120px !important;height:45px !important; margin-left:15px;"><i class="fa-solid fa-magnifying-glass" style="margin-right:10px;"></i>Buscar</button>
+      <div class="styled-select slate" style="margin-left: 0px; float: left; width: 20px;">
+          <select [(ngModel)]="flightSelected">
+              <option  [ngValue]="null">Seleccione un vuelo</option>
+              <option  *ngFor="let d of flights" [ngValue]="d">{{d.code+ " - " + d.date}}</option>
+           </select>  
+      </div> 
+      <button (click)="search()" type="button" style="margin-top:0px;width:120px !important;height:45px !important; margin-left:260px;"><i class="fa-solid fa-magnifying-glass" style="margin-right:10px;"></i>Buscar</button>
+    </div>     
+
 
   </section>
   <div class="Error" *ngIf="showErrorCheckVuelo">
-    <p style="margin-top:10px;font-family: 'Oswald', sans-serif; font-size: 20px; margin-left: 25px;">Ya se Realizo el Check List de este
+    <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 20px; margin-left: 25px;">Ya se Realizo el Check List de este
       Vuelo</p>
     </div>
-
-  <div class="Error" *ngIf="showErrorVuelo">
-    <p style="margin-top:10px;font-family: 'Oswald', sans-serif; font-size: 20px;margin-left: 25px;">No existe el Vuelo especificado</p>
-  </div>
+    <div class="Error" *ngIf="showErrorVuelo">
+      <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 20px;margin-left: 25px;">No existe el Vuelo especificado</p>
+    </div>
 
   <div class="CheckList" *ngIf="showCheckList">
-    <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 22px;margin-left: 25px;">{{flight.code + " - " +
+    <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 22px;margin-left: 25px;">{{flight.code + " - " +
       flight.origin + " - " + flight.destination}}</p>
     <div style="margin-top:0px; margin-left:28px;height:450px;width:1150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
       <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 16px;">A.Cabina de vuelo (pilotaje)</p>
