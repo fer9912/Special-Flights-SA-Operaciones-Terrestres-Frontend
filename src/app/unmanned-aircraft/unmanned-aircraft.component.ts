@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { AirportModel } from 'src/app/model/airport.model';
 import { AircraftModel } from '../model/aircraft.model';
@@ -10,13 +9,15 @@ import { FlightRouteMasterService } from '../services/flight.route.master.servic
 import { ParametersService } from '../services/parameters.service';
 
 @Component({
-  selector: 'app-flight-route-master',
-  templateUrl: './flight-route-master.component.html',
-  styleUrls: ['./flight-route-master.component.css']
+  selector: 'app-unmanned-aircraft',
+  templateUrl: './unmanned-aircraft.component.html',
+  styleUrls: ['./unmanned-aircraft.component.css']
 })
-export class FlightRouteMasterComponent implements OnInit {
+export class UnmannedAircraftComponent implements OnInit {
+
   destinations : AirportModel[];
-  selectedDestinationToInclude = null;
+  origins : AirportModel[];
+  selectedDestinationToInclude : AirportModel = null;
   parametersModel: ParametersModel ;
   gananciaPorPersona;
   costoCombustible;
@@ -26,6 +27,7 @@ export class FlightRouteMasterComponent implements OnInit {
   selectedDestinationToExclude = null;
   disabledExclude = false;
   disabledInclude = false;
+  disabledGenerate = false;
   disabledAircraft = false;
   destinationsToInclude : AirportModel[] = [];
   destinationsToExclude : AirportModel[] = [];
@@ -49,6 +51,7 @@ export class FlightRouteMasterComponent implements OnInit {
   constructor(public airportService : AirportService, public parametersService: ParametersService,public flightRouteMasterService : FlightRouteMasterService,public aircraftService : AircraftService) { }
 
   ngOnInit(): void {
+    this.disabledGenerate = true;
     this.getAirports();
     this.getAircrafts();
     this.disableExclude();
@@ -117,8 +120,8 @@ export class FlightRouteMasterComponent implements OnInit {
   }
 
   generate(){
-    if(this.destinationsToInclude.length > 1){   
-      this.generatedRoute = "";
+    if(this.selectedDestinationToExclude != null && this.selectedDestinationToInclude != null){   
+      this.generatedRoute = this.selectedDestinationToInclude.city+"("+ this.selectedDestinationToInclude.iata + ") - "+this.selectedDestinationToExclude.city +"("+this.selectedDestinationToExclude.iata+")";
       this.generateRoute();      
     }else{
       this.showErrorPopup = true;
@@ -127,83 +130,47 @@ export class FlightRouteMasterComponent implements OnInit {
 
   getAirports(){
     this.airportService.getAirports().subscribe(data => {
-      this.destinations = data;
+      this.origins = data;
     });
   }
   getAircrafts(){
     this.aircraftService.getAircrafts().subscribe(data => {
-      for(let aircraft of data){
-        if(aircraft.passengerCapacity != 0){
-          this.aircrafts.push(aircraft);
-        }
-      }
+      this.aircrafts = data;
     });
-    
     
   }
 
   generateRoute(){
     this.showLoadAnimation  = true;
-    let request : FlightRouteRequestModel = new FlightRouteRequestModel();
-    request.excludeDestinations = this.destinationsToExclude;
-    request.includeDestinations = this.destinationsToInclude;
-    request.aircraft = this.selectedAircraft;
-    this.flightRouteMasterService.generateRoute(request).subscribe(data => {
-      for (let i = 0; i < data.route.length; i++) { 
-        this.generatedRoute += data.route[i].city +"("+ data.route[i].iata +")"
-        if(i < data.route.length -1){
-          this.generatedRoute += " - ";
-        }
-      }
-      this.aircraft = data.aircraft.model;
-      this.day = data.day;
+    this.flightRouteMasterService.getUnmannedAircraft(this.selectedDestinationToInclude.iata, this.selectedDestinationToExclude.iata).subscribe(data => {
       this.distance = data.distance;
+      this.aircraft = data.aircraftModel;
       this.showLoadAnimation  = false; 
       this.showGeneratedRoute = true;
     });
+    
   }
 
-  parameters(){
-    this.parametersService.getParameters().subscribe(data => {
-      this.parametersModel = data;
-      this.gananciaPorPersona = data.gananciaPorPersona;
-      this.costoCombustible = data.costoLitroCombustible;
-      this.costoLubricante = data.costoLitroLubricante;
-      this.costoInsumos = data.costoInsumosPorPersona;   
-      this.promedioDePersonas = data.promedioDePersonas;   
-      this.showParameters = true;
-    });
+  cargarDestinos(){
+    if(this.selectedDestinationToInclude != null){      
+      this.airportService.getAirportsNear(this.selectedDestinationToInclude.iata).subscribe(data => {
+        if(data != null && data.length > 0){
+          this.destinations = data;
+          this.disabledInclude = false
+        }else{
+          this.disabledInclude = true;
+        }
+      });
+    }else{
+      this.disabledInclude = true;
+    }
   }
 
-  saveParameters(){
-    this.parametersModel.gananciaPorPersona = this.gananciaPorPersona;
-    this.parametersModel.costoLitroCombustible = this.costoCombustible;
-    this.parametersModel.costoLitroLubricante = this.costoLubricante;
-    this.parametersModel.costoInsumosPorPersona = this.costoInsumos;
-    this.parametersModel.promedioDePersonas = this.promedioDePersonas;
-    this.parametersService.saveParameters(this.parametersModel).subscribe(data => {
-      this.gananciaPorPersona = data.gananciaPorPersona;
-      this.costoCombustible = data.costoLitroCombustible;
-      this.costoLubricante = data.costoLitroLubricante;
-      this.costoInsumos = data.costoInsumosPorPersona;
-      this.promedioDePersonas = data.promedioDePersonas;
-      this.showParameters = false;
-    });
+  enableGenerate(){
+    if(this.selectedDestinationToExclude != null && this.selectedDestinationToExclude != this.selectedDestinationToInclude){
+      this.disabledGenerate = false;
+    }else{
+      this.disabledGenerate = true;
+    }
   }
-
-  resetParameters(){
-    this.parametersModel.gananciaPorPersona = 65;
-    this.parametersModel.costoLitroCombustible = 150;
-    this.parametersModel.costoLitroLubricante = 10;
-    this.parametersModel.costoInsumosPorPersona = 28;
-    this.parametersModel.promedioDePersonas = 60;
-    this.parametersService.saveParameters(this.parametersModel).subscribe(data => {
-      this.gananciaPorPersona = data.gananciaPorPersona;
-      this.costoCombustible = data.costoLitroCombustible;
-      this.costoLubricante = data.costoLitroLubricante;
-      this.costoInsumos = data.costoInsumosPorPersona;
-      this.promedioDePersonas = data.promedioDePersonas;
-    });
-  }
-
 }

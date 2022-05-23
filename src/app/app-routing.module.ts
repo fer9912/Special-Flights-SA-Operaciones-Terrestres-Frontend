@@ -8,9 +8,11 @@ import { CheckListFlightComponent } from './check-list-flight/check-list-flight.
 import { CheckListCommissariatComponent } from './check-list-commissariat/check-list-commissariat.component';
 import { BaggageInfoComponent } from './baggage-info/baggage-info.component';
 import { HomeComponent } from './home/home.component';
+import { UnmannedAircraftComponent } from './unmanned-aircraft/unmanned-aircraft.component';
 
 const routes: Routes =[
   { path: 'flightRouteMaster', component: FlightRouteMasterComponent },
+  { path: 'unmannedAircraft', component: UnmannedAircraftComponent },
   { path: 'flightQuery', component: FlightQueryComponent },  
   { path: 'check-list-flight', component: CheckListFlightComponent },
   { path: 'check-list-commissariat', component: CheckListCommissariatComponent },

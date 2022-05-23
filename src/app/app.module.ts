@@ -19,6 +19,7 @@ import { CheckListFlightComponent } from './check-list-flight/check-list-flight.
 import { CheckListCommissariatComponent } from './check-list-commissariat/check-list-commissariat.component';
 import { BaggageInfoComponent } from './baggage-info/baggage-info.component';
 import { HomeComponent } from './home/home.component';
+import { UnmannedAircraftComponent } from './unmanned-aircraft/unmanned-aircraft.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HomeComponent } from './home/home.component';
     CheckListFlightComponent,
     CheckListCommissariatComponent,
     BaggageInfoComponent,
-    HomeComponent
+    HomeComponent,
+    UnmannedAircraftComponent
   ],
   imports: [
     BrowserModule,
