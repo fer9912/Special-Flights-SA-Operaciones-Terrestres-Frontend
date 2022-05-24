@@ -3,6 +3,7 @@ import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { UserModel } from "../model/user.model";
+import { UserRequest } from "../model/userRequest";
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -17,7 +18,7 @@ export class UserService{
    
     constructor(private http: HttpClient) {}
 
-    validateUser(user:string, password:string): Observable<UserModel>{
-        return this.http.get<UserModel>(this.url + '/validate?user=' + user + '&password='+password);
+    validateUser(request: UserRequest): Observable<UserModel>{
+        return this.http.post<UserModel>(this.url + '/validate',request,httpOptions);
     }
 }
