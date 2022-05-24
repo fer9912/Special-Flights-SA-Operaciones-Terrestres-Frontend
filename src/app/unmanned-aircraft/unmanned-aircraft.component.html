@@ -14,14 +14,16 @@
                      </select>  
                 </div> 
             </div>     
-            <div style="max-width: 400px;float: left;margin-left: 110px;" >   
+            <div style="max-width: 600px;float: left;margin-left: 110px;" >   
               <p style="margin-top:20px;margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Destino:</p>
-                <div class="styled-select slate" style="margin-left: 0px; float: left">
+                <div class="styled-select slate" style="margin-left: 0px;">
                     <select [(ngModel)]="selectedDestinationToExclude" [disabled]="disabledInclude" (change)="enableGenerate()">
                         <option  [ngValue]="null">Seleccione un destino</option>
                         <option  *ngFor="let d of destinations" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
                     </select>  
                 </div>   
+                <p *ngIf="showNoDestinationError" style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: brown;">No existen destinos para vuelos no</p>
+                <p *ngIf="showNoDestinationError" style="margin-top:0px;margin-bottom:-20px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: brown;">tripulados desde ese origen.</p>
             </div>  
         </div> 
         

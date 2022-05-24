@@ -25,6 +25,7 @@ export class UnmannedAircraftComponent implements OnInit {
   costoInsumos;
   promedioDePersonas;
   selectedDestinationToExclude = null;
+  showNoDestinationError = false;
   disabledExclude = false;
   disabledInclude = false;
   disabledGenerate = false;
@@ -152,6 +153,7 @@ export class UnmannedAircraftComponent implements OnInit {
   }
 
   cargarDestinos(){
+    this.showNoDestinationError = false;
     this.selectedDestinationToExclude = null;
     if(this.selectedDestinationToInclude != null){      
       this.airportService.getAirportsNear(this.selectedDestinationToInclude.iata).subscribe(data => {
@@ -159,6 +161,7 @@ export class UnmannedAircraftComponent implements OnInit {
           this.destinations = data;
           this.disabledInclude = false
         }else{
+          this.showNoDestinationError = true;
           this.disabledGenerate = true;
           this.disabledInclude = true;
         }
