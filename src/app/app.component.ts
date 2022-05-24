@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PrimeNGConfig} from 'primeng/api';                  //api
 import { UserService } from './services/user.service';
 import {Router} from '@angular/router';
+import * as CryptoJS from 'crypto-js';  
 
 @Component({
   selector: 'app-root',
@@ -14,13 +15,20 @@ export class AppComponent implements OnInit {
   showErrorLogin = false;
   usuario;
   contra;
+  plainText:string;  
+  encryptText: string;  
+  encPassword: string;  
+  decPassword:string;  
+  conversionEncryptOutput: string;  
+  conversionDecryptOutput:string;  
   constructor(private primengConfig: PrimeNGConfig, public userService: UserService, private router:Router) {}
   ngOnInit() {
     this.primengConfig.ripple = true;    
     this.router.navigate(['']);
   }
   validateUser(){
-    this.userService.validateUser(this.usuario, this.contra).subscribe(data => {
+    this.convertText();
+    this.userService.validateUser(this.usuario, this.conversionEncryptOutput.toString()).subscribe(data => {
       if(data != null){
         this.userLogged = true;           
         this.router.navigate(['home']);     
@@ -35,4 +43,9 @@ export class AppComponent implements OnInit {
     this.userLogged = false;
     this.router.navigate(['']);
   }
-}
+
+  convertText() {   
+      this.conversionEncryptOutput = CryptoJS.AES.encrypt(this.contra.trim(), 'grops2022');  
+    }  
+  
+  }   
