@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { FlightModel } from 'src/app/model/flight.model';
 import { FlightService } from '../services/flight.service';
 import { CheckFlightModel } from 'src/app/model/checkFlight.model';
 import { CheckFlightService } from '../services/checkFlight.service';
+
 
 @Component({
   selector: 'app-check-list-flight',
@@ -11,11 +11,12 @@ import { CheckFlightService } from '../services/checkFlight.service';
   styleUrls: ['./check-list-flight.component.css']
 })
 export class CheckListFlightComponent implements OnInit {
-
+  flights: FlightModel[];
   showCheckList = false;
   showErrorCheckVuelo = false;
   showErrorVuelo = false;
   flight: FlightModel;
+  flightSelected: FlightModel = null;
   checkFlight: CheckFlightModel;
   idCheckFlight: number;
   code: string;
@@ -87,9 +88,23 @@ export class CheckListFlightComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.flightService.getAllFlights().subscribe((response: FlightModel[]) => {
+      this.flights = response;
+    });
   }
 
   search() {
+    this.flight = this.flightSelected;
+    this.code = this.flight.code;
+    this.origin = this.flight.origin;
+    this.destination = this.flight.destination;
+    this.flightDate = this.flight.date;
+    this.day = this.flight.day;
+    this.hour = this.flight.hour;
+    this.aircraft = this.flight.aircraft;
+    this.route = this.flight.route;
+    this.status = this.flight.status;
+
 
     this.checkFlightService.getCheckFlight(this.code).subscribe(data => {
       this.checkFlight = data;
@@ -169,10 +184,6 @@ export class CheckListFlightComponent implements OnInit {
       }, () => {
         console.log('Complete');
         this.clean();
-        this.checkFlight.a1 = null;
-        this.checkFlight.a2 = null;
-        console.info(this.a1);
-        console.info(this.a2);
         this.showCheckList = true;
         this.showErrorCheckVuelo = false;
         this.showErrorVuelo = false;
@@ -184,8 +195,8 @@ export class CheckListFlightComponent implements OnInit {
         this.origin = data.origin;
         this.destination = data.destination;
         this.flightDate = data.date;
-        this.day = data.day;        
-        this.hour = data.hour;  
+        this.day = data.day;
+        this.hour = data.hour;
         this.company = data.company;
         this.aircraft = data.aircraft;
         this.route = data.route;
@@ -278,8 +289,8 @@ export class CheckListFlightComponent implements OnInit {
       this.checkFlight = data;
       console.info(this.checkFlight);
     });
-    this.clean();
 
+    this.clean();
     this.showErrorVuelo = false;
     this.showErrorCheckVuelo = false;
     this.showCheckList = false;
@@ -339,66 +350,8 @@ export class CheckListFlightComponent implements OnInit {
     this.d2 = null;
     this.d3 = null;
     this.e1 = null;
-
-    this.checkFlight.a1 = null;
-    this.checkFlight.a2 = null;
-    this.checkFlight.a3 = null;
-    this.checkFlight.a4 = null;
-    this.checkFlight.a5 = null;
-    this.checkFlight.a6 = null;
-    this.checkFlight.a7 = null;
-    this.checkFlight.a8 = null;
-    this.checkFlight.a9 = null;
-    this.checkFlight.a10 = null;
-    this.checkFlight.a11 = null;
-    this.checkFlight.a12 = null;
-    this.checkFlight.a13 = null;
-    this.checkFlight.a14 = null;
-    this.checkFlight.a15 = null;
-    this.checkFlight.a16 = null;
-    this.checkFlight.a17 = null;
-    this.checkFlight.a18 = null;
-    this.checkFlight.a19 = null;
-    this.checkFlight.a20 = null;
-    this.checkFlight.a21 = null;
-    this.checkFlight.a22 = null;
-    this.checkFlight.a23 = null;
-    this.checkFlight.a24 = null;
-    this.checkFlight.b1 = null;
-    this.checkFlight.b2 = null;
-    this.checkFlight.b3 = null;
-    this.checkFlight.b4 = null;
-    this.checkFlight.b5 = null;
-    this.checkFlight.b6 = null;
-    this.checkFlight.b7 = null;
-    this.checkFlight.b8 = null;
-    this.checkFlight.b9 = null;
-    this.checkFlight.b10 = null;
-    this.checkFlight.b11 = null;
-    this.checkFlight.b12 = null;
-    this.checkFlight.b13 = null;
-    this.checkFlight.b14 = null;
-    this.checkFlight.c1 = null;
-    this.checkFlight.c2 = null;
-    this.checkFlight.c3 = null;
-    this.checkFlight.c4 = null;
-    this.checkFlight.c5 = null;
-    this.checkFlight.c6 = null;
-    this.checkFlight.c7 = null;
-    this.checkFlight.c8 = null;
-    this.checkFlight.c9 = null;
-    this.checkFlight.c10 = null;
-    this.checkFlight.c11 = null;
-    this.checkFlight.c12 = null;
-    this.checkFlight.d1 = null;
-    this.checkFlight.d2 = null;
-    this.checkFlight.d3 = null;
-    this.checkFlight.e1 = null;
-
-
-
   }
-  
+
 }
 
 

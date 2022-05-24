@@ -17,11 +17,11 @@ export class CheckCommissariatService{
    
     constructor(private http: HttpClient) {}
 
-    getCheckFlight(code: string): Observable<CheckCommissariatModel>{
+    getCheckCommissariat(code: string): Observable<CheckCommissariatModel>{
         return this.http.get<CheckCommissariatModel>(this.url + '/get?code=' + code);
     }
 
-    saveCheckFlight(checkCommissariatModel: CheckCommissariatModel): Observable<CheckCommissariatModel>{
+    saveCheckCommissariat(checkCommissariatModel: CheckCommissariatModel): Observable<CheckCommissariatModel>{
       return this.http.post<CheckCommissariatModel>(this.url + '/save',checkCommissariatModel, httpOptions);
   }
 

@@ -19,4 +19,8 @@ export class AirportService{
     getAirports(): Observable<AirportModel[]>{
         return this.http.get<AirportModel[]>(this.url + '/getAll');
     }
+
+    getAirportsNear(origin : string): Observable<AirportModel[]>{
+      return this.http.get<AirportModel[]>(this.url + '/getNear?origin='+ origin);
+  }
 }
