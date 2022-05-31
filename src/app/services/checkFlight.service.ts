@@ -1,4 +1,5 @@
 import { CheckFlightModel } from "src/app/model/checkFlight.model";
+import { PlannedFlightModel } from "src/app/model/plannedFlight.model";
 import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
@@ -17,12 +18,15 @@ export class CheckFlightService{
    
     constructor(private http: HttpClient) {}
 
-    getCheckFlight(code: string): Observable<CheckFlightModel>{
-        return this.http.get<CheckFlightModel>(this.url + '/get?code=' + code);
+    getCheckFlight(id: number): Observable<CheckFlightModel>{
+        return this.http.get<CheckFlightModel>(this.url + '/get?id=' + id);
     }
 
     saveCheckFlight(checkFlightModel: CheckFlightModel): Observable<CheckFlightModel>{
       return this.http.post<CheckFlightModel>(this.url + '/save',checkFlightModel, httpOptions);
   }
 
+  getPlannedFlight(date: string): Observable<PlannedFlightModel[]>{
+    return this.http.get<PlannedFlightModel[]>(this.url + '/getFlightByDate?date=' + date);
+}
 }

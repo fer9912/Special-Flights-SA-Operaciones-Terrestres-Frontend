@@ -1,5 +1,6 @@
 export class CheckFlightModel {
   idCheckFlight: number;
+  idFlight:number;
   a1:	boolean;
   a2:	boolean;
   a3:	boolean;
@@ -53,6 +54,7 @@ export class CheckFlightModel {
   d1:	boolean;
   d2:	boolean;
   d3:	boolean;
+  d4:	boolean;
   e1:	boolean;
-  code:string;
+  e2:	boolean;
   }
