@@ -1,0 +1,68 @@
+<div class="login-page">
+    <div class="form" style="margin-top:100px;"> 
+        <i class="fa-solid fa-arrow-left" routerLink="/home" style="margin-bottom: 30px;cursor: pointer;">Volver</i>
+        <p style="margin-top:-10px;margin-bottom:34px;font-family: 'Segoe UI', sans-serif; font-size: 44px;">Aeronave no tripulada por Coordenadas</p>
+        <p style="margin-top:-10px;font-family: 'Segoe UI', sans-serif; font-size: 20px;">En esta pantalla podra calcular la aeronave no tripulada mas optima y la distancia para un vuelo.</p>
+        <hr>
+        <div class="filters" style="margin-top:-30px;">    
+            <div style="max-width: 400px;float: left;margin-right: 240px;margin-left:100px;" >       
+                <p style="margin-top:20px;margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Origen:</p>
+                <div class="styled-select slate" style="margin-left: 0px; float: left">
+                    <input [(ngModel)]="origenLat" placeholder="Ingrese Latitud" (change)="enableGenerate()" />
+                    <p *ngIf="origenLatError" style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: red;">*</p>
+                    <input [(ngModel)]="origenLon" placeholder="Ingrese Longitud" (change)="enableGenerate()"/>
+                    <p *ngIf="origenLonError" style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: red;">*</p>
+                </div> 
+            </div>     
+            <div style="max-width: 600px;float: left;margin-left: 110px;" >   
+              <p style="margin-top:20px;margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Destino:</p>
+                <div class="styled-select slate" style="margin-left: 0px;">
+                    <input [(ngModel)]="destinoLat" placeholder="Ingrese Latitud"(change)="enableGenerate()"/>
+                    <p *ngIf="destinoLatError" style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: red;">*</p>
+                    <input [(ngModel)]="destinoLon" placeholder="Ingrese Longitud"(change)="enableGenerate()"/>
+                    <p *ngIf="destinoLonError" style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: red;">*</p>
+                </div>   
+               </div>  
+        </div> 
+        
+        <div class="filters" >  
+            <div style="margin: 58px 30px 20px 495px; float: left">
+                <button (click)="generateRoute()" [disabled]="disabledGenerate" type="button"><i class="fa-solid fa-paper-plane" style="margin-right:10px;"></i>Calcular</button> 
+            </div>                
+            
+            
+        </div>      
+            
+    </div>
+
+    
+    <div class="container" style="margin-left:370px; width:300px" *ngIf="showErrorPopup">
+        <div class="boxPopup" id="popup">
+          <div class="msgPopup">¡¡¡Error!!!</div>
+          <div class="descript">Deben seleccionarse origen y destino</div>
+          <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 310px;" (click)="showErrorPopup = false;">Cerrar</button>
+        </div>
+    </div>
+
+    
+    <div class="loading" *ngIf="showLoadAnimation">Loading&#8230;</div>
+    
+    <div class="container" style="margin-left:360px; width:1200px; margin-top:200px;" *ngIf="showGeneratedRoute">
+        <div class="boxPopup" id="popup" style="width:1200px; height: 300px;">
+            <div class="msgPopup">Ruta generada:</div>     
+            <div style="float: left; width: 45%;margin-left:210px;">
+                <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">{{"Aeronave: " + aircraft}}</p>
+            </div>          
+            <div style="float: left; width: 25%;">
+                <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">{{"Distancia: " + distance + "km"}}</p>
+            </div> 
+          <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 970px;" (click)="showGeneratedRoute = false;">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+
+
+  
+
+  

@@ -20,6 +20,7 @@ import { CheckListCommissariatComponent } from './check-list-commissariat/check-
 import { BaggageInfoComponent } from './baggage-info/baggage-info.component';
 import { HomeComponent } from './home/home.component';
 import { UnmannedAircraftComponent } from './unmanned-aircraft/unmanned-aircraft.component';
+import { UnmannedAircraftByCoordsComponent } from './unmanned-aircraft-by-coords/unmanned-aircraft-by-coords.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UnmannedAircraftComponent } from './unmanned-aircraft/unmanned-aircraft
     CheckListCommissariatComponent,
     BaggageInfoComponent,
     HomeComponent,
-    UnmannedAircraftComponent
+    UnmannedAircraftComponent,
+    UnmannedAircraftByCoordsComponent
   ],
   imports: [
     BrowserModule,
