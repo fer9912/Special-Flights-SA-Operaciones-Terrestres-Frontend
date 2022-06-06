@@ -1,6 +1,6 @@
 export class CheckCommissariatModel {
   idCheckCommissariat: number;
-  code:string;
+  idFlight: string;
   a1:	boolean;
   a2:	boolean;
   a3:	boolean;

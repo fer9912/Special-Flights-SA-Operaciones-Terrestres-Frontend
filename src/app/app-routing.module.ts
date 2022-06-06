@@ -10,6 +10,7 @@ import { BaggageInfoComponent } from './baggage-info/baggage-info.component';
 import { HomeComponent } from './home/home.component';
 import { UnmannedAircraftComponent } from './unmanned-aircraft/unmanned-aircraft.component';
 import { UnmannedAircraftByCoordsComponent } from './unmanned-aircraft-by-coords/unmanned-aircraft-by-coords.component';
+import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes =[
   { path: 'flightRouteMaster', component: FlightRouteMasterComponent },
@@ -19,7 +20,8 @@ const routes: Routes =[
   { path: 'check-list-flight', component: CheckListFlightComponent },
   { path: 'check-list-commissariat', component: CheckListCommissariatComponent },
   {path: 'baggage-info', component: BaggageInfoComponent},
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'reports', component:  ReportsComponent },  
 ];
 
 @NgModule({

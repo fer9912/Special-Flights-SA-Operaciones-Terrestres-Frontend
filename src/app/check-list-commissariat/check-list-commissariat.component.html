@@ -10,7 +10,7 @@
         <div class="styled-select slate" style="margin-left: 0px; float: left; width: 20px;">
             <select [(ngModel)]="flightSelected">
                 <option  [ngValue]="null">Seleccione un vuelo</option>
-                <option  *ngFor="let d of flights" [ngValue]="d">{{d.codvuelo+ " - " + d.fechadespegueestimado}}</option>
+                <option  *ngFor="let d of flights" [ngValue]="d">{{d.idvuelo}}</option>
              </select>  
         </div> 
         <button (click)="search()" type="button" style="margin-top:-5px;width:120px !important;height:45px !important; margin-left:260px;"><i class="fa-solid fa-magnifying-glass" style="margin-right:10px;"></i>Buscar</button>
@@ -27,18 +27,18 @@
   </div>
 
   <div class="CheckList" *ngIf="showCheckList">
-    <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 22px;margin-left: 25px;">{{flight.codvuelo + " - " +
+    <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 22px;margin-left: 25px;">{{flight.idvuelo + " - " +
       flight.origenteorico_codiata + " - " + flight.destinoteorico_codiata}}</p>
     <div style="margin-top:0px; margin-left:28px;height:450px;width:1150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
  <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-          [(ngModel)]="a1">{{"A.1. Cantidad de Menus Clase Economy: " + supplies.menuEconomy  }}</label><br>
+          [(ngModel)]="a1">{{"A.1. Cantidad de Menus Vegetarianos: " + vegetariano  }}</label><br>
       <input type="checkbox" [(ngModel)]="a2"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a2">{{"A.2. Cantidad de Menus Clase Business: " + supplies.menuBusiness}}</label><br>
+        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a2">{{"A.2. Cantidad de Menus Veganos: " + vegano}}</label><br>
       <input type="checkbox" [(ngModel)]="a3"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a3">{{"A.3. Cantidad de Menus Vegetarianos: " + supplies.menuVegetariano}}</label><br>
+        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a3">{{"A.3. Cantidad de Menus Celiacos: " + celiaco}}</label><br>
 
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"[(ngModel)]="a4">{{"A.4. Cantidad de Comodities Clase Economy: " + supplies.comoditiesEconomy}}</label><br>
-      <input type="checkbox" [(ngModel)]="a5"> <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a5">{{"A.5. Cantidad de Comodities Clase Business: " + supplies.comoditiesBusiness}}</label><br>
+      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"[(ngModel)]="a4">{{"A.4. Cantidad de Menus Estandar: " + estandar}}</label><br>
+      <input type="checkbox" [(ngModel)]="a5"> <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a5">{{"A.5. Cantidad de Insumos Sanitarios: " + supplies.comoditiesBusiness}}</label><br>
 
 
     </div>

@@ -16,8 +16,8 @@ export class CheckListFlightComponent implements OnInit {
   showErrorVuelo = false;
   flight: PlannedFlightModel;
   flightSelected: PlannedFlightModel;
-  idvuelo: number;
-  codvuelo:string;
+
+  idvuelo: string;
   estado:string;
   aeronave_matricula_fk:string;
   modeloaeronave:string;
@@ -57,9 +57,12 @@ export class CheckListFlightComponent implements OnInit {
   insumosconsumidos:number;
   pesocargaorigen:number;
   pesocargadestino:number;
+  motivoestado:string;
+  aeronavesposibles: string[];
+  
   checkFlight: CheckFlightModel;
   idCheckFlight: number;
-  idFlight: number;
+  idFlight: string;
   a1: boolean;
   a2: boolean;
   a3: boolean;
@@ -134,7 +137,6 @@ export class CheckListFlightComponent implements OnInit {
     this.clean();
     this.flight = this.flightSelected;
     this.idvuelo = this.flight.idvuelo;
-    this.codvuelo = this.flight.codvuelo;
     this.estado = this.flight.estado;
     this.aeronave_matricula_fk = this.flight.aeronave_matricula_fk;
     this.modeloaeronave = this.flight.modeloaeronave;

@@ -11,7 +11,7 @@
       <div class="styled-select slate" style="margin-left: 0px; float: left; width: 20px;">
           <select [(ngModel)]="flightSelected">
               <option  [ngValue]="null">Seleccione un vuelo</option>
-              <option  *ngFor="let d of flights" [ngValue]="d">{{d.codvuelo+ " - " + d.fechadespegueestimado}}</option>
+              <option  *ngFor="let d of flights" [ngValue]="d">{{d.idvuelo}}</option>
            </select>  
       </div> 
       <button (click)="search()" type="button" style="margin-top:-5px;width:120px !important;height:45px !important; margin-left:260px;"><i class="fa-solid fa-magnifying-glass" style="margin-right:10px;"></i>Buscar</button>
@@ -28,7 +28,7 @@
     </div>
 
   <div class="CheckList" *ngIf="showCheckList">
-    <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 22px;margin-left: 25px;">{{flight.codvuelo + " - " +
+    <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 22px;margin-left: 25px;">{{flight.idvuelo + " - " +
       flight.origenteorico_codiata + " - " + flight.destinoteorico_codiata}}</p>
     <div style="margin-top:0px; margin-left:28px;height:450px;width:1150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
       <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 16px;">A.Cabina de vuelo (pilotaje)</p>

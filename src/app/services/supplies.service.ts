@@ -2,7 +2,7 @@
 import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { SuppliesModel } from "../model/supplies.model";
+import { InsumoVueloDTOModel } from "../model/insumoVueloDTO.model";
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -14,12 +14,12 @@ const httpOptions = {
   })
 export class SuppliesService{
 
-    url: string = 'https://grops-backend-dnj2km2huq-rj.a.run.app/supplies';
+    url: string = 'https://operaciones-mantenimiento.herokuapp.com/Insumo/Vuelo/allByVuelo/';
    
     constructor(private http: HttpClient) {}
 
-    getSupplies(code: string): Observable<SuppliesModel>{
-        return this.http.get<SuppliesModel>(this.url + '/get?code=' + code);
+    getSupplies(code: string): Observable<InsumoVueloDTOModel[]>{
+        return this.http.get<InsumoVueloDTOModel[]>(this.url + code);
     }
 
 

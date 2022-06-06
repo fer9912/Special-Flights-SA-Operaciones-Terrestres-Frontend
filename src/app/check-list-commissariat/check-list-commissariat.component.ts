@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PlannedFlightModel } from 'src/app/model/plannedFlight.model';
 import { CheckCommissariatModel } from 'src/app/model/checkCommissariat.model';
 import { CheckCommissariatService } from '../services/checkCommissariat.service';
-import { SuppliesModel } from 'src/app/model/supplies.model';
+import { InsumoVueloDTOModel } from "../model/insumoVueloDTO.model";
+import { InsumoDTOModel } from "../model/insumoDTO.model";
 import { SuppliesService } from '../services/supplies.service';
 import { CheckFlightService } from '../services/checkFlight.service';
 @Component({
@@ -17,20 +18,11 @@ export class CheckListCommissariatComponent implements OnInit {
   showErrorSupplies = false;
   flight: PlannedFlightModel;
   flightSelected: PlannedFlightModel = null;
-  supplies: SuppliesModel;
-  idSupplies: number;
-  code:string;
-	menuEconomy: number;
-	menuBusiness: number;
-	menuVegetariano: number;
-	comoditiesEconomy: number;
-	comoditiesBusiness: number;
-
+  
   checkCommissariat: CheckCommissariatModel;
   idCheckCommissariat: number;
-
-  idvuelo: number;
-  codvuelo:string;
+  idFlight:string; 
+  idvuelo: string;
   estado:string;
   aeronave_matricula_fk:string;
   modeloaeronave:string;
@@ -70,6 +62,28 @@ export class CheckListCommissariatComponent implements OnInit {
   insumosconsumidos:number;
   pesocargaorigen:number;
   pesocargadestino:number;
+  motivoestado:string;
+  aeronavesposibles: string[];
+
+  insumos: InsumoVueloDTOModel[];
+  id: number;
+	idInsumo: number;
+	vuelo: string;
+	cantidadInicial: number;
+	cantidadFinal: number;
+	insumo: InsumoDTOModel;
+
+  insumoInd: InsumoDTOModel;
+  idinsumo: number;
+	nombre: string;
+	descripcion: string;
+	peso: number;
+	tipo: string;
+
+  vegano: number;
+  vegetariano: number;
+  celiaco: number;
+  estandar: number;
 
   a1: boolean;
   a2: boolean;
@@ -93,7 +107,6 @@ export class CheckListCommissariatComponent implements OnInit {
     this.clean();
     this.flight = this.flightSelected;
     this.idvuelo = this.flight.idvuelo;
-    this.codvuelo = this.flight.codvuelo;
     this.estado = this.flight.estado;
     this.aeronave_matricula_fk = this.flight.aeronave_matricula_fk;
     this.modeloaeronave = this.flight.modeloaeronave;
@@ -135,32 +148,53 @@ export class CheckListCommissariatComponent implements OnInit {
     this.pesocargadestino = this.flight.pesocargadestino;
     
 
-    this.suppliesService.getSupplies(this.codvuelo).subscribe(data => {
-      this.supplies = data;
-      this.code = data.code;
-      this.idSupplies= data.idSupplies;
-      this.menuEconomy= data.menuEconomy;
-      this.menuBusiness= data.menuBusiness;
-      this.menuVegetariano= data.menuVegetariano;
-      this.comoditiesEconomy= data.comoditiesEconomy;
-      this.comoditiesBusiness= data.comoditiesBusiness;
-      console.log(this.idCheckCommissariat);
+    this.suppliesService.getSupplies(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
+      this.insumos = response;
+      for(let insumo of this.insumos){
+        if(insumo.insumo.tipo = 'VEGANO'){
+          this.vegano + insumo.cantidadInicial;
+        }
+        if(insumo.insumo.tipo = 'VEGETARIANO'){
+          this.vegetariano + insumo.cantidadInicial;
+        }
+        if(insumo.insumo.tipo = 'CELIACO'){
+          this.celiaco + insumo.cantidadInicial;
+        }
+        if(insumo.insumo.tipo = 'ESTANDAR'){
+          this.estandar + insumo.cantidadInicial;
+        }
+      }
+
     }, (error) => {
       console.log('An unexpected error occured');
       this.showErrorSupplies = true;
       this.showErrorCheckComisariato = false;
       this.showCheckList = false;
     }, () => {
-      this.checkCommissariatService.getCheckCommissariat(this.code).subscribe(data => {
+      this.checkCommissariatService.getCheckCommissariat(this.idvuelo).subscribe(data => {
         this.checkCommissariat = data;
         this.idCheckCommissariat = data.idCheckCommissariat;
-        this.code = data.code;
+        this.idFlight = data.idFlight;
         this.a1 = data.a1;
         this.a2 = data.a2;
         this.a3 = data.a3;
         this.a4 = data.a4;
         this.a5 = data.a5;
         console.log(this.idCheckCommissariat);
+        for(let insumo of this.insumos){
+          if(insumo.insumo.tipo = 'VEGANO'){
+            this.vegano ++;
+          }
+          if(insumo.insumo.tipo = 'VEGETARIANO'){
+            this.vegetariano ++;
+          }
+          if(insumo.insumo.tipo = 'CELIACO'){
+            this.celiaco ++;
+          }
+          if(insumo.insumo.tipo = 'ESTANDAR'){
+            this.estandar ++;
+          }
+        }
   
       }, (error) => {
           console.log('Complete');
@@ -188,7 +222,7 @@ export class CheckListCommissariatComponent implements OnInit {
   save() {
     this.checkCommissariat = new CheckCommissariatModel();
     this.checkCommissariat.idCheckCommissariat= this.idCheckCommissariat;
-    this.checkCommissariat.code = this.code;
+    this.checkCommissariat.idFlight = this.idvuelo;
     this.checkCommissariat.a1 = this.a1;
     this.checkCommissariat.a2 = this.a2;
     this.checkCommissariat.a3 = this.a3;
@@ -209,7 +243,7 @@ export class CheckListCommissariatComponent implements OnInit {
   }
   clean() {
     this.idCheckCommissariat = null;
-    this.code = null;
+    this.idFlight = null;
     this.a1 = null;
     this.a2 = null;
     this.a3 = null;

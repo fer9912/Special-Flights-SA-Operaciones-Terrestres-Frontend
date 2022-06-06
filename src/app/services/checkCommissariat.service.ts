@@ -17,8 +17,8 @@ export class CheckCommissariatService{
    
     constructor(private http: HttpClient) {}
 
-    getCheckCommissariat(code: string): Observable<CheckCommissariatModel>{
-        return this.http.get<CheckCommissariatModel>(this.url + '/get?code=' + code);
+    getCheckCommissariat(id: string): Observable<CheckCommissariatModel>{
+        return this.http.get<CheckCommissariatModel>(this.url + '/get?id=' + id);
     }
 
     saveCheckCommissariat(checkCommissariatModel: CheckCommissariatModel): Observable<CheckCommissariatModel>{

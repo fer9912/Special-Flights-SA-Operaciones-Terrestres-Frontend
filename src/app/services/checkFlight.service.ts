@@ -18,7 +18,7 @@ export class CheckFlightService{
    
     constructor(private http: HttpClient) {}
 
-    getCheckFlight(id: number): Observable<CheckFlightModel>{
+    getCheckFlight(id: string): Observable<CheckFlightModel>{
         return this.http.get<CheckFlightModel>(this.url + '/get?id=' + id);
     }
 
