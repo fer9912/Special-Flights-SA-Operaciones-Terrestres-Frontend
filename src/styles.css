@@ -10,7 +10,7 @@ body {
 }
  
 .nav ul {
-  width:15%;
+  width:18%;
   height: 927px;
   margin-top: -30px;
   float: left;
@@ -26,7 +26,7 @@ body {
   margin-top:10px;
   line-height: 60px;
   height: 60px;
-  width:286px !important;
+  width:348px !important;
   float:left;
   border-bottom: 1px solid #888;
 }
