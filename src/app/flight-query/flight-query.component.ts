@@ -128,11 +128,11 @@ export class FlightQueryComponent implements OnInit {
 
   ngOnInit(): void {
     this._flightService.getAllFlights().subscribe((response: FlightModel[]) => {
-      this.vuelos = response;
+
       let vuelosFiltrados = response.filter(
         (a) => new Date(a.date) >= new Date(Date.now())
       );
-      console.log(vuelosFiltrados);
+      this.vuelos = vuelosFiltrados;
     });
   }
 }
