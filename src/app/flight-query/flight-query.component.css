@@ -18,12 +18,13 @@
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     width: 100%;
     margin: 0vh 10vw;
+    height: 80%;
 }
 
 .table-container {
     max-height: calc(100vh - 285px);
     overflow: auto;
-
+    height: 80%;
 }
 
 .header {
