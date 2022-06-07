@@ -1,0 +1,38 @@
+<body>
+    <div class="form" style="margin-top:-30px;">
+        <i class="fa-solid fa-arrow-left" routerLink="/home" style="margin-bottom: 30px;cursor: pointer;">Volver</i>
+        <p style="margin-top:-10px;margin-bottom:34px;font-family: 'Segoe UI', sans-serif; font-size: 44px;">Vista 360</p>
+        <p style="margin-top:-10px;font-family: 'Segoe UI', sans-serif; font-size: 20px;">En esta pantalla podra visualizar informacion relevante de GROPS y del sistema global</p>
+        <hr>
+        <button (click)="grops()" type="button"
+            style="margin-top:20px;width:120px !important;height:45px !important; margin-left:30px;"><i
+                style="margin-right:10px;"></i>Grops</button>
+
+        <button (click)="global()" type="button"
+            style="margin-top:-5px;width:120px !important;height:45px !important; margin-left:30px;"><i
+                 style="margin-right:10px;"></i>Global</button>
+                
+    <div class="Error" *ngIf="showGrops" style="margin-top:30px;">
+        <iframe
+        src="http://power-metabase-data-bi.herokuapp.com/public/dashboard/be4313bb-c0d5-453f-a02b-41a509eb8e92"
+        frameborder="0"
+        width="1200"
+        height="650"
+        allowtransparency
+    ></iframe>
+     </div>
+
+     <div class="Error" *ngIf="showGlobal"  style="margin-top:30px;"> 
+        <iframe
+        src="https://power-metabase-data-bi.herokuapp.com/public/question/512b5db3-ee87-4295-ae54-36aeff4a7bb3"
+        frameborder="0"
+        width="800"
+        height="600"
+        allowtransparency
+    ></iframe>
+    </div>
+
+
+
+</div>
+</body>

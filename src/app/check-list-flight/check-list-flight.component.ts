@@ -119,12 +119,14 @@ export class CheckListFlightComponent implements OnInit {
   d4: boolean;
   e1: boolean;
   e2: boolean;
+  validacionFinal: boolean;
+  tripulacion:string;
 
   constructor( public checkFlightService: CheckFlightService) {
   }
 
   ngOnInit(): void {
-    let date: string = "20-05-2022"
+    let date: string = "08-06-2022"
   // let date: string = new Date().getDate()+'-'+(new Date().getMonth())+'-'+new Date().getFullYear();
     console.log(date) // '2022-2-6'
 
@@ -176,7 +178,8 @@ export class CheckListFlightComponent implements OnInit {
     this.insumosconsumidos = this.flight.insumosconsumidos;
     this.pesocargaorigen = this.flight.pesocargaorigen;
     this.pesocargadestino = this.flight.pesocargadestino;
-    
+    this.checkFlightService.getCrew(this.flight.idvuelo).subscribe(data => {this.tripulacion=data});
+
 
 
     this.checkFlightService.getCheckFlight(this.idvuelo).subscribe(data => {
@@ -239,6 +242,7 @@ export class CheckListFlightComponent implements OnInit {
       this.d4 = data.d4;
       this.e1 = data.e1;
       this.e2= data.e2;
+      this.validacionFinal= data.validacionFinal;
 
     }, (error) => {
      
@@ -322,7 +326,66 @@ export class CheckListFlightComponent implements OnInit {
     this.checkFlight.d4 = this.d4;
     this.checkFlight.e1 = this.e1;
     this.checkFlight.e2 = this.e2;
+    if (  this.checkFlight.a1 == true &&
+      this.checkFlight.a2 == true &&
+      this.checkFlight.a3 == true &&
+      this.checkFlight.a4 == true &&
+      this.checkFlight.a5 == true &&
+      this.checkFlight.a6 == true &&
+      this.checkFlight.a7 == true &&
+      this.checkFlight.a8 == true &&
+      this.checkFlight.a9 == true &&
+      this.checkFlight.a10 == true &&
+      this.checkFlight.a11 == true &&
+      this.checkFlight.a12 == true &&
+      this.checkFlight.a13 == true &&
+      this.checkFlight.a14 == true &&
+      this.checkFlight.a15 == true &&
+      this.checkFlight.a16 == true &&
+      this.checkFlight.a17 == true &&
+      this.checkFlight.a18 == true &&
+      this.checkFlight.a19 == true &&
+      this.checkFlight.a20 == true &&
+      this.checkFlight.a21 == true &&
+      this.checkFlight.a22 == true &&
+      this.checkFlight.a23 == true &&
+      this.checkFlight.a24 == true &&
+      this.checkFlight.b1 == true &&
+      this.checkFlight.b2 == true &&
+      this.checkFlight.b3 == true &&
+      this.checkFlight.b4 == true &&
+      this.checkFlight.b5 == true &&
+      this.checkFlight.b6 == true &&
+      this.checkFlight.b7 == true &&
+      this.checkFlight.b8 == true &&
+      this.checkFlight.b9 == true &&
+      this.checkFlight.b10 == true &&
+      this.checkFlight.b11 == true &&
+      this.checkFlight.b12 == true &&
+      this.checkFlight.b13 == true &&
+      this.checkFlight.b14 == true &&
+      this.checkFlight.c1 == true &&
+      this.checkFlight.c2 == true &&
+      this.checkFlight.c3 == true &&
+      this.checkFlight.c4 == true &&
+      this.checkFlight.c5 == true &&
+      this.checkFlight.c6 == true &&
+      this.checkFlight.c7 == true &&
+      this.checkFlight.c8 == true &&
+      this.checkFlight.c9 == true &&
+      this.checkFlight.c10 == true &&
+      this.checkFlight.c11 == true &&
+      this.checkFlight.c12 == true &&
+      this.checkFlight.d1 == true &&
+      this.checkFlight.d2 == true &&
+      this.checkFlight.d3 == true &&
+      this.checkFlight.d4 == true &&
+      this.checkFlight.e1 == true &&
+      this.checkFlight.e2 == true){
+      this.checkFlight.validacionFinal = true; 
+  }else{    this.checkFlight.validacionFinal = false; }
 
+    console.info(this.checkFlight);
     this.checkFlightService.saveCheckFlight(this.checkFlight).subscribe(data => {
       this.checkFlight = data;
       console.info(this.checkFlight);
@@ -392,6 +455,8 @@ export class CheckListFlightComponent implements OnInit {
     this.d4 = null;
     this.e1 = null;
     this.e2 = null;
+    this.validacionFinal = null; 
+
   }
 
 }

@@ -22,6 +22,7 @@ import { HomeComponent } from './home/home.component';
 import { UnmannedAircraftComponent } from './unmanned-aircraft/unmanned-aircraft.component';
 import { UnmannedAircraftByCoordsComponent } from './unmanned-aircraft-by-coords/unmanned-aircraft-by-coords.component';
 import { ReportsComponent } from './reports/reports.component';
+import { View360Component } from './view360/view360.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ReportsComponent } from './reports/reports.component';
     HomeComponent,
     UnmannedAircraftComponent,
     UnmannedAircraftByCoordsComponent,
-    ReportsComponent
+    ReportsComponent,
+    View360Component
   ],
   imports: [
     BrowserModule,

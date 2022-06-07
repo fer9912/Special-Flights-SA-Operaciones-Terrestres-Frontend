@@ -57,4 +57,5 @@ export class CheckFlightModel {
   d4:	boolean;
   e1:	boolean;
   e2:	boolean;
+  validacionFinal: boolean;
   }
