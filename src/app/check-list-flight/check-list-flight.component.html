@@ -10,13 +10,13 @@
     <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 24px;">Vuelo</p>
       <div class="styled-select slate" style="margin-left: 0px; float: left; width: 20px;">
           <select [(ngModel)]="flightSelected">
-              <option  [ngValue]="null">Seleccione un vuelo</option>
+              <option  [ngValue]="undefined">Seleccione un vuelo</option>
               <option  *ngFor="let d of flights" [ngValue]="d">{{d.idvuelo}}</option>
            </select>  
       </div> 
       <button (click)="search()" type="button" style="margin-top:-5px;width:120px !important;height:45px !important; margin-left:260px;"><i class="fa-solid fa-magnifying-glass" style="margin-right:10px;"></i>Buscar</button>
     </div>     
-
+    <div class="loading" *ngIf="showLoadAnimation">Loading&#8230;</div>
 
   </section>
   <div class="Error" *ngIf="showErrorCheckVuelo">

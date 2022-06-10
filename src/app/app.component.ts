@@ -45,6 +45,9 @@ export class AppComponent implements OnInit {
     
   }
   logOut(){
+    this.usuario = null;
+    this.contra = null;
+    console.log(this.usuario +" "+ this.contra);
     this.userLogged = false;
     this.router.navigate(['']);
   }

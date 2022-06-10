@@ -123,16 +123,19 @@ export class FlightQueryComponent implements OnInit {
   ];
   dataSource = ELEMENT_DATA;
   vuelos: FlightModel[];
+  showLoadAnimation = false;
 
   constructor(private _flightService: FlightService) {}
 
   ngOnInit(): void {
+    this.showLoadAnimation = true;
     this._flightService.getAllFlights().subscribe((response: FlightModel[]) => {
 
       let vuelosFiltrados = response.filter(
         (a) => new Date(a.date) >= new Date(Date.now())
       );
-      this.vuelos = vuelosFiltrados;
+      this.vuelos = vuelosFiltrados;      
+    this.showLoadAnimation = false;
     });
   }
 }

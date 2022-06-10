@@ -13,6 +13,7 @@ export class CheckListFlightComponent implements OnInit {
   flights: PlannedFlightModel[];
   showCheckList = false;
   showErrorCheckVuelo = false;
+  showLoadAnimation = false;
   showErrorVuelo = false;
   flight: PlannedFlightModel;
   flightSelected: PlannedFlightModel;
@@ -59,6 +60,7 @@ export class CheckListFlightComponent implements OnInit {
   pesocargadestino:number;
   motivoestado:string;
   aeronavesposibles: string[];
+  searchDisabled = false;
   
   checkFlight: CheckFlightModel;
   idCheckFlight: number;
@@ -130,8 +132,10 @@ export class CheckListFlightComponent implements OnInit {
   // let date: string = new Date().getDate()+'-'+(new Date().getMonth())+'-'+new Date().getFullYear();
     console.log(date) // '2022-2-6'
 
+    this.showLoadAnimation = true;
     this.checkFlightService.getPlannedFlight(date).subscribe((response: PlannedFlightModel[]) => {
       this.flights = response;
+      this.showLoadAnimation = false;
     });
   }
 
@@ -458,6 +462,5 @@ export class CheckListFlightComponent implements OnInit {
     this.validacionFinal = null; 
 
   }
-
 }
 

@@ -47,16 +47,15 @@
     
     <div class="loading" *ngIf="showLoadAnimation">Loading&#8230;</div>
     
-    <div class="container" style="margin-left:360px; width:1200px; margin-top:200px;" *ngIf="showGeneratedRoute">
-        <div class="boxPopup" id="popup" style="width:1200px; height: 300px;">
-            <div class="msgPopup">Ruta generada:</div>     
-            <div style="float: left; width: 45%;margin-left:210px;">
+    <div class="container" style="margin-left:360px; width:710px; margin-top:240px; height: 130px;" *ngIf="showGeneratedRoute">
+        <div class="boxPopup" id="popup" style="width:710px; height: 130px;">
+            <div style="float: left; width: 45%;margin-left:30px;">
                 <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">{{"Aeronave: " + aircraft}}</p>
             </div>          
-            <div style="float: left; width: 25%;">
+            <div style="float: left; width: 25%;margin-left:30px;">
                 <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">{{"Distancia: " + distance + "km"}}</p>
             </div> 
-          <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 970px;" (click)="showGeneratedRoute = false;">Cerrar</button>
+          <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 350px;margin-top: 15px;" (click)="showGeneratedRoute = false;">Cerrar</button>
         </div>
     </div>
 </div>
