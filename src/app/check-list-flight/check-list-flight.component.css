@@ -280,3 +280,49 @@ input {
       transform: rotate(360deg);
     }
   }
+  .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150%;
+    z-index: 10000;
+    margin-left: 620px;
+    margin-top: 300px;
+    min-width: 500px;
+    height: 100%;
+    background-color: #bababa;
+  }
+  
+  .hidePopup{
+    display: none;
+  }
+  .boxPopup{
+    width: 600px;
+    height: 200px;
+    background-color: whitesmoke;
+    padding: 7px;
+    margin: 0px;
+    border-radius: 4px;
+    z-index: 10000;
+    box-shadow: 1px 1px 6px grey;
+    transition:0.8s;
+  }
+  
+  
+  .msgPopup{
+    text-align: left;
+    font-size: 24px;
+    font-family: helvetica;
+    font-weight: bold;
+    color: #424242;
+    padding: 5px 0;
+  }
+  
+  .descript{
+    text-align: justify;
+    font-size: 15px;
+    font-family: helvetica;
+    font-weight: 300;
+    color: #424242;
+    padding: 5px 0;
+  }

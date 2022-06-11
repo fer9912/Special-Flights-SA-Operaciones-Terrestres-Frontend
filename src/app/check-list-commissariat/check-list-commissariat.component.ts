@@ -92,6 +92,7 @@ export class CheckListCommissariatComponent implements OnInit {
   a3: boolean;
   a4: boolean;
   a5: boolean;
+  showNotResultMessage = false;
  
 
   constructor(public suppliesService: SuppliesService,public checkFlightService: CheckFlightService, public checkCommissariatService: CheckCommissariatService) {
@@ -151,6 +152,7 @@ export class CheckListCommissariatComponent implements OnInit {
     this.pesocargadestino = this.flight.pesocargadestino;
     
 
+    this.showLoadAnimation = true;
     this.suppliesService.getSupplies(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
       this.insumos = response;
       for(let insumo of this.insumos){
@@ -170,6 +172,8 @@ export class CheckListCommissariatComponent implements OnInit {
           this.sanitarios = this.sanitarios + insumo.InitialQuantity;
         }
       }
+      
+    this.showLoadAnimation = false;
       console.log(this.insumos);
     }, (error) => {
       console.log('An unexpected error occured');

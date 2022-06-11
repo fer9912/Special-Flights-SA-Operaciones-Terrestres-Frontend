@@ -8,18 +8,18 @@
             <div style="max-width: 400px;float: left;margin-right: 240px;margin-left:100px;" >       
                 <p style="margin-top:20px;margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Origen:</p>
                 <div class="styled-select slate" style="margin-left: 0px; float: left">
-                    <input [(ngModel)]="origenLat" placeholder="Ingrese Latitud" (change)="enableGenerate()" />
+                    <input [(ngModel)]="origenLat" placeholder="Latitud (ej: '-34.5592')" (change)="enableGenerate()" />
                     <p *ngIf="origenLatError" style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: red;">*</p>
-                    <input [(ngModel)]="origenLon" placeholder="Ingrese Longitud" (change)="enableGenerate()"/>
+                    <input [(ngModel)]="origenLon" placeholder="Longitud (ej: '-58.4156')" (change)="enableGenerate()"/>
                     <p *ngIf="origenLonError" style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: red;">*</p>
                 </div> 
             </div>     
             <div style="max-width: 600px;float: left;margin-left: 110px;" >   
               <p style="margin-top:20px;margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Destino:</p>
                 <div class="styled-select slate" style="margin-left: 0px;">
-                    <input [(ngModel)]="destinoLat" placeholder="Ingrese Latitud"(change)="enableGenerate()"/>
+                    <input [(ngModel)]="destinoLat" placeholder="Latitud (ej: '-34.4532')"(change)="enableGenerate()"/>
                     <p *ngIf="destinoLatError" style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: red;">*</p>
-                    <input [(ngModel)]="destinoLon" placeholder="Ingrese Longitud"(change)="enableGenerate()"/>
+                    <input [(ngModel)]="destinoLon" placeholder="Longitud (ej: '-58.5896')"(change)="enableGenerate()"/>
                     <p *ngIf="destinoLonError" style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: red;">*</p>
                 </div>   
                </div>  

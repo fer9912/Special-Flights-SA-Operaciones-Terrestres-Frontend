@@ -124,6 +124,7 @@ export class CheckListFlightComponent implements OnInit {
   e2: boolean;
   validacionFinal: boolean;
   tripulacion:string;
+  showNotResultMessage = false;
 
   constructor( public checkFlightService: CheckFlightService) {
   }
@@ -183,7 +184,16 @@ export class CheckListFlightComponent implements OnInit {
     this.insumosconsumidos = this.flight.insumosconsumidos;
     this.pesocargaorigen = this.flight.pesocargaorigen;
     this.pesocargadestino = this.flight.pesocargadestino;
-    this.checkFlightService.getCrew(this.flight.idvuelo).subscribe(data => {this.tripulacion=data});
+    this.showLoadAnimation = true;
+    this.checkFlightService.getCrew(this.flight.idvuelo).subscribe(data => {
+      if(data != null && data  != undefined){
+        this.tripulacion=data
+      }else{
+        this.showNotResultMessage = true;
+      }
+      
+      this.showLoadAnimation = false;
+    });
 
 
 

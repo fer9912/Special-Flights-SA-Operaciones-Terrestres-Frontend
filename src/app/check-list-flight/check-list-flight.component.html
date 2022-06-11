@@ -210,7 +210,13 @@
     </div>
     <button style="margin-top: 20px ;margin-left:330px;" (click)="save()" type="button">Guardar</button>
   </div>
-
+  <div class="container" style="margin-left:370px" *ngIf="showNotResultMessage">
+    <div class="boxPopup" id="popup">
+      <div class="msgPopup">¡¡¡Error!!!</div>
+      <div class="descript">No se a encontrado Check-List para el vuelo seleccionado</div>
+      <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 310px;" (click)="showErrorPopup = false;">Cerrar</button>
+    </div>
+</div>
 
   </div>
 </body>
