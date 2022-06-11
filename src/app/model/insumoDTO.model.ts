@@ -1,7 +1,8 @@
 export class InsumoDTOModel {
-	id: number;
-	nombre: string;
-	descripcion: string;
-	peso: number;
-	tipo: string;
+	Id: number;
+	Name: string;
+	Description: string;
+	Weight: number;
+	Type: string;
+	MenuType: number;
 }

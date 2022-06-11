@@ -13,12 +13,13 @@ import { CheckFlightService } from '../services/checkFlight.service';
 })
 export class CheckListCommissariatComponent implements OnInit {
   flights: PlannedFlightModel[];
+  showLoadAnimation = false;
   showCheckList = false;
   showErrorCheckComisariato = false;
   showErrorSupplies = false;
   flight: PlannedFlightModel;
   flightSelected: PlannedFlightModel = null;
-  
+  isDisabled : boolean;
   checkCommissariat: CheckCommissariatModel;
   idCheckCommissariat: number;
   idFlight:string; 
@@ -80,10 +81,11 @@ export class CheckListCommissariatComponent implements OnInit {
 	peso: number;
 	tipo: string;
 
-  vegano: number;
-  vegetariano: number;
-  celiaco: number;
-  estandar: number;
+  vegano: number =0;
+  vegetariano: number=0;
+  celiaco: number=0;
+  estandar: number=0;
+  sanitarios: number=0;
 
   a1: boolean;
   a2: boolean;
@@ -98,9 +100,10 @@ export class CheckListCommissariatComponent implements OnInit {
     let date: string = "08-06-2022"
   // let date: string = new Date().getDate()+'-'+(new Date().getMonth())+'-'+new Date().getFullYear();
     console.log(date) // '2022-2-6'
-
+    this.showLoadAnimation = true;
     this.checkFlightService.getPlannedFlight(date).subscribe((response: PlannedFlightModel[]) => {
       this.flights = response;
+      this.showLoadAnimation = false;
     });
   }
   search() {
@@ -151,20 +154,23 @@ export class CheckListCommissariatComponent implements OnInit {
     this.suppliesService.getSupplies(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
       this.insumos = response;
       for(let insumo of this.insumos){
-        if(insumo.insumo.tipo = 'VEGANO'){
-          this.vegano + insumo.cantidadInicial;
+        if(insumo.Supply.MenuType == 1){
+          this.vegano = this.vegano + insumo.InitialQuantity;
         }
-        if(insumo.insumo.tipo = 'VEGETARIANO'){
-          this.vegetariano + insumo.cantidadInicial;
+        if(insumo.Supply.MenuType == 0){
+          this.vegetariano= this.vegetariano + insumo.InitialQuantity;
         }
-        if(insumo.insumo.tipo = 'CELIACO'){
-          this.celiaco + insumo.cantidadInicial;
+        if(insumo.Supply.MenuType == 2){
+          this.celiaco= this.celiaco + insumo.InitialQuantity;
         }
-        if(insumo.insumo.tipo = 'ESTANDAR'){
-          this.estandar + insumo.cantidadInicial;
+        if(insumo.Supply.MenuType == 3){
+          this.estandar = this.estandar + insumo.InitialQuantity;
+        }
+        if(insumo.Supply.Type == 'sanitario'){
+          this.sanitarios = this.sanitarios + insumo.InitialQuantity;
         }
       }
-
+      console.log(this.insumos);
     }, (error) => {
       console.log('An unexpected error occured');
       this.showErrorSupplies = true;
@@ -181,41 +187,38 @@ export class CheckListCommissariatComponent implements OnInit {
         this.a4 = data.a4;
         this.a5 = data.a5;
         console.log(this.idCheckCommissariat);
-        for(let insumo of this.insumos){
-          if(insumo.insumo.tipo = 'VEGANO'){
-            this.vegano ++;
-          }
-          if(insumo.insumo.tipo = 'VEGETARIANO'){
-            this.vegetariano ++;
-          }
-          if(insumo.insumo.tipo = 'CELIACO'){
-            this.celiaco ++;
-          }
-          if(insumo.insumo.tipo = 'ESTANDAR'){
-            this.estandar ++;
-          }
-        }
   
       }, (error) => {
+        if(this.vegano==0 && this.vegetariano==0 && this.celiaco==0 && this.estandar==0 && this.sanitarios==0){ 
+          this.showCheckList = false;
+          this.showErrorCheckComisariato = false;
+          this.showErrorSupplies = true;
+        }else{
           console.log('Complete');
           this.showCheckList = true;
           this.showErrorCheckComisariato = false;
           this.showErrorSupplies = false;
-
+        }
       }, () => {
-      
-          if (this.estado != "ENDED") {
+        if(this.vegano==0 && this.vegetariano==0 && this.celiaco==0 && this.estandar==0 && this.sanitarios==0){ 
+          this.showCheckList = false;
+          this.showErrorCheckComisariato = false;
+          this.showErrorSupplies = true;
+        }else{
+          if (this.estado != "pre-embarque") {
             this.showErrorCheckComisariato = false;
             this.showErrorSupplies = false;
             this.showCheckList = true;
+            console.log(this.estado);
           } else {
-            this.showErrorCheckComisariato = true;
+            this.showErrorCheckComisariato = false;
             this.showErrorSupplies = false;
-            this.showCheckList = false;
+            this.showCheckList = true;
+            this.isDisabled =true;
+            console.log(this.estado);
           }
-  
+        }
       });
-
     });
 
   }
@@ -242,6 +245,7 @@ export class CheckListCommissariatComponent implements OnInit {
     this.showCheckList = false;
   }
   clean() {
+    this.isDisabled =false;
     this.idCheckCommissariat = null;
     this.idFlight = null;
     this.a1 = null;
@@ -249,6 +253,11 @@ export class CheckListCommissariatComponent implements OnInit {
     this.a3 = null;
     this.a4 = null;
     this.a5 = null;
+    this.vegano =0;
+    this.vegetariano=0;
+    this.celiaco=0;
+    this.estandar=0;
+    this.sanitarios=0;
   }
   
 }

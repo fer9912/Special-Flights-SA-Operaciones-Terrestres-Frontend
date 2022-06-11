@@ -17,6 +17,7 @@ export class CheckListFlightComponent implements OnInit {
   showErrorVuelo = false;
   flight: PlannedFlightModel;
   flightSelected: PlannedFlightModel;
+  isDisabled : boolean;
 
   idvuelo: string;
   estado:string;
@@ -255,17 +256,17 @@ export class CheckListFlightComponent implements OnInit {
         this.showErrorVuelo = false;
     }, () => {
 
-
-      if (this.estado != "ENDED") {
-
+      if (this.estado != "pre-embarque") {
         this.showErrorCheckVuelo = false;
-        this.showErrorVuelo = false;
+        this.showErrorVuelo  = false;
         this.showCheckList = true;
+        console.log(this.estado);
       } else {
-
-        this.showErrorCheckVuelo = true;
-        this.showErrorVuelo = false;
-        this.showCheckList = false;
+        this.showErrorCheckVuelo = false;
+        this.showErrorVuelo  = false;
+        this.showCheckList = true;
+        this.isDisabled =true;
+        console.log(this.estado);
       }
         
       });
@@ -401,6 +402,7 @@ export class CheckListFlightComponent implements OnInit {
     this.showCheckList = false;
   }
   clean() {
+    this.isDisabled =false;
     this.idCheckFlight=null;
     this.idFlight = null;
     this.a1 = null;
