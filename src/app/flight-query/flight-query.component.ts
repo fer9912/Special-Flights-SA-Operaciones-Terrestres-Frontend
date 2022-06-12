@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightModel } from '../model/flight.model';
 import { FlightService } from '../services/flight.service';
+import { map } from 'rxjs/operators';
 
 export interface Vuelo {
   codigo: string;
@@ -9,100 +10,6 @@ export interface Vuelo {
   diaSem: string;
   hora: string;
 }
-
-const ELEMENT_DATA: Vuelo[] = [
-  {
-    codigo: 'AA0001',
-    salida: 'AEP',
-    destino: 'COR',
-    diaSem: 'Lunes',
-    hora: '18:50',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-  {
-    codigo: 'AV0204',
-    salida: 'EZE',
-    destino: 'MDZ',
-    diaSem: 'Lunes',
-    hora: '07:45',
-  },
-];
 
 @Component({
   selector: 'app-flight-query',
@@ -121,7 +28,6 @@ export class FlightQueryComponent implements OnInit {
     'demo-route',
     'demo-aircraft',
   ];
-  dataSource = ELEMENT_DATA;
   vuelos: FlightModel[];
   showLoadAnimation = false;
 
@@ -129,12 +35,19 @@ export class FlightQueryComponent implements OnInit {
 
   ngOnInit(): void {
     this.showLoadAnimation = true;
-    this._flightService.getAllFlights().subscribe((response: FlightModel[]) => {
+    this._flightService.getAllFlights()
+    .pipe(map((resp)=>{
+     return resp.map((vuelo) =>{
+        vuelo.date = new Date(new Date(vuelo.date).getTime()+3600000*3);
+        return vuelo;
+      })
+    }))
+    .subscribe((response: FlightModel[]) => {
 
       let vuelosFiltrados = response.filter(
         (a) => new Date(a.date) >= new Date(Date.now())
       );
-      this.vuelos = vuelosFiltrados;      
+      this.vuelos = vuelosFiltrados;
     this.showLoadAnimation = false;
     });
   }
