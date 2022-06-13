@@ -3,7 +3,7 @@
 }
 .home-img{
   width:50%;
-  margin-bottom: -130px;
+  margin-bottom: -170px;
   margin-top: -50px;
 }
 .home-container {
@@ -22,8 +22,9 @@
   .form {
     z-index: 1;
     background-image: url("fondohome.jpg");
-    background-size: 105%;
-
+    background-size: 100%;    
+    width: 80%;
+    width: 80%;
     margin-top: 40px !important;
     padding: 45px;
     text-align:left;
