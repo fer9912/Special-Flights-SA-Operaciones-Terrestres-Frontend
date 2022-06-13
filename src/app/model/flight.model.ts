@@ -1,4 +1,4 @@
-export interface FlightModel {
+export class FlightModel {
   code: string;
   origin: string;
   destination: string;
@@ -9,4 +9,5 @@ export interface FlightModel {
   route: string;  
   aircraft: string;
   status: string;
+  execDate: string;
   }

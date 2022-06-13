@@ -29,11 +29,14 @@ export class FlightQueryComponent implements OnInit {
     'demo-aircraft',
   ];
   vuelos: FlightModel[];
+  vue: FlightModel;
   showLoadAnimation = false;
+  lastExecution : any;
 
   constructor(private _flightService: FlightService) {}
 
   ngOnInit(): void {
+    this.vue = new FlightModel();
     this.showLoadAnimation = true;
     this._flightService.getAllFlights()
     .pipe(map((resp)=>{
@@ -48,7 +51,9 @@ export class FlightQueryComponent implements OnInit {
         (a) => new Date(a.date) >= new Date(Date.now())
       );
       this.vuelos = vuelosFiltrados;
-    this.showLoadAnimation = false;
+      this.vue = response[0];
+      this.lastExecution = this.vue.execDate;
+      this.showLoadAnimation = false;
     });
   }
 }
