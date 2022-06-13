@@ -1,50 +1,56 @@
-<body>
-  <div class="form" style="margin-top:-30px;">   
-    <i class="fa-solid fa-arrow-left" routerLink="/home" style="margin-bottom: 30px;cursor: pointer;">Volver</i>
-    <p style="margin-top:-10px;margin-bottom:34px;font-family: 'Segoe UI', sans-serif; font-size: 44px;">Check-List de Comisariato</p>
-  <p style="margin-top:-10px;font-family: 'Segoe UI', sans-serif; font-size: 20px;">En esta pantalla podra hacer el Check-List de comisariato para un vuelo.</p>
-  <hr>
-  <div class="loading" *ngIf="showLoadAnimation">Loading&#8230;</div>
-  <section class="task-list current">
-    <div style="max-width: 400px;float: left;margin-right: 160px;" >       
-      <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 24px;">Vuelo</p>
-        <div class="styled-select slate" style="margin-left: 0px; float: left; width: 20px;">
-            <select [(ngModel)]="flightSelected">
-                <option  [ngValue]="null">Seleccione un vuelo</option>
-                <option  *ngFor="let d of flights" [ngValue]="d">{{d.idvuelo}}</option>
-             </select>  
-        </div> 
-        <button (click)="search()" type="button" style="margin-top:-5px;width:120px !important;height:45px !important; margin-left:260px;"><i class="fa-solid fa-magnifying-glass" style="margin-right:10px;"></i>Buscar</button>
-      </div>     
+<div class="check-container">
+  <div class="form">
+    <i class="fa-solid fa-arrow-left" style="margin-bottom: 30px;display: block;text-align: left;cursor: pointer;width: 80px;" routerLink="/home">Volver</i>
+    <p class="titulo">Check-List de  Comisariato</p>
+    <p class="descripcion">En esta pantalla podra hacer el
+      Check-List de comisariato para un vuelo.</p>
+    <hr>
+    <div class="loading" *ngIf="showLoadAnimation">Loading&#8230;</div>
+    <section class="task-list current">
+      <div>
+        <div class="styled-select slate">
+          <select [(ngModel)]="flightSelected">
+            <option [ngValue]="null">Seleccione un vuelo</option>
+            <option *ngFor="let d of flights" [ngValue]="d">{{d.idvuelo}}</option>
+          </select>
+        </div>
+        <button (click)="search()" type="button"><i class="fa-solid fa-magnifying-glass"></i>Buscar</button>
+      </div>
       <div class="loading" *ngIf="showLoadAnimation">Loading&#8230;</div>
-  </section>
-  <div class="Error" *ngIf="showErrorCheckComisariato">
-    <p style="margin-top:10px;font-family: 'Oswald', sans-serif; font-size: 20px; margin-left: 25px;">Ya se Realizo el Check List de comisariato para este
-      Vuelo</p>
+    </section>
+    <div class="Error" *ngIf="showErrorCheckComisariato">
+      <p>Ya se Realizo el
+        Check List de comisariato para este
+        Vuelo</p>
     </div>
 
-  <div class="Error" *ngIf="showErrorSupplies">
-    <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 20px;margin-left: 25px;">No está disponible la cantidad de Insumos</p>
-  </div>
-
-  <div class="CheckList" *ngIf="showCheckList">
-    <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 22px;margin-left: 25px;">{{flight.idvuelo + " - " +
-      flight.origenteorico_codiata + " - " + flight.destinoteorico_codiata}}</p>
-    <div style="margin-top:0px; margin-left:28px;height:450px;width:1150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
- <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-  [disabled]="isDisabled" [(ngModel)]="a1">{{"A.1. Cantidad de Menus Vegetarianos: " + vegetariano  }}</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a2"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a2">{{"A.2. Cantidad de Menus Veganos: " + vegano}}</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a3"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a3">{{"A.3. Cantidad de Menus Celiacos: " + celiaco}}</label><br>
-
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a4">{{"A.4. Cantidad de Menus Estandar: " + estandar}}</label><br>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a5">{{"A.5. Cantidad de Insumos Sanitarios: " + estandar}}</label><br>
-
+    <div class="Error" *ngIf="showErrorSupplies">
+      <p>No está
+        disponible la cantidad de Insumos</p>
     </div>
-    <button style="margin-top: 20px ;margin-left:330px;" (click)="save()" type="button">Guardar</button>
-  </div>
+
+    <div class="CheckList" *ngIf="showCheckList">
+      <p>{{flight.idvuelo
+        + " - " +
+        flight.origenteorico_codiata + " - " + flight.destinoteorico_codiata}}</p>
+      <div>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a1">{{"A.1. Cantidad de Menus Vegetarianos: "
+          + vegetariano
+          }}</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a2"> <label for="a2">{{"A.2. Cantidad de Menus
+          Veganos: " + vegano}}</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a3"> <label for="a3">{{"A.3. Cantidad de Menus
+          Celiacos: " + celiaco}}</label><br>
+
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a4">{{"A.4. Cantidad de Menus Estandar: " +
+          estandar}}</label><br>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a5">{{"A.5. Cantidad de Insumos Sanitarios: "
+          + estandar}}</label><br>
+
+      </div>
+      <button (click)="save()" type="button">Guardar</button>
+    </div>
 
 
   </div>
-</body>
+</div>

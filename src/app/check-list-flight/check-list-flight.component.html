@@ -1,222 +1,167 @@
-<body>
-  <div class="form" style="margin-top:-30px;">
-    <i class="fa-solid fa-arrow-left" routerLink="/home" style="margin-bottom: 30px;cursor: pointer;">Volver</i>   
-    <p style="margin-top:-10px;margin-bottom:34px;font-family: 'Segoe UI', sans-serif; font-size: 44px;">Check-List de Vuelo</p>
-  <p style="margin-top:-10px;font-family: 'Segoe UI', sans-serif; font-size: 20px;">En esta pantalla podra hacer el Check-List de un vuelo.</p>
-  <hr>
-  <section class="task-list current">
+<div class="check-container">
+  <div class="form">
+    <i class="fa-solid fa-arrow-left" style="margin-bottom: 30px;display: block;text-align: left;cursor: pointer;width: 80px;" routerLink="/home">Volver</i>
+    <p class="titulo">Check-List de Vuelo</p>
+    <p class="descripcion">En esta pantalla podra hacer el Check-List de un vuelo.</p>
+    <hr>
+    <section class="task-list current">
 
-    <div style="max-width: 400px;float: left;margin-right: 160px;" >       
-    <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 24px;">Vuelo</p>
-      <div class="styled-select slate" style="margin-left: 0px; float: left; width: 20px;">
+      <div>
+        <div class="styled-select slate">
           <select [(ngModel)]="flightSelected">
-              <option  [ngValue]="undefined">Seleccione un vuelo</option>
-              <option  *ngFor="let d of flights" [ngValue]="d">{{d.idvuelo}}</option>
-           </select>  
-      </div> 
-      <button (click)="search()" type="button" style="margin-top:-5px;width:120px !important;height:45px !important; margin-left:260px;"><i class="fa-solid fa-magnifying-glass" style="margin-right:10px;"></i>Buscar</button>
-    </div>     
-    <div class="loading" *ngIf="showLoadAnimation">Loading&#8230;</div>
+            <option [ngValue]="undefined">Seleccione un vuelo</option>
+            <option *ngFor="let d of flights" [ngValue]="d">{{d.idvuelo}}</option>
+          </select>
+        </div>
+        <button (click)="search()" type="button"><i class="fa-solid fa-magnifying-glass"></i>Buscar</button>
+      </div>
+      <div class="loading" *ngIf="showLoadAnimation">Loading&#8230;</div>
 
-  </section>
-  <div class="Error" *ngIf="showErrorCheckVuelo">
-    <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 20px; margin-left: 25px;">Ya se Realizo el Check List de este
-      Vuelo</p>
+    </section>
+    <div class="Error" *ngIf="showErrorCheckVuelo">
+      <p>Ya se Realizo el Check List de este
+        Vuelo</p>
     </div>
     <div class="Error" *ngIf="showErrorVuelo">
-      <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 20px;margin-left: 25px;">No existe el Vuelo especificado</p>
+      <p>No existe el Vuelo especificado</p>
     </div>
 
-  <div class="CheckList" *ngIf="showCheckList">
-    <p style="margin-top:80px;font-family: 'Oswald', sans-serif; font-size: 22px;margin-left: 25px;">{{flight.idvuelo + " - " +
-      flight.origenteorico_codiata + " - " + flight.destinoteorico_codiata}}</p>
-    <div style="margin-top:0px; margin-left:28px;height:450px;width:1150px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
-      <p style="margin-top:0px;font-family: 'Oswald', sans-serif; font-size: 16px;">A.Cabina de vuelo (pilotaje)</p>
-      <p style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;">General</p>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox" [disabled]="isDisabled"
-          [(ngModel)]="a1">A.1.Estado general</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a2"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a2">A.2.Salida de
-        emergencia</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a3"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a3">A.3.Equipamiento</label>
+    <div class="CheckList" *ngIf="showCheckList">
+      <p>{{flight.idvuelo + " - " +
+        flight.origenteorico_codiata + " - " + flight.destinoteorico_codiata}}</p>
+      <div>
+        <p>A.Cabina de vuelo (pilotaje)</p>
+        <p>General</p>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a1">A.1.Estado general</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a2"> <label for="a2">A.2.Salida de
+          emergencia</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a3"> <label for="a3">A.3.Equipamiento</label>
 
-      <p style="font-family: 'Oswald', sans-serif; font-size: 14px;">Documentación</p>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-        [disabled]="isDisabled" [(ngModel)]="a4">A.4.Manuales</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a5"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a5">A.5.Listas de
-        chequeo</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a6"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a6">A.6.Cartas de
-        navegación</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a7"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a7">A.7.Lista de Equipamiento
-        Mínimo</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a8"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a8">A.8.Certificado de Matrícula
-        y Propiedad</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a9"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a9">A.9.Certificado de
-        Ruido</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a10"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a10">A.10.CESA</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a11"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a11">A.11.Licencia de
-        radioestación</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a12"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a12">A.12.Certificado de
-        Aeronavegabilidad</label>
+        <p>Documentación</p>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a4">A.4.Manuales</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a5"> <label for="a5">A.5.Listas de
+          chequeo</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a6"> <label for="a6">A.6.Cartas de
+          navegación</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a7"> <label for="a7">A.7.Lista de Equipamiento
+          Mínimo</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a8"> <label for="a8">A.8.Certificado de Matrícula
+          y Propiedad</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a9"> <label for="a9">A.9.Certificado de
+          Ruido</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a10"> <label for="a10">A.10.CESA</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a11"> <label for="a11">A.11.Licencia de
+          radioestación</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a12"> <label for="a12">A.12.Certificado de
+          Aeronavegabilidad</label>
 
-      <p style="font-family: 'Oswald', sans-serif; font-size: 14px;">Datos de vuelo</p>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-        [disabled]="isDisabled" [(ngModel)]="a13">A.13.Preparación del vuelo</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a14"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a14">A.14.Control de Peso y
-        Balanceo</label>
+        <p>Datos de vuelo</p>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a13">A.13.Preparación del vuelo</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a14"> <label for="a14">A.14.Control de Peso y
+          Balanceo</label>
 
-      <p style="font-family: 'Oswald', sans-serif; font-size: 14px;">Equipamiento de Seguridad</p>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-        [disabled]="isDisabled" [(ngModel)]="a15" value="a15">A.15.Extintores portátiles</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a16"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a16">A.16.Salvavidas /
-        Dispositivos de flotación</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a17"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a17">A.17.Cinturones /
-        arneses</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a18"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a18">A.18.Oxígeno de
-        emergencia</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a19"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a19">A.19.Linternas</label>
+        <p>Equipamiento de Seguridad</p>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a15" value="a15">A.15.Extintores
+          portátiles</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a16"> <label for="a16">A.16.Salvavidas /
+          Dispositivos de flotación</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a17"> <label for="a17">A.17.Cinturones /
+          arneses</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a18"> <label for="a18">A.18.Oxígeno de
+          emergencia</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a19"> <label for="a19">A.19.Linternas</label>
 
-      <p style="font-family: 'Oswald', sans-serif; font-size: 14px;">Tripulantes</p>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-        [disabled]="isDisabled" [(ngModel)]="a20">{{"A.20.Licencias : " +
+        <p>Tripulantes</p>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a20">{{"A.20.Licencias : " +
           tripulacion}}</label>
 
-      <p style="font-family: 'Oswald', sans-serif; font-size: 14px;">RTV / RNA</p>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-        [disabled]="isDisabled" [(ngModel)]="a21">A.21.RTV / RNA</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a22"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a22">A.22.Liberación de
-        mantenimiento</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a23"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a23">A.23.Registro y solución de
-        discrepancias</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a24"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="a24">A.24.Inspección pre-vuelo /
-        tránsito</label>
+        <p>RTV / RNA</p>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a21">A.21.RTV / RNA</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a22"> <label for="a22">A.22.Liberación de
+          mantenimiento</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a23"> <label for="a23">A.23.Registro y solución de
+          discrepancias</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a24"> <label for="a24">A.24.Inspección pre-vuelo /
+          tránsito</label>
 
-      <p style="font-family: 'Oswald', sans-serif; font-size: 16px;">B.Equipamiento de emergencia / Cabina de Pasajeros
-      </p>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-        [disabled]="isDisabled" [(ngModel)]="b1">B.1.Estado interior general</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b2"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b2">B.2.Puestos / áreas de
-        descanso TCP</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b3"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b3">B.3.FAK / EMK (Equipo de
-        Primeros Auxilios / Equipo de Médico de Emergencia)</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b4"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b4">B.4.Extintores portátiles
-        (PFE)</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b5"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b5">B.5.Salvavidas /
-        Dispositivos de flotación</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b6"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b6">B.6.Cinturones y
-        asientos</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b7"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b7">B.7.Salidas de emergencia,
-        iluminación, megáfonos, linternas y señales</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b8"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b8">B.8.Toboganes, balsas y
-        ELT</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b9"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b9">B.9.Oxígeno de
-        emergencia</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b10"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b10">B.10.Instrucciones de
-        seguridad</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b11"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b11">B.11.TCP</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b12"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b12">B.12.Acceso a salidas de
-        emergencia</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b13"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b13">B.13.Seguridad del equipaje
-        en cabina</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b14"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="b14">B.14.Capacidad /
-        distribución de pasajeros</label>
+        <p>B.Equipamiento de emergencia / Cabina de Pasajeros
+        </p>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b1">B.1.Estado interior general</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b2"> <label for="b2">B.2.Puestos / áreas de
+          descanso TCP</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b3"> <label for="b3">B.3.FAK / EMK (Equipo de
+          Primeros Auxilios / Equipo de Médico de Emergencia)</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b4"> <label for="b4">B.4.Extintores portátiles
+          (PFE)</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b5"> <label for="b5">B.5.Salvavidas /
+          Dispositivos de flotación</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b6"> <label for="b6">B.6.Cinturones y
+          asientos</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b7"> <label for="b7">B.7.Salidas de emergencia,
+          iluminación, megáfonos, linternas y señales</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b8"> <label for="b8">B.8.Toboganes, balsas y
+          ELT</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b9"> <label for="b9">B.9.Oxígeno de
+          emergencia</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b10"> <label for="b10">B.10.Instrucciones de
+          seguridad</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b11"> <label for="b11">B.11.TCP</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b12"> <label for="b12">B.12.Acceso a salidas de
+          emergencia</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b13"> <label for="b13">B.13.Seguridad del equipaje
+          en cabina</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="b14"> <label for="b14">B.14.Capacidad /
+          distribución de pasajeros</label>
 
-      <p style="font-family: 'Oswald', sans-serif; font-size: 16px;">C.Condición Externa</p>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-        [disabled]="isDisabled" [(ngModel)]="c1">C.1.Estado exterior general</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c2"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c2">C.2.Puertas, manijas y
-        ventanillas</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c3"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c3">C.3.Controles de
-        vuelo</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c4"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c4">C.4.Ruedas, neumáticos y
-        frenos</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c5"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c5">C.5.Tren de
-        aterrizaje</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c6"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c6">C.6.Bahía de trenes de
-        aterrizaje</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c7"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c7">C.7.Motores y
-        barquillas</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c8"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c8">C.8.Álabes de
-        fan</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c9"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c9">C.9.Hélices</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c10"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c10">C.10.Reparaciones
-        evidentes</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c11"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c11">C.11. Daño evidente sin
-        reparar</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c12"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="c12">C.12.Pérdidas</label>
+        <p>C.Condición Externa</p>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c1">C.1.Estado exterior general</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c2"> <label for="c2">C.2.Puertas, manijas y
+          ventanillas</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c3"> <label for="c3">C.3.Controles de
+          vuelo</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c4"> <label for="c4">C.4.Ruedas, neumáticos y
+          frenos</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c5"> <label for="c5">C.5.Tren de
+          aterrizaje</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c6"> <label for="c6">C.6.Bahía de trenes de
+          aterrizaje</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c7"> <label for="c7">C.7.Motores y
+          barquillas</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c8"> <label for="c8">C.8.Álabes de
+          fan</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c9"> <label for="c9">C.9.Hélices</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c10"> <label for="c10">C.10.Reparaciones
+          evidentes</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c11"> <label for="c11">C.11. Daño evidente sin
+          reparar</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="c12"> <label for="c12">C.12.Pérdidas</label>
 
-      <p style="font-family: 'Oswald', sans-serif; font-size: 16px;">D.Carga</p>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-        [disabled]="isDisabled"  [(ngModel)]="d1">D.1.Estado general</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="d2"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="d2">D.2.Mercancías
-        Peligrosas</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="d3"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="d3">D.3.Seguridad de la carga a
-        bordo</label><br>
-        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="d4"> <label
-        style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="d4">{{"D.4 Peso de Carga : " +
-        flight.pesocargaorigen+" Toneladas" }}</label><br>
+        <p>D.Carga</p>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="d1">D.1.Estado general</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="d2"> <label for="d2">D.2.Mercancías
+          Peligrosas</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="d3"> <label for="d3">D.3.Seguridad de la carga a
+          bordo</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="d4"> <label for="d4">{{"D.4 Peso de Carga : " +
+          flight.pesocargaorigen+" Toneladas" }}</label><br>
 
-      <p style="font-family: 'Oswald', sans-serif; font-size: 16px;">E.General</p>
-      <label style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;"><input type="checkbox"
-        [disabled]="isDisabled"  [(ngModel)]="e1">E.1.Estado general</label><br>
-      <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="e2"> <label
-          style="font-family: 'Oswald', sans-serif; font-size: 14px;margin-top:0px;" for="e2">{{"E.2 Combustible estimado : " +
+        <p>E.General</p>
+        <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="e1">E.1.Estado general</label><br>
+        <input type="checkbox" [disabled]="isDisabled" [(ngModel)]="e2"> <label for="e2">{{"E.2 Combustible estimado : "
+          +
           flight.ltscombustibleestimado +"lts" }}</label>
 
 
+      </div>
+      <button (click)="save()" type="button">Guardar</button>
     </div>
-    <button style="margin-top: 20px ;margin-left:330px;" (click)="save()" type="button">Guardar</button>
-  </div>
-  <div class="container" style="margin-left:370px" *ngIf="showNotResultMessage">
-    <div class="boxPopup" id="popup">
-      <div class="msgPopup">¡¡¡Error!!!</div>
-      <div class="descript">No se a encontrado Check-List para el vuelo seleccionado</div>
-      <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 310px;" (click)="showErrorPopup = false;">Cerrar</button>
+    <div class="container" *ngIf="showNotResultMessage">
+      <div class="boxPopup" id="popup">
+        <div class="msgPopup">¡¡¡Error!!!</div>
+        <div class="descript">No se a encontrado Check-List para el vuelo seleccionado</div>
+        <button id="btnClose" (click)="showErrorPopup = false;">Cerrar</button>
+      </div>
     </div>
-</div>
 
   </div>
-</body>
+</div>

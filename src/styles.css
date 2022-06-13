@@ -8,16 +8,19 @@ body {
   background-image: url("https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=067f0b097deff88a789e125210406ffe");
   background-size: 100%;
 }
- 
+
 .nav ul {
-  width:18%;
-  height: 927px;
+  width: 100%;
+  height: 100vh;
   margin-top: -30px;
   float: left;
   background-image: url("nav.png");
   text-align: center;
   padding: 0;
   margin: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .nav li {
   display: inline-block;
@@ -30,7 +33,7 @@ body {
   float:left;
   border-bottom: 1px solid #888;
 }
- 
+
 .nav a {
   text-decoration: none;
   text-align:start;
@@ -39,25 +42,25 @@ body {
   display: block;
   transition: .3s background-color;
 }
- 
+
 .nav a:hover {
   text-align:center;
 }
 .item:hover {
-  background-color: #005f5f;  
+  background-color: #005f5f;
   text-align:center;
 }
 .logout:hover{
-  background-color: #5f0005 !important;  
+  background-color: #5f0005 !important;
   text-align:center;
 }
- 
+
 .nav a.active {
   background-color: #fff;
   color: #444;
   cursor: default;
 }
- 
+
 @media screen and (min-width: 600px) {
   .nav li {
     width: 120px;
@@ -66,13 +69,13 @@ body {
     line-height: 60px;
     font-size: 1.4em;
   }
- 
+
   /* Option 1 - Display Inline */
   .nav li {
     display: inline-block;
     margin-right: -4px;
   }
- 
+
   /* Options 2 - Float
   .nav li {
     float: left;

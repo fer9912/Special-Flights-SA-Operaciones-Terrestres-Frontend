@@ -1,32 +1,26 @@
-<body>
-    <div class="form" style="margin-top:-30px;">
-        <i class="fa-solid fa-arrow-left" routerLink="/home" style="margin-bottom: 30px;cursor: pointer;">Volver</i>
-        <p style="margin-top:-10px;margin-bottom:34px;font-family: 'Segoe UI', sans-serif; font-size: 44px;">Vista 360
-        </p>
-        <p style="margin-top:-10px;font-family: 'Segoe UI', sans-serif; font-size: 20px;">En esta pantalla podra
-            visualizar informacion relevante de GROPS y del sistema global</p>
-        <hr>
-        <button (click)="grops()" type="button"
-            style="margin-top:20px;width:120px !important;height:45px !important; margin-left:30px;"><i
-                style="margin-right:10px;"></i>Grops</button>
+<div class="view-container">
+  <div class="form">
+    <i class="fa-solid fa-arrow-left"style="margin-bottom: 30px;display: block;text-align: left;cursor: pointer;width: 80px;" routerLink="/home">Volver</i>
+    <p class="titulo">Vista 360</p>
+    <p class="descripcion">En esta pantalla podra visualizar informacion relevante de GROPS y del sistema global</p>
+    <hr>
+    <div class="buttons-container">
+      <button (click)="grops()" type="button"><i></i>Grops</button>
 
-        <button (click)="global()" type="button"
-            style="margin-top:-5px;width:120px !important;height:45px !important; margin-left:30px;"><i
-                style="margin-right:10px;"></i>Global</button>
-
-        <div class="Error" *ngIf="showGrops" style="margin-top:30px;">
-            <iframe
-                src="https://power-metabase-data-bi.herokuapp.com/public/dashboard/be4313bb-c0d5-453f-a02b-41a509eb8e92"
-                frameborder="0" width="1200" height="650" allowtransparency></iframe>
-        </div>
-
-        <div class="Error" *ngIf="showGlobal" style="margin-top:30px;">
-            <iframe
-                src="https://power-metabase-data-bi.herokuapp.com/public/dashboard/af908de6-3cfc-4418-a1c6-499dc08e4361"
-                frameborder="0" width="1200" height="650" allowtransparency></iframe>
-        </div>
-
-
+      <button (click)="global()" type="button"><i></i>Global</button>
 
     </div>
-</body>
+
+    <div class="Error" *ngIf="showGrops">
+      <iframe src="https://power-metabase-data-bi.herokuapp.com/public/dashboard/be4313bb-c0d5-453f-a02b-41a509eb8e92"
+        frameborder="0" width="1200" height="650" allowtransparency></iframe>
+    </div>
+
+    <div class="Error" *ngIf="showGlobal">
+      <iframe src="https://power-metabase-data-bi.herokuapp.com/public/dashboard/af908de6-3cfc-4418-a1c6-499dc08e4361"
+        frameborder="0" width="1200" height="650" allowtransparency></iframe>
+    </div>
+
+
+  </div>
+</div>

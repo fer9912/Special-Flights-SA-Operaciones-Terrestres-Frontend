@@ -1,15 +1,26 @@
+:host{
+  width: 100%;
+}
+
 .flight-query-page {
-    height: 800px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.descripcion {
+  margin-top: -10px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 20px;
 }
 
 .titulo {
-    font-family: 'Oswald', sans-serif;
-    font-size: 40px;
-    margin-bottom: 30px;
-    text-align: center;
+  margin-top: -10px;
+  margin-bottom: 34px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 44px;
 }
 
 .form {
@@ -48,7 +59,7 @@
     text-align: center;
     background-color: #d8d8d8;
   }
-  
+
   /* Absolute Center Spinner */
   .loading {
     position: fixed;
@@ -62,7 +73,7 @@
     bottom: 0;
     right: 0;
   }
-  
+
   /* Transparent Overlay */
   .loading:before {
     content: '';
@@ -74,7 +85,7 @@
     height: 100%;
     background-color: rgba(0,0,0,0.3);
   }
-  
+
   /* :not(:required) hides these rules from IE9 and below */
   .loading:not(:required) {
     /* hide "loading..." text */
@@ -84,7 +95,7 @@
     background-color: transparent;
     border: 0;
   }
-  
+
   .loading:not(:required):after {
     content: '';
     display: block;
@@ -101,9 +112,9 @@
     -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
     box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
   }
-  
+
   /* Animation */
-  
+
   @-webkit-keyframes spinner {
     0% {
       -webkit-transform: rotate(0deg);

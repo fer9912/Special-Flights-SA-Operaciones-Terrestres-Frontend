@@ -1,16 +1,16 @@
 
-<div class="baggage-page">
+<div class="baggage-container">
     <div class="form">
-        <i class="fa-solid fa-arrow-left" routerLink="/home" style="margin-bottom: 30px;display: block;text-align: left;cursor: pointer;">Volver</i>
-        <p style="margin-top:-10px;margin-bottom:34px;font-family: 'Segoe UI', sans-serif; font-size: 44px; text-align: left;">Equipaje/Carga</p>
-        <p style="margin-top:-10px;font-family: 'Segoe UI', sans-serif; font-size: 20px;text-align: left;">En esta pantalla podra consultar el estado de cargas y equipajes.</p>
+        <i class="fa-solid fa-arrow-left" routerLink="/home" style="margin-bottom: 30px;display: block;text-align: left;cursor: pointer;width: 80px;">Volver</i>
+        <p class="titulo">Equipaje/Carga</p>
+        <p class="descripcion">En esta pantalla podra consultar el estado de cargas y equipajes.</p>
         <hr>
         <section class="task-list current">
             <input [(ngModel)]="BaggageCode" placeholder="Ingrese Codigo de Equipaje" />
             <input [(ngModel)]="PassengerCode" placeholder="Ingrese Identificacion de Pasajero" />
             <input [(ngModel)]="FlightCode" placeholder="Ingrese Codigo de Vuelo" />
             <button type="button" (click)="search()" style="margin-top:-10px;width:120px !important;height:45px !important; margin-left:15px;"><i class="fa-solid fa-magnifying-glass" style="margin-right:10px;"></i>Buscar</button>
-        
+
           </section>
         <table mat-table [dataSource]="info" class="demo-table" *ngIf="showTable">
             <!-- Columna Codigo -->
