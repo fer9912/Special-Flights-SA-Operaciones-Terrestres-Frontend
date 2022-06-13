@@ -259,11 +259,14 @@ export class CheckListFlightComponent implements OnInit {
       this.e2= data.e2;
       this.validacionFinal= data.validacionFinal;
 
+      this.showLoadAnimation = false;  
     }, (error) => {
      
         this.showCheckList = true;
         this.showErrorCheckVuelo = false;
         this.showErrorVuelo = false;
+        
+      this.showLoadAnimation = false;  
     }, () => {
 
       if (this.estado != "pre-embarque") {
@@ -278,7 +281,9 @@ export class CheckListFlightComponent implements OnInit {
         this.isDisabled =true;
         console.log(this.estado);
       }
-        
+      
+      
+      this.showLoadAnimation = false;  
       });
     }
   save() {
