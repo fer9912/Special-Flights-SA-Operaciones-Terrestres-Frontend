@@ -24,7 +24,7 @@ export class BaggageInfoComponent implements OnInit {
   FlightCode: string;
   showTable = false;
   info: BaggageModel[];
-  displayedColumns: string[] = ['demo-id', 'demo-idVuelo', 'demo-tipo', 'demo-peso', 'demo-estado', 'demo-CargaPas','demo-tipoDoc', 'demo-doc'];
+  displayedColumns: string[] = ['demo-id', 'demo-idVuelo', 'demo-estado', 'demo-tipo', 'demo-cat', 'demo-peso','demo-est','demo-tipoDoc', 'demo-doc'];
   constructor(public baggageservice : BaggageService) { }
 
   ngOnInit(): void {

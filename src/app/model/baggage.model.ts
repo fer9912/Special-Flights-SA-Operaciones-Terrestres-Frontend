@@ -6,5 +6,7 @@ export interface BaggageModel {
     status: string,
     isPassengerBaggage: string,
     docType: string,
-    documentNumber: string
+    documentNumber: string,
+    baggageCategory: string,
+    statusCargo: string
 }

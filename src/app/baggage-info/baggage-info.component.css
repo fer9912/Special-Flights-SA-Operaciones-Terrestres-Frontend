@@ -74,6 +74,16 @@
     font-size: 20px;
 }
 
+.mat-column-demo-cat {
+    padding-left: 16px;
+    font-size: 20px;
+}
+
+.mat-column-demo-est {
+    padding-left: 16px;
+    font-size: 20px;
+}
+
 .mat-column-demo-doc {
     padding-left: 16px;
     font-size: 20px;

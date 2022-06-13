@@ -24,10 +24,20 @@
                 <td mat-cell *matCellDef="let element"> {{element.flightId}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="demo-estado">
+                <th mat-header-cell *matHeaderCellDef class="header" > Estado de Vuelo </th>
+                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
             <!-- Columna tipo -->
             <ng-container matColumnDef="demo-tipo">
                 <th mat-header-cell *matHeaderCellDef class="header"> Tipo </th>
                 <td mat-cell *matCellDef="let element"> {{element.baggageType}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="demo-cat">
+                <th mat-header-cell *matHeaderCellDef class="header"> Categoria </th>
+                <td mat-cell *matCellDef="let element"> {{element.baggageCategory}} </td>
             </ng-container>
 
             <!-- Columna peso -->
@@ -36,17 +46,11 @@
                 <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
             </ng-container>
 
-             <!-- Columna peso -->
-             <ng-container matColumnDef="demo-estado">
-                <th mat-header-cell *matHeaderCellDef class="header" > Estado </th>
-                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            <ng-container matColumnDef="demo-est">
+                <th mat-header-cell *matHeaderCellDef class="header"> Estado de la Carga </th>
+                <td mat-cell *matCellDef="let element"> {{element.statusCargo}} </td>
             </ng-container>
-
-            <ng-container matColumnDef="demo-CargaPas">
-                <th mat-header-cell *matHeaderCellDef class="header" > ¿Es carga de pasajero? </th>
-                <td mat-cell *matCellDef="let element"> {{element.isPassengerBaggage}} </td>
-            </ng-container>
-
+        
             <!-- Columna pasajero -->
             <ng-container matColumnDef="demo-tipoDoc">
                 <th mat-header-cell *matHeaderCellDef class="header"> Tipo de Documento </th>
