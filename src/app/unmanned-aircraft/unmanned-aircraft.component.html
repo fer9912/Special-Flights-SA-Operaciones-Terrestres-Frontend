@@ -5,36 +5,38 @@
     <p class="descripcion">En esta pantalla podra calcular la aeronave no tripulada mas optima y la distancia para un
       vuelo.</p>
     <hr>
-    <div class="filters-container">
-      <div class="origin-container">
-        <p class="origin-text">Origen:</p>
-        <div class="styled-select slate">
-          <select [(ngModel)]="selectedDestinationToInclude" (change)="cargarDestinos()">
-            <option [ngValue]="null">Seleccione un origen</option>
-            <option *ngFor="let d of origins" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
-          </select>
+    <div class="filters-button-container">
+      <div class="filters-container">
+        <div class="origin-container">
+          <p class="origin-text">Origen:</p>
+          <div class="styled-select slate">
+            <select [(ngModel)]="selectedDestinationToInclude" (change)="cargarDestinos()">
+              <option [ngValue]="null">Seleccione un origen</option>
+              <option *ngFor="let d of origins" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="destination-container">
+          <p class="destination-text">Destino:</p>
+          <div class="styled-select slate">
+            <select [(ngModel)]="selectedDestinationToExclude" [disabled]="disabledInclude" (change)="enableGenerate()">
+              <option [ngValue]="null">Seleccione un destino</option>
+              <option *ngFor="let d of destinations" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
+            </select>
+          </div>
+          <p *ngIf="showNoDestinationError"
+            style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: brown;">
+            No existen destinos para vuelos no</p>
+          <p *ngIf="showNoDestinationError"
+            style="margin-top:0px;margin-bottom:-20px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: brown;">
+            tripulados desde ese origen.</p>
         </div>
       </div>
-      <div class="destination-container">
-        <p class="destination-text">Destino:</p>
-        <div class="styled-select slate">
-          <select [(ngModel)]="selectedDestinationToExclude" [disabled]="disabledInclude" (change)="enableGenerate()">
-            <option [ngValue]="null">Seleccione un destino</option>
-            <option *ngFor="let d of destinations" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
-          </select>
-        </div>
-        <p *ngIf="showNoDestinationError"
-          style="margin-top:-18px;margin-bottom:-4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: brown;">
-          No existen destinos para vuelos no</p>
-        <p *ngIf="showNoDestinationError"
-          style="margin-top:0px;margin-bottom:-20px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder; color: brown;">
-          tripulados desde ese origen.</p>
-      </div>
-    </div>
 
-    <div class="button-container">
+      <div class="button-container">
         <button class="button-calculate" (click)="generate()" [disabled]="disabledGenerate" type="button">
-          <i class="fa-solid fa-paper-plane"style="margin-right:10px;"></i>Calcular</button>
+          <i class="fa-solid fa-paper-plane" style="margin-right:10px;"></i>Calcular</button>
+      </div>
     </div>
   </div>
 
@@ -91,23 +93,26 @@
     </div>
   </div>
 
-  <div class="container" style="margin-left:360px; width:1200px; margin-top:200px;" *ngIf="showGeneratedRoute">
-    <div class="boxPopup" id="popup" style="width:1200px; height: 300px;">
+  <div class="dialog-container" *ngIf="showGeneratedRoute">
+    <div class="boxPopup" id="popup">
       <div class="msgPopup">Ruta generada:</div>
-      <div id="box">
+      <div class="box" id="box">
         <p style="margin: 10px;font-family: 'Segoe UI', sans-serif; font-size: 18px;font-weight: bolder;">
           {{generatedRoute}}</p>
       </div>
-      <div style="float: left; width: 45%;margin-left:210px;">
-        <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
-          {{"Aeronave: " + aircraft}}</p>
+
+      <div class="information-container">
+        <div style="float: left; width: 45%;">
+          <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+            {{"Aeronave: " + aircraft}}</p>
+        </div>
+        <div style="float: left; width: 25%;">
+          <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+            {{"Distancia: " + distance + "km"}}</p>
+        </div>
+        <button id="btnClose" style="background-color: brown; width: 100px;"
+          (click)="showGeneratedRoute = false;">Cerrar</button>
       </div>
-      <div style="float: left; width: 25%;">
-        <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
-          {{"Distancia: " + distance + "km"}}</p>
-      </div>
-      <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 970px;"
-        (click)="showGeneratedRoute = false;">Cerrar</button>
     </div>
   </div>
 </div>

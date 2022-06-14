@@ -11,15 +11,17 @@
   font-size: 16px;
   font-weight: bolder;
 }
-.button-container{
-  padding: 10px;
+
+.button-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.button-calculate{
+
+.button-calculate {
   width: 20% !important;
 }
+
 .destination-text {
   margin-top: 20px;
   margin-bottom: -14px;
@@ -44,28 +46,22 @@
 .unmanned-aircraft-container {
   display: flex;
   padding: 20px;
-  margin-top: 0px;
-  margin-bottom: 40px;
   width: 90%;
   height: 90%;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .filters-container {
-  padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.destination-container {
+.destination-container {}
 
-}
-
-.origin-container {
-
-}
+.origin-container {}
 
 .form {
   background: #FFFFFF;
@@ -78,7 +74,7 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   display: flex;
   flex-direction: column;
-  height: 45%;
+  height: 58vh;
 }
 
 .form input {
@@ -209,34 +205,35 @@ body {
   width: 100%;
   height: 100%;
 }
+.filters-button-container{
 
-.container {
+}
+.dialog-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150%;
-  z-index: 10000;
-  margin-left: 620px;
-  margin-top: 300px;
-  min-width: 500px;
   height: 100%;
-  background-color: #bababa;
+  background: transparent;
+  width: 100%;
 }
 
+.information-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
 .hidePopup {
   display: none;
 }
 
 .boxPopup {
-  width: 600px;
-  height: 200px;
   background-color: whitesmoke;
-  padding: 7px;
   margin: 0px;
   border-radius: 4px;
-  z-index: 10000;
   box-shadow: 1px 1px 6px grey;
   transition: 0.8s;
+  padding: 10px;
+  width: 80%;
 }
 
 
@@ -291,7 +288,6 @@ button:focus {
 
 #box {
   height: 100px;
-  width: 1100px;
   border: 1px solid black;
   margin-bottom: 15px;
   position: relative;
