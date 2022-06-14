@@ -1,28 +1,86 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.login-page {
+:host {
+  width: 100%;
+}
+
+.origin-text {
+  margin-top: 20px;
+  margin-bottom: -14px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+}
+.button-container{
+  padding: 10px;
   display: flex;
-  width: 0px;
+  flex-direction: row;
+  justify-content: center;
+}
+.button-calculate{
+  width: 20% !important;
+}
+.destination-text {
+  margin-top: 20px;
+  margin-bottom: -14px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.titulo {
+  margin-top: -10px;
+  margin-bottom: 34px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 44px;
+}
+
+.descripcion {
+  margin-top: -10px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 20px;
+}
+
+.unmanned-aircraft-container {
+  display: flex;
   padding: 20px;
   margin-top: 0px;
   margin-bottom: 40px;
+  width: 90%;
+  height: 90%;
+  align-items: center;
+  justify-content: center;
 }
-.filters {
-    padding: 10px;
-    margin: 30px;
-  }
+
+.filters-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.destination-container {
+
+}
+
+.origin-container {
+
+}
+
 .form {
-  position:absolute;
-  z-index: 1;
   background: #FFFFFF;
-  width: 1200px;
+  width: 80%;
   margin: 0px;
-  margin-top: 40px !important;
+  margin-top: 40px;
   padding: 45px;
   padding-bottom: 20px;
-  text-align:left;
+  text-align: left;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  display: flex;
+  flex-direction: column;
+  height: 45%;
 }
+
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
@@ -34,6 +92,7 @@
   box-sizing: border-box;
   font-size: 14px;
 }
+
 .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
@@ -51,91 +110,107 @@
 
 
 .form button:disabled,
-button[disabled]{
-  border:0 solid #000000;
+button[disabled] {
+  border: 0 solid #000000;
   background-color: #5c6d67;
   color: #3d3c3c;
 }
-.form button:hover,.form button:active,.form button:focus {
+
+.form button:hover,
+.form button:active,
+.form button:focus {
   background: #005f5f;
 }
+
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 12px;
 }
+
 .form .message a {
   color: #4CAF50;
   text-decoration: none;
 }
+
 .form .register-form {
   display: none;
 }
+
 body {
-  background: #76b852; /* fallback for old browsers */
-  background: rgb(141,194,111);
-  background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
+  background: #76b852;
+  /* fallback for old browsers */
+  background: rgb(141, 194, 111);
+  background: linear-gradient(90deg, rgba(141, 194, 111, 1) 0%, rgba(118, 184, 82, 1) 50%);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* -------------------- Page Styles (not required) */
-div { margin: 20px; }
+div {
+  margin: 20px;
+}
 
 /* -------------------- Select Box Styles: bavotasan.com Method (with special adaptations by ericrasch.com) */
 /* -------------------- Source: http://bavotasan.com/2011/style-select-box-using-only-css/ */
 .styled-select {
-   height: 29px;
-   width: 240px;
+  height: 29px;
+  width: 240px;
 }
 
 .styled-select select {
-   border: none;
-   font-size: 14px;
-   height: 29px;
-   padding: 5px; /* If you add too much padding here, the options won't show in IE */
-   width: 268px;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px;
+  /* If you add too much padding here, the options won't show in IE */
+  width: 268px;
 }
 
 .styled-select.slate {
-   height: 34px;
-   width: 240px;
+  height: 34px;
+  width: 240px;
 }
 
 .styled-select.slate select {
-   border: 1px solid #ccc;
-   font-size: 16px;
-   height: 34px;
-   width: 268px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  height: 34px;
+  width: 268px;
 }
 
 /* -------------------- Rounded Corners */
 .rounded {
-   -webkit-border-radius: 20px;
-   -moz-border-radius: 20px;
-   border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
 }
 
 .semi-square {
-   -webkit-border-radius: 5px;
-   -moz-border-radius: 5px;
-   border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 /* -------------------- Colors: Background */
-.slate   { background-color: #ddd; }
+.slate {
+  background-color: #ddd;
+}
 
 /* -------------------- Colors: Text */
-.slate select   { color: #000; }
+.slate select {
+  color: #000;
+}
 
 
-html,body{
+html,
+body {
   width: 100%;
   height: 100%;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,10 +223,11 @@ html,body{
   background-color: #bababa;
 }
 
-.hidePopup{
+.hidePopup {
   display: none;
 }
-.boxPopup{
+
+.boxPopup {
   width: 600px;
   height: 200px;
   background-color: whitesmoke;
@@ -160,11 +236,11 @@ html,body{
   border-radius: 4px;
   z-index: 10000;
   box-shadow: 1px 1px 6px grey;
-  transition:0.8s;
+  transition: 0.8s;
 }
 
 
-.msgPopup{
+.msgPopup {
   text-align: left;
   font-size: 24px;
   font-family: helvetica;
@@ -173,7 +249,7 @@ html,body{
   padding: 5px 0;
 }
 
-.descript{
+.descript {
   text-align: justify;
   font-size: 15px;
   font-family: helvetica;
@@ -200,12 +276,15 @@ button {
 
 
 .button:disabled,
-button[disabled]{
-  border:0 solid #000000;
+button[disabled] {
+  border: 0 solid #000000;
   background-color: #5c6d67;
   color: #3d3c3c;
 }
-button:hover,button:active, button:focus {
+
+button:hover,
+button:active,
+button:focus {
   background: #005f5f;
 }
 
@@ -253,7 +332,7 @@ button:hover,button:active, button:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* :not(:required) hides these rules from IE9 and below */
@@ -293,6 +372,7 @@ button:hover,button:active, button:focus {
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -301,6 +381,7 @@ button:hover,button:active, button:focus {
     transform: rotate(360deg);
   }
 }
+
 @-moz-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);
@@ -309,6 +390,7 @@ button:hover,button:active, button:focus {
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -317,6 +399,7 @@ button:hover,button:active, button:focus {
     transform: rotate(360deg);
   }
 }
+
 @-o-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);
@@ -325,6 +408,7 @@ button:hover,button:active, button:focus {
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -333,6 +417,7 @@ button:hover,button:active, button:focus {
     transform: rotate(360deg);
   }
 }
+
 @keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);
@@ -341,6 +426,7 @@ button:hover,button:active, button:focus {
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
