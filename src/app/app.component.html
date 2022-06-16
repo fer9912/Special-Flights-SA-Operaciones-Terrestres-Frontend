@@ -1,3 +1,4 @@
+<!doctype html>
 <head>
   <meta charset="UTF-8">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
@@ -8,17 +9,16 @@
     <div class="nav">
       <img class="logo-nav" src="https://i.ibb.co/LSrHgNT/logo-nav-1.png">
       <ul>
-        <li class="item" style="margin-top:27px;"><a routerLink="home"><i class="fa-solid fa-house" style="margin-right:10px;"></i>Inicio</a></li>
+        <li class="item" style="margin-top:27px;" ><a routerLink="home"><i class="fa-solid fa-house" style="margin-right:10px;"></i>Inicio</a></li>
         <li class="item"><a routerLink="/flightRouteMaster"><i class="fa-solid fa-plane" style="margin-right:10px;"></i>Maestro de Rutas de Vuelo</a></li>
         <li class="item"><a routerLink="/flightQuery"><i class="fa-solid fa-clock" style="margin-right:10px;"></i>Vuelos Programados</a></li>
         <li class="item"><a routerLink="/check-list-flight"><i class="fa-solid fa-clipboard-check" style="margin-right:10px;"></i>Check-List de Vuelo</a></li>
         <li class="item"><a routerLink="/check-list-commissariat"><i class="fa-solid fa-circle-check" style="margin-right:10px;"></i>Check-List de Comisariato</a></li>
-        <li class="item"><a routerLink="/baggage-info"><i class="fa-solid fa-suitcase-rolling" style="margin-right:10px;"></i>Equipaje / Carga</a></li>
+        <li class="item" id="xdd"><a routerLink="/baggage-info"><i class="fa-solid fa-suitcase-rolling" style="margin-right:10px;"></i>Equipaje / Carga</a></li>
         <li class="item"><a routerLink="/unmannedAircraft"><i class="fa-solid fa-jet-fighter-up" style="margin-right:10px;"></i>Aeronave no tripulada(UAV)</a></li>
         <li class="item"><a routerLink="/unmannedAircraftByCords"><i class="fa-solid fa-jet-fighter-up" style="margin-right:10px;"></i>UAV por Coordenadas</a></li>
         <li class="item"><a routerLink="/reports"><i class="fa-solid fa-chart-column" style="margin-right:10px;"></i>Reportes</a></li>       
         <li class="item"><a routerLink="/view360"><i class="fa-solid fa-chart-pie" style="margin-right:10px;"></i>Vista 360</a></li>   
-
         <li  (click)="logOut()" class="logout" style="margin-top: 57px;" ><a [routerLink]="" (click)="logOut()"><i class="fa-solid fa-right-from-bracket" style="margin-right:10px;"></i>Cerrar Sesion</a></li>
       </ul>
     </div>

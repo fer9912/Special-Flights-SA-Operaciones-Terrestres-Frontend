@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BaggageRequest } from '../model/baggage.request.model';
+import { RoleModel } from '../model/role.model';
 import { BaggageService } from '../services/baggage.service';
+import {Router} from '@angular/router';
 
 export interface BaggageModel {
   baggageId: string,
@@ -19,15 +21,23 @@ export interface BaggageModel {
   styleUrls: ['./baggage-info.component.css']
 })
 export class BaggageInfoComponent implements OnInit {
+  role: RoleModel;
   BaggageCode: string;
   PassengerCode: string;
   FlightCode: string;
   showTable = false;
   info: BaggageModel[];
   displayedColumns: string[] = ['demo-id', 'demo-idVuelo', 'demo-estado', 'demo-tipo', 'demo-cat', 'demo-peso','demo-est','demo-tipoDoc', 'demo-doc'];
-  constructor(public baggageservice : BaggageService) { }
+  constructor(public baggageservice : BaggageService,private router:Router) { }
 
   ngOnInit(): void {
+    this.role = new RoleModel();
+
+    this.role = JSON.parse(sessionStorage.getItem('role'));
+
+    if(this.role.baggage == false){
+      this.router.navigate(['home'])
+    }
   }
 
   search() { 

@@ -3,6 +3,7 @@ import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { UserModel } from "../model/user.model";
+import { RoleModel } from "../model/role.model";
 import { UserRequest } from "../model/userRequest";
 
 const httpOptions = {
@@ -21,4 +22,9 @@ export class UserService{
     validateUser(request: UserRequest): Observable<UserModel>{
         return this.http.post<UserModel>(this.url + '/validate',request,httpOptions);
     }
+
+    validateRole(user : string): Observable<RoleModel>{
+      return this.http.get<RoleModel>(this.url + '/getRole?user=' + user);
+  }
+
 }
