@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {PrimeNGConfig} from 'primeng/api';                  //api
 import { UserService } from './services/user.service';
 import {Router} from '@angular/router';
-import * as CryptoJS from 'crypto-js';  
+import * as CryptoJS from 'crypto-js';
 import { UserRequest } from './model/userRequest';
 import { UserModel } from './model/user.model';
 import { RoleModel } from './model/role.model';
@@ -13,24 +13,24 @@ import { RoleModel } from './model/role.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('xdd') xdd: ElementRef;
+  @ViewChild("xdd", {static: false }) xdd: ElementRef;
   title = 'GROPS-FrontEnd';
   userLogged = false;
   showErrorLogin = false;
   usuario;
   contra;
-  plainText:string;  
-  encryptText: string;  
-  encPassword: string;  
-  decPassword:string;  
-  conversionEncryptOutput: string;  
-  conversionDecryptOutput:string;  
+  plainText:string;
+  encryptText: string;
+  encPassword: string;
+  decPassword:string;
+  conversionEncryptOutput: string;
+  conversionDecryptOutput:string;
   request: UserRequest;
   userModel: UserModel;
   roleModel : RoleModel;
   constructor(private primengConfig: PrimeNGConfig, public userService: UserService, private router:Router) {}
   ngOnInit() {
-    this.primengConfig.ripple = true;    
+    this.primengConfig.ripple = true;
     this.router.navigate(['']);
   }
   validateUser(){
@@ -42,12 +42,12 @@ export class AppComponent implements OnInit {
     this.request.password = this.conversionEncryptOutput.toString();
     this.userService.validateUser(this.request).subscribe(data => {
       if(data != null){
-        this.userLogged = true;    
+        this.userLogged = true;
         this.userModel = data;
-        this.validateRol(this.userModel.user)       
-        this.router.navigate(['home']);     
+        this.validateRol(this.userModel.user)
+        this.router.navigate(['home']);
       }else{
-        this.userLogged = false; 
+        this.userLogged = false;
         this.showErrorLogin = true;
       }
     });
@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
 
   validateRol(user: string){
     this.userService.validateRole(user).subscribe(data => {
-    
+
       this.roleModel = data;
       sessionStorage.setItem('role',JSON.stringify(this.roleModel))
     })
@@ -73,9 +73,9 @@ export class AppComponent implements OnInit {
 
   }
 
-  convertText() {   
-      this.conversionEncryptOutput = CryptoJS.AES.encrypt(this.contra.trim(), 'grops2022');  
-    }  
+  convertText() {
+      this.conversionEncryptOutput = CryptoJS.AES.encrypt(this.contra.trim(), 'grops2022');
+    }
 
 
   validateButton(){
@@ -84,11 +84,38 @@ export class AppComponent implements OnInit {
 
     if(this.roleModel.baggage == false){
       console.log(this.roleModel);
-      //document.getElementById("xdd").style.display= "none";
+      document.getElementById("xdd").style.display= "none";
       const a = this.xdd.nativeElement;
       console.log(this.xdd);
-    
+
     }
   }
 
+  isBaggageAvailable(){
+    return this.roleModel?.baggage;
+  }
+  isFlightRouteMasterAvailable(){
+    return this.roleModel?.ruteFligthMaster;
+  }
+  isFlightQueryAvailable(){
+    return this.roleModel?.flights;
+  }
+  isCheckListFlightAvailable(){
+    return this.roleModel?.checkFlight;
+  }
+  isCheckListCommisariatAvailable(){
+    return this.roleModel?.checkCommissariat;
+  }
+  isUnmannedAircraftAvailable(){
+    return this.roleModel?.uav;
+  }
+  isUnmannedByCordsAircraftAvailable(){
+    return this.roleModel?.uav;
+  }
+  isReportsAvailable(){
+    return this.roleModel?.reports;
+  }
+  isView360Available(){
+    return this.roleModel?.reports;
+  }
 }
