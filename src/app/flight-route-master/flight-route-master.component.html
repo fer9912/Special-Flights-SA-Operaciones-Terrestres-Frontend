@@ -1,144 +1,178 @@
-<div class="login-page">
-    <div class="form" style="margin-top:-30px;">
-        <i class="fa-solid fa-arrow-left" routerLink="/home" style="margin-bottom: 30px;cursor: pointer;">Volver</i>
-        <p style="margin-top:-10px;margin-bottom:34px;font-family: 'Segoe UI', sans-serif; font-size: 44px;">Maestro de Rutas de Vuelo</p>
-        <p style="margin-top:-10px;font-family: 'Segoe UI', sans-serif; font-size: 20px;">En esta pantalla podra generar la ruta mas optima para un vuelo y demas condiciones para un vuelo.</p>
-        <hr>
-        <div class="filters" style="margin-top:-30px;">
-            <div style="max-width: 400px;float: left;margin-right: 160px;" >
-                <p style="margin-top:20px;margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Incluir destinos:</p>
-                <div class="styled-select slate" style="margin-left: 0px; float: left">
-                    <select [(ngModel)]="selectedDestinationToInclude" (change)="disableInclude()">
-                        <option  [ngValue]="null">Seleccione un destino</option>
-                        <option  *ngFor="let d of destinations" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
-                     </select>
-                </div>
-                <div style="margin: 15px 20px; float: left">
-                    <button [disabled]="disabledInclude" (click)="includeDestination()" type="button" matTooltip="Es importante el orden de inclusión de los destinos"><i class="fa-solid fa-plus" style="margin-right:5px;"></i>Incluir</button>
-                </div>
-            </div>
-            <div style="max-width: 400px;float: left;margin-left: 110px;" >
-              <p style="margin-top:20px;margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Excluir destinos:</p>
-                <div class="styled-select slate" style="margin-left: 0px; float: left">
-                    <select [(ngModel)]="selectedDestinationToExclude" (change)="disableExclude()">
-                        <option  [ngValue]="null">Seleccione un destino</option>
-                        <option  *ngFor="let d of destinations" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
-                    </select>
-                </div>
-                <div style="margin: 15px 20px; float: left">
-                    <button [disabled]="disabledExclude" (click)="excludeDestination()" type="button" ><i class="fa-solid fa-x" style="margin-right:5px;"></i>Excluir</button>
-                </div>
-            </div>
+<div class="flight-route-master-page">
+  <div class="form">
+    <i class="fa-solid fa-arrow-left" routerLink="/home" style="margin-bottom: 30px;cursor: pointer;">Volver</i>
+    <p class="titulo">Maestro de Rutas de Vuelo</p>
+    <p class="descripcion">En esta pantalla podra generar la ruta mas optima para un vuelo y demas condiciones para un
+      vuelo.</p>
+    <hr>
+    <div class="include-exclude-destinations-select">
+      <div class="include-destinations">
+        <p style="margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Incluir
+          destinos:</p>
+        <div class="styled-select slate" style="margin-left: 0px; float: left">
+          <select [(ngModel)]="selectedDestinationToInclude" (change)="disableInclude()">
+            <option [ngValue]="null">Seleccione un destino</option>
+            <option *ngFor="let d of destinations" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
+          </select>
         </div>
-        <div class="filters" >
-            <div  style="max-width: 400px;float: left;margin-left: 40px;">
-                <p style="margin-top: -20px;margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Destinos incluidos:</p>
-                <select multiple id="select1" style="width: 300px; height: 400px;font-size: 18px;" [(ngModel)]="removeToInclude">
-                    <option  *ngFor="let d of destinationsToInclude" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
-                </select>
-            </div>
-            <div  style="max-width: 400px;float: left;margin-left: 30px; margin-top: 50px;">
-                <p style="margin-top:20px;margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Aeronave:</p>
-                <div class="styled-select slate" style="margin-left: 0px; float: left;margin-bottom: 80px;">
-                    <select [(ngModel)]="selectedAircraft" (change)="disableAircraft()">
-                        <option  [ngValue]="null">Seleccione una Aeronave</option>
-                        <option  *ngFor="let d of aircrafts" [ngValue]="d">{{d.model}}</option>
-                     </select>
-                </div>
-                <div class="styled-select slate" style="margin-left: 10px; float: bottom">
-                    <button (click)="parameters()" type="button" ><i class="fa-solid fa-gear" style="margin-right:10px;"></i>Parametros</button>
-                </div>
-            </div>
-
-            <div  style="max-width: 400px;float: left;margin-left: 30px;">
-                <p style="margin-top: -20px;margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Destinos excluidos:</p>
-                <select multiple id="select1" style="width: 300px; height: 400px;font-size: 18px;" [(ngModel)]="removeToExclude">
-                    <option  *ngFor="let d of destinationsToExclude" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
-                </select>
-            </div>
+        <div style="margin: 15px 20px; float: left">
+          <button [disabled]="disabledInclude" (click)="includeDestination()" type="button"
+            matTooltip="Es importante el orden de inclusión de los destinos"><i class="fa-solid fa-plus"
+              style="margin-right:5px;"></i>Incluir</button>
         </div>
-        <div class="filters" >
-            <div style="margin: -18px -20px 10px 240px; float: left">
-                <button style="background-color: rgb(112, 42, 42);" (click)="removeToIncludeList()" type="button" matTooltip="Borra de la lista el destino seleccionado1"><i class="fa-solid fa-trash" style="margin-right:10px;"></i>Remover</button>
-            </div>
-            <div style="margin: -18px -20px 10px 550px; float: left">
-                <button style="background-color: rgb(112, 42, 42);" (click)="removeToExcludeList()" type="button" matTooltip="Borra de la lista el destino seleccionado"><i class="fa-solid fa-trash" style="margin-right:10px;"></i>Remover</button>
-            </div>
+      </div>
+      <div class="exclude-destinations">
+        <p style="margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Excluir
+          destinos:</p>
+        <div class="styled-select slate" style="margin-left: 0px; float: left">
+          <select [(ngModel)]="selectedDestinationToExclude" (change)="disableExclude()">
+            <option [ngValue]="null">Seleccione un destino</option>
+            <option *ngFor="let d of destinations" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
+          </select>
         </div>
-        <div class="filters" >
-            <div style="margin: -18px 30px 20px 495px; float: left">
-                <button (click)="generate()" type="button"><i class="fa-solid fa-paper-plane" style="margin-right:10px;"></i>Generar</button>
-            </div>
-
-
+        <div style="margin: 15px 20px; float: left">
+          <button [disabled]="disabledExclude" (click)="excludeDestination()" type="button"><i class="fa-solid fa-x"
+              style="margin-right:5px;"></i>Excluir</button>
         </div>
-
+      </div>
     </div>
-
-
-    <div class="container" style="margin-left:370px" *ngIf="showErrorPopup">
-        <div class="boxPopup" id="popup">
-          <div class="msgPopup">¡¡¡Error!!!</div>
-          <div class="descript">Deben seleccionarse almenos 2(dos) destinos a incluir para generar una ruta de vuelo.</div>
-          <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 310px;" (click)="showErrorPopup = false;">Cerrar</button>
+    <div class="included-excluded-destinations-list">
+      <div class="included-destinations-container">
+        <p
+          style="margin-top: -20px;margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+          Destinos incluidos:</p>
+        <select class="included-excludes-select" multiple id="select1" [(ngModel)]="removeToInclude">
+          <option *ngFor="let d of destinationsToInclude" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
+        </select>
+        <div class="remove-button-container">
+          <button style="background-color: rgb(112, 42, 42);" (click)="removeToIncludeList()" type="button"
+            matTooltip="Borra de la lista el destino seleccionado1"><i class="fa-solid fa-trash"
+              style="margin-right:10px;"></i>Remover</button>
         </div>
-    </div>
-
-
-    <div class="loading" *ngIf="showLoadAnimation">Loading&#8230;</div>
-
-
-    <div class="container" style="margin-left:0px;min-width: 1250px; width:1250px; margin-top:200px;" *ngIf="showParameters">
-        <div class="boxPopup" id="popup" style="width:1250px; height: 240px;">
-            <div class="msgPopup">Parametros de generacion de ruta:</div>
-            <div style="float: left; width: 18%;margin-left:20px;margin-right: 25px;">
-                <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Ganancia por persona:</p>
-                <input [(ngModel)]="gananciaPorPersona" />
-            </div>
-            <div style="float: left; width: 18%;margin-left:0px;margin-right: 25px;">
-                <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Costo de combustible:</p>
-                <input [(ngModel)]="costoCombustible" />
-            </div>
-            <div style="float: left; width: 15%;margin-left:0px;margin-right: 25px;">
-                <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Costo de lubricante:</p>
-                <input [(ngModel)]="costoLubricante"/>
-            </div>
-            <div style="float: left; width: 15%;margin-left:0px;margin-right: 25px;">
-                <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Costo de insumos:</p>
-                <input [(ngModel)]="costoInsumos" />
-            </div>
-            <div style="float: left; width: 18%;margin-left:0px;margin-right: 0px;">
-                <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Promedio de personas:</p>
-                <input [(ngModel)]="promedioDePersonas" />
-            </div>
-            <button id="btnClose" style="width: 120px; margin-left: 760px;float:left;background-color: brown;" (click)="showParameters = false;"><i class="fa-solid fa-x" style="margin-right:10px;"></i>Cerrar</button>
-            <button id="btnClose" style="width: 120px; margin-left: 30px;float:left;background-color: grey;" (click)="resetParameters()"><i class="fa-solid fa-arrow-rotate-left" style="margin-right:10px;"></i>Reiniciar</button>
-            <button id="btnClose" style="width: 120px; margin-left: 30px;float:left;" (click)="saveParameters()"><i class="fas fa-save" style="margin-right:10px;"></i>Guardar</button>
+      </div>
+      <div class="aircraft-parameters-container">
+        <p style="margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+          Aeronave:</p>
+        <div class="styled-select slate" style="margin-left: 0px; float: left;">
+          <select [(ngModel)]="selectedAircraft" (change)="disableAircraft()">
+            <option [ngValue]="null">Seleccione una Aeronave</option>
+            <option *ngFor="let d of aircrafts" [ngValue]="d">{{d.model}}</option>
+          </select>
         </div>
-    </div>
+        <button (click)="parameters()" type="button"><i class="fa-solid fa-gear"
+            style="margin-right:10px;"></i>Parametros</button>
 
-    <div class="container" style="margin-left:360px; width:1200px; margin-top:200px;" *ngIf="showGeneratedRoute">
-        <div class="boxPopup" id="popup" style="width:1200px; height: 300px;">
-            <div class="msgPopup">Ruta generada:</div>
-                <div id="box">
-                    <p style="margin: 10px;font-family: 'Segoe UI', sans-serif; font-size: 18px;font-weight: bolder;">{{generatedRoute}}</p>
-                </div>
-            <div style="float: left; width: 30%;margin-left:110px;">
-                <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">{{"Aeronave: " + aircraft}}</p>
-            </div>
-            <div style="float: left; width: 25%;">
-                <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">{{"Distancia: " + distance + "km"}}</p>
-            </div>
-            <div style="float: left; width: 20%;">
-                <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">{{"Dia: " + day}}</p>
-            </div>
-          <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 970px;" (click)="showGeneratedRoute = false;">Cerrar</button>
+      </div>
+      <div class="excluded-destinations-container">
+        <p
+          style="margin-top: -20px;margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+          Destinos excluidos:</p>
+        <select class="included-excludes-select" multiple id="select1" [(ngModel)]="removeToExclude">
+          <option *ngFor="let d of destinationsToExclude" [ngValue]="d">{{d.iata + " - " + d.city}}</option>
+        </select>
+        <div class="remove-button-container">
+          <button style="background-color: rgb(112, 42, 42);" (click)="removeToExcludeList()" type="button"
+            matTooltip="Borra de la lista el destino seleccionado"><i class="fa-solid fa-trash"
+              style="margin-right:10px;"></i>Remover</button>
         </div>
+      </div>
     </div>
+    <div class="generate-button-container">
+      <button class="generate-button" (click)="generate()" type="button"><i
+          class="fa-solid fa-paper-plane"></i>Generar</button>
+    </div>
+  </div>
+
+
+  <div class="dialog-container" *ngIf="showErrorPopup">
+    <div class="boxPopup" id="popup">
+      <div class="msgPopup">¡¡¡Error!!!</div>
+      <div class="descript">Deben seleccionarse almenos 2(dos) destinos a incluir para generar una ruta de vuelo.</div>
+      <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 310px;"
+        (click)="showErrorPopup = false;">Cerrar</button>
+    </div>
+  </div>
+
+
+  <div class="loading" *ngIf="showLoadAnimation">Loading&#8230;</div>
+
+
+  <div class="dialog-container" *ngIf="showParameters">
+    <div class="boxPopup" id="popup" style="width: 900px; height: 320px;display: flex;
+    flex-direction: column;">
+      <div class="parameters-container">
+
+
+        <div class="msgPopup">Parametros de generacion de ruta:</div>
+        <div style="float: left; width: 18%;margin-left:20px;margin-right: 25px;">
+          <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+            Ganancia
+            por persona:</p>
+          <input [(ngModel)]="gananciaPorPersona" />
+        </div>
+        <div style="float: left; width: 18%;margin-left:0px;margin-right: 25px;">
+          <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Costo
+            de
+            combustible:</p>
+          <input [(ngModel)]="costoCombustible" />
+        </div>
+        <div style="float: left; width: 15%;margin-left:0px;margin-right: 25px;">
+          <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Costo
+            de
+            lubricante:</p>
+          <input [(ngModel)]="costoLubricante" />
+        </div>
+        <div style="float: left; width: 15%;margin-left:0px;margin-right: 25px;">
+          <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Costo
+            de
+            insumos:</p>
+          <input [(ngModel)]="costoInsumos" />
+        </div>
+        <div style="float: left; width: 18%;margin-left:0px;margin-right: 0px;">
+          <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+            Promedio
+            de personas:</p>
+          <input [(ngModel)]="promedioDePersonas" />
+        </div>
+      </div>
+
+
+      <div class="button-dialog-container" style="display:flex; flex-direction: row;">
+
+        <button id="btnClose" style="width: 120px; float:left;background-color: brown;"
+          (click)="showParameters = false;"><i class="fa-solid fa-x" style="margin-right:10px;"></i>Cerrar</button>
+        <button id="btnClose" style="width: 120px; margin-left: 30px;float:left;background-color: grey;"
+          (click)="resetParameters()"><i class="fa-solid fa-arrow-rotate-left"
+            style="margin-right:10px;"></i>Reiniciar</button>
+        <button id="btnClose" style="width: 120px; margin-left: 30px;float:left;" (click)="saveParameters()"><i
+            class="fas fa-save" style="margin-right:10px;"></i>Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-container" *ngIf="showGeneratedRoute">
+    <div class="boxPopup" id="popup">
+      <div class="msgPopup">Ruta generada:</div>
+      <div id="box">
+        <p style="margin: 10px;font-family: 'Segoe UI', sans-serif; font-size: 18px;font-weight: bolder;">
+          {{generatedRoute}}</p>
+      </div>
+      <div class="data-toShow" style="display: flex; flex-direction:row;">
+        <div style="float: left; width: 30%;margin-left:110px;">
+          <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+            {{"Aeronave: " + aircraft}}</p>
+        </div>
+        <div style="float: left; width: 25%;">
+          <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+            {{"Distancia: " + distance + "km"}}</p>
+        </div>
+        <div style="float: left; width: 20%;">
+          <p style="margin-bottom: 4px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+            {{"Dia:" + day}}</p>
+        </div>
+        <button id="btnClose" style="background-color: brown; width: 100px;"
+          (click)="showGeneratedRoute = false;">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-

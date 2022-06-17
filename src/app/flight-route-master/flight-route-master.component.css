@@ -1,27 +1,95 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
-.login-page {
+:host {
+  width: 100%;
+}
+.flight-route-master-page {
   display: flex;
-  width: 0px;
   padding: 20px;
-  margin-top: 0px;
-  margin-bottom: 40px;
+  width: 90%;
+  height: 90%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.titulo {
+  margin-top: -10px;
+  margin-bottom: 34px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 44px;
+  line-height: 40px;
+}
+
+.descripcion {
+  margin-top: -10px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 20px;
 }
 .filters {
     padding: 10px;
     margin: 30px;
   }
 .form {
-  position:absolute;
-  z-index: 1;
   background: #FFFFFF;
-  width: 1200px;
+  width: 80%;
   margin: 0px;
-  margin-top: 40px !important;
+  margin-top: 40px;
   padding: 45px;
   padding-bottom: 20px;
-  text-align:left;
+  text-align: left;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  overflow: auto;
+}
+.include-exclude-destinations-select{
+  display: flex;
+  flex-direction: row;
+  margin: 0px !important;
+  align-items: center;
+  justify-content: center;
+}
+.included-excluded-destinations-list{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+.included-destinations-container{
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+}
+.excluded-destinations-container{
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+}
+.included-excludes-select{
+  width: 100%;
+    height: 200px;
+    font-size: 18px;
+}
+.aircraft-parameters-container{
+  max-width: 260px;
+  float: left;
+  display: flex;
+  flex-direction: column;
+}
+.include-destinations{
+  margin: 10px;
+}
+.exclude-destinations{
+margin: 10px;
+}
+.generate-button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.generate-button{
+  width: 20% !important;
 }
 .form input {
   font-family: "Roboto", sans-serif;
@@ -79,7 +147,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: transparent;
+  width: 100%;
+}
 /* -------------------- Page Styles (not required) */
 div { margin: 20px; }
 
@@ -151,16 +226,14 @@ html,body{
 .hidePopup{
   display: none;
 }
-.boxPopup{
-  width: 600px;
-  height: 200px;
+.boxPopup {
   background-color: whitesmoke;
-  padding: 7px;
   margin: 0px;
   border-radius: 4px;
-  z-index: 10000;
   box-shadow: 1px 1px 6px grey;
-  transition:0.8s;
+  transition: 0.8s;
+  padding: 10px;
+  width: 80%;
 }
 
 
@@ -212,7 +285,6 @@ button:hover,button:active, button:focus {
 
 #box {
   height: 100px;
-  width: 1100px;
   border: 1px solid black;
   margin-bottom: 15px;
   position: relative;
