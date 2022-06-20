@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PlannedFlightModel } from 'src/app/model/plannedFlight.model';
 import { CheckFlightModel } from 'src/app/model/checkFlight.model';
 import { CheckFlightService } from '../services/checkFlight.service';
-
-
 @Component({
   selector: 'app-check-list-flight',
   templateUrl: './check-list-flight.component.html',
@@ -17,52 +15,52 @@ export class CheckListFlightComponent implements OnInit {
   showErrorVuelo = false;
   flight: PlannedFlightModel;
   flightSelected: PlannedFlightModel;
-  isDisabled : boolean;
+  isDisabled: boolean;
 
   idvuelo: string;
-  estado:string;
-  aeronave_matricula_fk:string;
-  modeloaeronave:string;
-  origenteorico_codiata:string;
-  origenreal_codiata:string;
-  destinoteorico_codiata:string;
-  destinoreal_codiata:string;
-  siglacompania:string;
-  nombrecompania:string;
-  rutateorica:string;
-  rutareal:string;
-  regladevuelo:string;
-  tipodevuelo:string;
-  diadespegue:string;
-  fechadespegueestimado:Date;
-  horadespegueestimado:string;;
-  fechadespeguereal:string;
-  horadespeguereal:string;
-  fechaaterrizajeestimado:Date;
-  horaaterrizajeestimado:string;
-  fechaaterrizajereal:string;
-  horaaterrizajereal:string;
-  climadestino:string;
-  gradostemperaturadestino:number;
-  velocidadvientokm:string;
-  ltscombustibleestimado:number;
-  ltscombustiblereal:number;
-  lubricanteestimado:number;
-  lubricantereal:number;
-  kilometrajeestimado:number;
-  kilometrajereal:number;
-  checkin:Boolean; 
-  controlcabina:Boolean; 
-  totalpersonasabordo:number;
-  duracionestimada:string;
-  duracionreal:string;
-  insumosconsumidos:number;
-  pesocargaorigen:number;
-  pesocargadestino:number;
-  motivoestado:string;
+  estado: number;
+  aeronave_matricula_fk: string;
+  modeloaeronave: string;
+  origenteorico_codiata: string;
+  origenreal_codiata: string;
+  destinoteorico_codiata: string;
+  destinoreal_codiata: string;
+  siglacompania: string;
+  nombrecompania: string;
+  rutateorica: string;
+  rutareal: string;
+  regladevuelo: string;
+  tipodevuelo: string;
+  diadespegue: string;
+  fechadespegueestimado: Date;
+  horadespegueestimado: string;;
+  fechadespeguereal: string;
+  horadespeguereal: string;
+  fechaaterrizajeestimado: Date;
+  horaaterrizajeestimado: string;
+  fechaaterrizajereal: string;
+  horaaterrizajereal: string;
+  climadestino: string;
+  gradostemperaturadestino: number;
+  velocidadvientokm: string;
+  ltscombustibleestimado: number;
+  ltscombustiblereal: number;
+  lubricanteestimado: number;
+  lubricantereal: number;
+  kilometrajeestimado: number;
+  kilometrajereal: number;
+  checkin: Boolean;
+  controlcabina: Boolean;
+  totalpersonasabordo: number;
+  duracionestimada: string;
+  duracionreal: string;
+  insumosconsumidos: number;
+  pesocargaorigen: number;
+  pesocargadestino: number;
+  motivoestado: string;
   aeronavesposibles: string[];
   searchDisabled = false;
-  
+
   checkFlight: CheckFlightModel;
   idCheckFlight: number;
   idFlight: string;
@@ -123,15 +121,15 @@ export class CheckListFlightComponent implements OnInit {
   e1: boolean;
   e2: boolean;
   validacionFinal: boolean;
-  tripulacion:string;
+  tripulacion: string;
   showNotResultMessage = false;
 
-  constructor( public checkFlightService: CheckFlightService) {
+  constructor(public checkFlightService: CheckFlightService) {
   }
 
   ngOnInit(): void {
     let date: string = "21-06-2022"
-   // let date: string = new Date().getDate()+'-'+(new Date().getMonth())+'-'+new Date().getFullYear();
+    // let date: string = new Date().getDate()+'-'+(new Date().getMonth())+'-'+new Date().getFullYear();
     console.log(date)
 
     this.showLoadAnimation = true;
@@ -186,12 +184,12 @@ export class CheckListFlightComponent implements OnInit {
     this.pesocargadestino = this.flight.pesocargadestino;
     this.showLoadAnimation = true;
     this.checkFlightService.getCrew(this.flight.idvuelo).subscribe(data => {
-      if(data != null && data  != undefined){
-        this.tripulacion=data
-      }else{
+      if (data != null && data != undefined) {
+        this.tripulacion = data
+      } else {
         this.showNotResultMessage = true;
       }
-      
+
       this.showLoadAnimation = false;
     });
 
@@ -256,39 +254,39 @@ export class CheckListFlightComponent implements OnInit {
       this.d3 = data.d3;
       this.d4 = data.d4;
       this.e1 = data.e1;
-      this.e2= data.e2;
-      this.validacionFinal= data.validacionFinal;
+      this.e2 = data.e2;
+      this.validacionFinal = data.validacionFinal;
 
-      this.showLoadAnimation = false;  
+      this.showLoadAnimation = false;
     }, (error) => {
-     
-        this.showCheckList = true;
-        this.showErrorCheckVuelo = false;
-        this.showErrorVuelo = false;
-        
-      this.showLoadAnimation = false;  
+
+      this.showCheckList = true;
+      this.showErrorCheckVuelo = false;
+      this.showErrorVuelo = false;
+
+      this.showLoadAnimation = false;
     }, () => {
 
-      if (this.estado != "despegado" && this.estado != "en vuelo" && this.estado != "aterrizado" && this.estado != "finalizado" && this.estado != "cancelado") {
+      if (this.estado != 4 && this.estado != 5 && this.estado != 6 && this.estado != 7 && this.estado != 10) {
         this.showErrorCheckVuelo = false;
-        this.showErrorVuelo  = false;
+        this.showErrorVuelo = false;
         this.showCheckList = true;
         console.log(this.estado);
       } else {
         this.showErrorCheckVuelo = false;
-        this.showErrorVuelo  = false;
+        this.showErrorVuelo = false;
         this.showCheckList = true;
-        this.isDisabled =true;
+        this.isDisabled = true;
         console.log(this.estado);
       }
-      
-      
-      this.showLoadAnimation = false;  
-      });
-    }
+
+
+      this.showLoadAnimation = false;
+    });
+  }
   save() {
     this.checkFlight = new CheckFlightModel();
-    this.checkFlight.idCheckFlight= this.idCheckFlight;
+    this.checkFlight.idCheckFlight = this.idCheckFlight;
     this.checkFlight.idFlight = this.idvuelo;
     this.checkFlight.a1 = this.a1;
     this.checkFlight.a2 = this.a2;
@@ -346,7 +344,7 @@ export class CheckListFlightComponent implements OnInit {
     this.checkFlight.d4 = this.d4;
     this.checkFlight.e1 = this.e1;
     this.checkFlight.e2 = this.e2;
-    if (  this.checkFlight.a1 == true &&
+    if (this.checkFlight.a1 == true &&
       this.checkFlight.a2 == true &&
       this.checkFlight.a3 == true &&
       this.checkFlight.a4 == true &&
@@ -401,9 +399,9 @@ export class CheckListFlightComponent implements OnInit {
       this.checkFlight.d3 == true &&
       this.checkFlight.d4 == true &&
       this.checkFlight.e1 == true &&
-      this.checkFlight.e2 == true){
-      this.checkFlight.validacionFinal = true; 
-  }else{    this.checkFlight.validacionFinal = false; }
+      this.checkFlight.e2 == true) {
+      this.checkFlight.validacionFinal = true;
+    } else { this.checkFlight.validacionFinal = false; }
 
     console.info(this.checkFlight);
     this.checkFlightService.saveCheckFlight(this.checkFlight).subscribe(data => {
@@ -417,8 +415,8 @@ export class CheckListFlightComponent implements OnInit {
     this.showCheckList = false;
   }
   clean() {
-    this.isDisabled =false;
-    this.idCheckFlight=null;
+    this.isDisabled = false;
+    this.idCheckFlight = null;
     this.idFlight = null;
     this.a1 = null;
     this.a2 = null;
@@ -476,7 +474,7 @@ export class CheckListFlightComponent implements OnInit {
     this.d4 = null;
     this.e1 = null;
     this.e2 = null;
-    this.validacionFinal = null; 
+    this.validacionFinal = null;
 
   }
 }

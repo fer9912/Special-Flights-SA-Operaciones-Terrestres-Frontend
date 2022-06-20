@@ -1,6 +1,6 @@
 export interface PlannedFlightModel {
   idvuelo: string;
-  estado: string;
+  estado: number;
   aeronave_matricula_fk:string;
   modeloaeronave:string;
   origenteorico_codiata:string;

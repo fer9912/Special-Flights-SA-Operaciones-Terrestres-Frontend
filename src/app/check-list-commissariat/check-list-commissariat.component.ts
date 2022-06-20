@@ -24,7 +24,7 @@ export class CheckListCommissariatComponent implements OnInit {
   idCheckCommissariat: number;
   idFlight: string;
   idvuelo: string;
-  estado: string;
+  estado: number;
   aeronave_matricula_fk: string;
   modeloaeronave: string;
   origenteorico_codiata: string;
@@ -185,48 +185,48 @@ export class CheckListCommissariatComponent implements OnInit {
         }
         this.showLoadAnimation = false;
       }),
-      this.checkCommissariatService.getCheckCommissariat(this.idvuelo).subscribe(data => {
-        this.checkCommissariat = data;
-        this.idCheckCommissariat = data.idCheckCommissariat;
-        this.idFlight = data.idFlight;
-        this.a1 = data.a1;
-        this.a2 = data.a2;
-        this.a3 = data.a3;
-        this.a4 = data.a4;
-        this.a5 = data.a5;
-        console.log(this.idCheckCommissariat);
+        this.checkCommissariatService.getCheckCommissariat(this.idvuelo).subscribe(data => {
+          this.checkCommissariat = data;
+          this.idCheckCommissariat = data.idCheckCommissariat;
+          this.idFlight = data.idFlight;
+          this.a1 = data.a1;
+          this.a2 = data.a2;
+          this.a3 = data.a3;
+          this.a4 = data.a4;
+          this.a5 = data.a5;
+          console.log(this.idCheckCommissariat);
 
-      }, (error) => {
-        if (this.vegano == 0 && this.vegetariano == 0 && this.celiaco == 0 && this.estandar == 0 && this.sanitarios == 0) {
-          this.showCheckList = false;
-          this.showErrorCheckComisariato = false;
-          this.showErrorSupplies = true;
-        } else {
-          console.log('Complete');
-          this.showCheckList = true;
-          this.showErrorCheckComisariato = false;
-          this.showErrorSupplies = false;
-        }
-      }, () => {
-        if (this.vegano == 0 && this.vegetariano == 0 && this.celiaco == 0 && this.estandar == 0 && this.sanitarios == 0) {
-          this.showCheckList = false;
-          this.showErrorCheckComisariato = false;
-          this.showErrorSupplies = true;
-        } else {
-          if (this.estado != "despegado" && this.estado != "en vuelo" && this.estado != "aterrizado" && this.estado != "finalizado" && this.estado != "cancelado") {
+        }, (error) => {
+          if (this.vegano == 0 && this.vegetariano == 0 && this.celiaco == 0 && this.estandar == 0 && this.sanitarios == 0) {
+            this.showCheckList = false;
             this.showErrorCheckComisariato = false;
-            this.showErrorSupplies = false;
-            this.showCheckList = true;
-            console.log(this.estado);
+            this.showErrorSupplies = true;
           } else {
+            console.log('Complete');
+            this.showCheckList = true;
             this.showErrorCheckComisariato = false;
             this.showErrorSupplies = false;
-            this.showCheckList = true;
-            this.isDisabled = true;
-            console.log(this.estado);
           }
-        }
-      });
+        }, () => {
+          if (this.vegano == 0 && this.vegetariano == 0 && this.celiaco == 0 && this.estandar == 0 && this.sanitarios == 0) {
+            this.showCheckList = false;
+            this.showErrorCheckComisariato = false;
+            this.showErrorSupplies = true;
+          } else {
+            if (this.estado != 4 && this.estado != 5 && this.estado != 6 && this.estado != 7 && this.estado != 10) {
+              this.showErrorCheckComisariato = false;
+              this.showErrorSupplies = false;
+              this.showCheckList = true;
+              console.log(this.estado);
+            } else {
+              this.showErrorCheckComisariato = false;
+              this.showErrorSupplies = false;
+              this.showCheckList = true;
+              this.isDisabled = true;
+              console.log(this.estado);
+            }
+          }
+        });
     });
 
   }
