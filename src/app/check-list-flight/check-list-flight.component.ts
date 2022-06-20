@@ -18,7 +18,7 @@ export class CheckListFlightComponent implements OnInit {
   isDisabled: boolean;
 
   idvuelo: string;
-  estado: number;
+  estado: string;
   aeronave_matricula_fk: string;
   modeloaeronave: string;
   origenteorico_codiata: string;
@@ -267,7 +267,7 @@ export class CheckListFlightComponent implements OnInit {
       this.showLoadAnimation = false;
     }, () => {
 
-      if (this.estado != 4 && this.estado != 5 && this.estado != 6 && this.estado != 7 && this.estado != 10) {
+      if (this.estado != "despegado" && this.estado != "en vuelo" && this.estado != "aterrizado" && this.estado != "finalizado" && this.estado != "cancelado") {
         this.showErrorCheckVuelo = false;
         this.showErrorVuelo = false;
         this.showCheckList = true;
