@@ -7,8 +7,13 @@
     <hr>
     <div class="include-exclude-destinations-select">
       <div class="include-destinations">
-        <p style="margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Incluir
-          destinos:</p>
+        <div style="margin: 0px; display: flex; flex-direction: row;column-gap: 5px;">
+          <i class="fa-solid fa-circle-info"
+            matTooltip="Seleccionando opciones del listado podra forzar la agregacion de destino particular a la ruta."></i>
+          <p style="margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+            Incluir
+            destinos:</p>
+        </div>
         <div class="styled-select slate" style="margin-left: 0px; float: left">
           <select [(ngModel)]="selectedDestinationToInclude" (change)="disableInclude()">
             <option [ngValue]="null">Seleccione un destino</option>
@@ -22,8 +27,13 @@
         </div>
       </div>
       <div class="exclude-destinations">
-        <p style="margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">Excluir
-          destinos:</p>
+        <div style="margin: 0px; display: flex; flex-direction: row;column-gap: 5px;">
+          <i class="fa-solid fa-circle-info"
+            matTooltip="Seleccionando opciones del listado podra excluir un destino particular de la ruta."></i>
+          <p style="margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+            Excluir
+            destinos:</p>
+        </div>
         <div class="styled-select slate" style="margin-left: 0px; float: left">
           <select [(ngModel)]="selectedDestinationToExclude" (change)="disableExclude()">
             <option [ngValue]="null">Seleccione un destino</option>
@@ -51,16 +61,20 @@
         </div>
       </div>
       <div class="aircraft-parameters-container">
-        <p style="margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
-          Aeronave:</p>
+        <div style="margin: 0px; display: flex; flex-direction: row;column-gap: 5px;">
+          <i class="fa-solid fa-circle-info"
+            matTooltip="Podra seleccionar la aeronave a utilizar."></i>
+          <p style="margin-bottom:-14px;font-family: 'Segoe UI', sans-serif; font-size: 16px;font-weight: bolder;">
+            Aeronave:</p>
+        </div>
         <div class="styled-select slate" style="margin-left: 0px; float: left;">
           <select [(ngModel)]="selectedAircraft" (change)="disableAircraft()">
             <option [ngValue]="null">Seleccione una Aeronave</option>
             <option *ngFor="let d of aircrafts" [ngValue]="d">{{d.model}}</option>
           </select>
         </div>
-        <button (click)="parameters()" type="button"><i class="fa-solid fa-gear"
-            style="margin-right:10px;"></i>Parametros</button>
+        <button (click)="parameters()" type="button" matTooltip="Brinda la opcion de modificar los parametros segun los cuales se calcula el vuelo."><i class="fa-solid fa-gear"
+            style="margin-right:10px;" ></i>Parametros</button>
 
       </div>
       <div class="excluded-destinations-container">
@@ -78,7 +92,7 @@
       </div>
     </div>
     <div class="generate-button-container">
-      <button class="generate-button" (click)="generate()" type="button"><i
+      <button class="generate-button" (click)="generate()" type="button" matTooltip="Genera la ruta optima y muestra por pantalla los detalles de la misma."><i
           class="fa-solid fa-paper-plane"></i>Generar</button>
     </div>
   </div>
