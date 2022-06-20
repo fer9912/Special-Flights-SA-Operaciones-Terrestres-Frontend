@@ -30,9 +30,8 @@
     </div>
 
     <div class="CheckList" *ngIf="showCheckList">
-      <p>{{flight.idvuelo
-        + " - " +
-        flight.origenteorico_codiata + " - " + flight.destinoteorico_codiata}}</p>
+      <p>{{flight.idvuelo + " - " +
+        flight.origenteorico_codiata + " - " + flight.destinoteorico_codiata + " / " + flight.estado}}</p>
       <div>
         <label><input type="checkbox" [disabled]="isDisabled" [(ngModel)]="a1">{{"A.1. Cantidad de Menus Vegetarianos: "
           + vegetariano
