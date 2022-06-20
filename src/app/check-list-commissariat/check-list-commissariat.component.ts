@@ -209,7 +209,7 @@ export class CheckListCommissariatComponent implements OnInit {
           this.showErrorCheckComisariato = false;
           this.showErrorSupplies = true;
         }else{
-          if (this.estado != "pre-embarque") {
+          if (this.estado != "despegado" && this.estado != "en vuelo" && this.estado != "aterrizado" && this.estado != "finalizado" && this.estado != "cancelado") {
             this.showErrorCheckComisariato = false;
             this.showErrorSupplies = false;
             this.showCheckList = true;
