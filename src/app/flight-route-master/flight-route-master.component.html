@@ -99,7 +99,7 @@
 
 
   <div class="dialog-container" *ngIf="showErrorPopup">
-    <div class="boxPopup" id="popup">
+    <div class="boxPopup" id="popup" style="margin-top: calc(-100vh + 50vh);">
       <div class="msgPopup">¡¡¡Error!!!</div>
       <div class="descript">Deben seleccionarse almenos 2(dos) destinos a incluir para generar una ruta de vuelo.</div>
       <button id="btnClose" style="background-color: brown; width: 100px; margin-left: 310px;"
@@ -113,7 +113,7 @@
 
   <div class="dialog-container" *ngIf="showParameters">
     <div class="boxPopup" id="popup" style="width: 900px; height: 320px;display: flex;
-    flex-direction: column;">
+    flex-direction: column;     margin-top: calc(-100vh + 50vh);">
       <div class="parameters-container">
 
 
@@ -165,7 +165,7 @@
   </div>
 
   <div class="dialog-container" *ngIf="showGeneratedRoute">
-    <div class="boxPopup" id="popup">
+    <div class="boxPopup" id="popup" style="margin-top: calc(-100vh + 50vh);">
       <div class="msgPopup">Ruta generada:</div>
       <div id="box">
         <p style="margin: 10px;font-family: 'Segoe UI', sans-serif; font-size: 18px;font-weight: bolder;">
