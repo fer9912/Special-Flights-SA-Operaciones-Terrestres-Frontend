@@ -90,7 +90,7 @@ body {
     float: left;
   }
   .nav ul {
-    overflow: auto;
+    overflow:  auto;
     width: 600px;
     margin: 0 auto;
   }
