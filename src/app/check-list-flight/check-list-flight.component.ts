@@ -260,9 +260,19 @@ export class CheckListFlightComponent implements OnInit {
       this.showLoadAnimation = false;
     }, (error) => {
 
-      this.showCheckList = true;
-      this.showErrorCheckVuelo = false;
-      this.showErrorVuelo = false;
+      if (this.estado != "despegado" && this.estado != "en vuelo" && this.estado != "aterrizado" && this.estado != "finalizado" && this.estado != "cancelado") {
+        this.showErrorCheckVuelo = false;
+        this.showErrorVuelo = false;
+        this.showCheckList = true;
+        console.log(this.estado);
+      } else {
+        this.showErrorCheckVuelo = false;
+        this.showErrorVuelo = false;
+        this.showCheckList = true;
+        this.isDisabled = true;
+        console.log(this.estado);
+      }
+
 
       this.showLoadAnimation = false;
     }, () => {

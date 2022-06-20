@@ -202,10 +202,18 @@ export class CheckListCommissariatComponent implements OnInit {
             this.showErrorCheckComisariato = false;
             this.showErrorSupplies = true;
           } else {
-            console.log('Complete');
-            this.showCheckList = true;
-            this.showErrorCheckComisariato = false;
-            this.showErrorSupplies = false;
+            if (this.estado != "despegado" && this.estado != "en vuelo" && this.estado != "aterrizado" && this.estado != "finalizado" && this.estado != "cancelado") {
+              this.showErrorCheckComisariato = false;
+              this.showErrorSupplies = false;
+              this.showCheckList = true;
+              console.log(this.estado);
+            } else {
+              this.showErrorCheckComisariato = false;
+              this.showErrorSupplies = false;
+              this.showCheckList = true;
+              this.isDisabled = true;
+              console.log(this.estado);
+            }
           }
         }, () => {
           if (this.vegano == 0 && this.vegetariano == 0 && this.celiaco == 0 && this.estandar == 0 && this.sanitarios == 0) {
