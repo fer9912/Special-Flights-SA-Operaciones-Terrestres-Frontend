@@ -153,13 +153,6 @@ export class CheckListCommissariatComponent implements OnInit {
 
 
     this.showLoadAnimation = true;
-    this.suppliesService.getSuppliesSanitario(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
-      this.insumos = response;
-      for (let insumo of this.insumos) {
-        this.sanitarios = this.sanitarios + insumo.InitialQuantity;
-      }
-
-    }),
     this.suppliesService.getSuppliesCatering(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
       this.insumos = response;
       for (let insumo of this.insumos) {
@@ -177,7 +170,7 @@ export class CheckListCommissariatComponent implements OnInit {
         }
       }
 
-        this.showLoadAnimation = false;
+
 
     }, (error) => {
       console.log('An unexpected error occured');
@@ -185,6 +178,13 @@ export class CheckListCommissariatComponent implements OnInit {
       this.showErrorCheckComisariato = false;
       this.showCheckList = false;
     }, () => {
+      this.suppliesService.getSuppliesSanitario(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
+        this.insumos = response;
+        for (let insumo of this.insumos) {
+          this.sanitarios = this.sanitarios + insumo.InitialQuantity;
+        }
+        this.showLoadAnimation = false;
+      }),
       this.checkCommissariatService.getCheckCommissariat(this.idvuelo).subscribe(data => {
         this.checkCommissariat = data;
         this.idCheckCommissariat = data.idCheckCommissariat;
