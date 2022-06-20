@@ -19,73 +19,73 @@ export class CheckListCommissariatComponent implements OnInit {
   showErrorSupplies = false;
   flight: PlannedFlightModel;
   flightSelected: PlannedFlightModel = null;
-  isDisabled : boolean;
+  isDisabled: boolean;
   checkCommissariat: CheckCommissariatModel;
   idCheckCommissariat: number;
-  idFlight:string; 
+  idFlight: string;
   idvuelo: string;
-  estado:string;
-  aeronave_matricula_fk:string;
-  modeloaeronave:string;
-  origenteorico_codiata:string;
-  origenreal_codiata:string;
-  destinoteorico_codiata:string;
-  destinoreal_codiata:string;
-  siglacompania:string;
-  nombrecompania:string;
-  rutateorica:string;
-  rutareal:string;
-  regladevuelo:string;
-  tipodevuelo:string;
-  diadespegue:string;
-  fechadespegueestimado:Date;
-  horadespegueestimado:string;;
-  fechadespeguereal:string;
-  horadespeguereal:string;
-  fechaaterrizajeestimado:Date;
-  horaaterrizajeestimado:string;
-  fechaaterrizajereal:string;
-  horaaterrizajereal:string;
-  climadestino:string;
-  gradostemperaturadestino:number;
-  velocidadvientokm:string;
-  ltscombustibleestimado:number;
-  ltscombustiblereal:number;
-  lubricanteestimado:number;
-  lubricantereal:number;
-  kilometrajeestimado:number;
-  kilometrajereal:number;
-  checkin:Boolean; 
-  controlcabina:Boolean; 
-  totalpersonasabordo:number;
-  duracionestimada:string;
-  duracionreal:string;
-  insumosconsumidos:number;
-  pesocargaorigen:number;
-  pesocargadestino:number;
-  motivoestado:string;
+  estado: string;
+  aeronave_matricula_fk: string;
+  modeloaeronave: string;
+  origenteorico_codiata: string;
+  origenreal_codiata: string;
+  destinoteorico_codiata: string;
+  destinoreal_codiata: string;
+  siglacompania: string;
+  nombrecompania: string;
+  rutateorica: string;
+  rutareal: string;
+  regladevuelo: string;
+  tipodevuelo: string;
+  diadespegue: string;
+  fechadespegueestimado: Date;
+  horadespegueestimado: string;;
+  fechadespeguereal: string;
+  horadespeguereal: string;
+  fechaaterrizajeestimado: Date;
+  horaaterrizajeestimado: string;
+  fechaaterrizajereal: string;
+  horaaterrizajereal: string;
+  climadestino: string;
+  gradostemperaturadestino: number;
+  velocidadvientokm: string;
+  ltscombustibleestimado: number;
+  ltscombustiblereal: number;
+  lubricanteestimado: number;
+  lubricantereal: number;
+  kilometrajeestimado: number;
+  kilometrajereal: number;
+  checkin: Boolean;
+  controlcabina: Boolean;
+  totalpersonasabordo: number;
+  duracionestimada: string;
+  duracionreal: string;
+  insumosconsumidos: number;
+  pesocargaorigen: number;
+  pesocargadestino: number;
+  motivoestado: string;
   aeronavesposibles: string[];
 
   insumos: InsumoVueloDTOModel[];
   id: number;
-	idInsumo: number;
-	vuelo: string;
-	cantidadInicial: number;
-	cantidadFinal: number;
-	insumo: InsumoDTOModel;
+  idInsumo: number;
+  vuelo: string;
+  cantidadInicial: number;
+  cantidadFinal: number;
+  insumo: InsumoDTOModel;
 
   insumoInd: InsumoDTOModel;
   idinsumo: number;
-	nombre: string;
-	descripcion: string;
-	peso: number;
-	tipo: string;
+  nombre: string;
+  descripcion: string;
+  peso: number;
+  tipo: string;
 
-  vegano: number =0;
-  vegetariano: number=0;
-  celiaco: number=0;
-  estandar: number=0;
-  sanitarios: number=0;
+  vegano: number = 0;
+  vegetariano: number = 0;
+  celiaco: number = 0;
+  estandar: number = 0;
+  sanitarios: number = 0;
 
   a1: boolean;
   a2: boolean;
@@ -93,13 +93,13 @@ export class CheckListCommissariatComponent implements OnInit {
   a4: boolean;
   a5: boolean;
   showNotResultMessage = false;
- 
 
-  constructor(public suppliesService: SuppliesService,public checkFlightService: CheckFlightService, public checkCommissariatService: CheckCommissariatService) {
+
+  constructor(public suppliesService: SuppliesService, public checkFlightService: CheckFlightService, public checkCommissariatService: CheckCommissariatService) {
   }
   ngOnInit(): void {
-   // let date: string = "08-06-2022"
-    let date: string = new Date().getDate()+'-'+(new Date().getMonth())+'-'+new Date().getFullYear();
+    let date: string = "21-06-2022"
+    //let date: string = new Date().getDate() + '-' + (new Date().getMonth()) + '-' + new Date().getFullYear();
     console.log(date)
     this.showLoadAnimation = true;
     this.checkFlightService.getPlannedFlight(date).subscribe((response: PlannedFlightModel[]) => {
@@ -150,31 +150,34 @@ export class CheckListCommissariatComponent implements OnInit {
     this.insumosconsumidos = this.flight.insumosconsumidos;
     this.pesocargaorigen = this.flight.pesocargaorigen;
     this.pesocargadestino = this.flight.pesocargadestino;
-    
+
 
     this.showLoadAnimation = true;
-    this.suppliesService.getSupplies(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
+    this.suppliesService.getSuppliesCatering(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
       this.insumos = response;
-      for(let insumo of this.insumos){
-        if(insumo.Supply.MenuType == 1){
+      for (let insumo of this.insumos) {
+        if (insumo.Supply.MenuType == 1) {
           this.vegano = this.vegano + insumo.InitialQuantity;
         }
-        if(insumo.Supply.MenuType == 0){
-          this.vegetariano= this.vegetariano + insumo.InitialQuantity;
+        if (insumo.Supply.MenuType == 0) {
+          this.vegetariano = this.vegetariano + insumo.InitialQuantity;
         }
-        if(insumo.Supply.MenuType == 2){
-          this.celiaco= this.celiaco + insumo.InitialQuantity;
+        if (insumo.Supply.MenuType == 2) {
+          this.celiaco = this.celiaco + insumo.InitialQuantity;
         }
-        if(insumo.Supply.MenuType == 3){
+        if (insumo.Supply.MenuType == 3) {
           this.estandar = this.estandar + insumo.InitialQuantity;
         }
-        if(insumo.Supply.Type == 'sanitario'){
+      }
+      this.suppliesService.getSuppliesSanitario(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
+        this.insumos = response;
+        for (let insumo of this.insumos) {
           this.sanitarios = this.sanitarios + insumo.InitialQuantity;
         }
-      }
-      
-    this.showLoadAnimation = false;
-      console.log(this.insumos);
+
+      }),
+        this.showLoadAnimation = false;
+
     }, (error) => {
       console.log('An unexpected error occured');
       this.showErrorSupplies = true;
@@ -191,24 +194,24 @@ export class CheckListCommissariatComponent implements OnInit {
         this.a4 = data.a4;
         this.a5 = data.a5;
         console.log(this.idCheckCommissariat);
-  
+
       }, (error) => {
-        if(this.vegano==0 && this.vegetariano==0 && this.celiaco==0 && this.estandar==0 && this.sanitarios==0){ 
+        if (this.vegano == 0 && this.vegetariano == 0 && this.celiaco == 0 && this.estandar == 0 && this.sanitarios == 0) {
           this.showCheckList = false;
           this.showErrorCheckComisariato = false;
           this.showErrorSupplies = true;
-        }else{
+        } else {
           console.log('Complete');
           this.showCheckList = true;
           this.showErrorCheckComisariato = false;
           this.showErrorSupplies = false;
         }
       }, () => {
-        if(this.vegano==0 && this.vegetariano==0 && this.celiaco==0 && this.estandar==0 && this.sanitarios==0){ 
+        if (this.vegano == 0 && this.vegetariano == 0 && this.celiaco == 0 && this.estandar == 0 && this.sanitarios == 0) {
           this.showCheckList = false;
           this.showErrorCheckComisariato = false;
           this.showErrorSupplies = true;
-        }else{
+        } else {
           if (this.estado != "despegado" && this.estado != "en vuelo" && this.estado != "aterrizado" && this.estado != "finalizado" && this.estado != "cancelado") {
             this.showErrorCheckComisariato = false;
             this.showErrorSupplies = false;
@@ -218,7 +221,7 @@ export class CheckListCommissariatComponent implements OnInit {
             this.showErrorCheckComisariato = false;
             this.showErrorSupplies = false;
             this.showCheckList = true;
-            this.isDisabled =true;
+            this.isDisabled = true;
             console.log(this.estado);
           }
         }
@@ -228,7 +231,7 @@ export class CheckListCommissariatComponent implements OnInit {
   }
   save() {
     this.checkCommissariat = new CheckCommissariatModel();
-    this.checkCommissariat.idCheckCommissariat= this.idCheckCommissariat;
+    this.checkCommissariat.idCheckCommissariat = this.idCheckCommissariat;
     this.checkCommissariat.idFlight = this.idvuelo;
     this.checkCommissariat.a1 = this.a1;
     this.checkCommissariat.a2 = this.a2;
@@ -249,7 +252,7 @@ export class CheckListCommissariatComponent implements OnInit {
     this.showCheckList = false;
   }
   clean() {
-    this.isDisabled =false;
+    this.isDisabled = false;
     this.idCheckCommissariat = null;
     this.idFlight = null;
     this.a1 = null;
@@ -257,13 +260,13 @@ export class CheckListCommissariatComponent implements OnInit {
     this.a3 = null;
     this.a4 = null;
     this.a5 = null;
-    this.vegano =0;
-    this.vegetariano=0;
-    this.celiaco=0;
-    this.estandar=0;
-    this.sanitarios=0;
+    this.vegano = 0;
+    this.vegetariano = 0;
+    this.celiaco = 0;
+    this.estandar = 0;
+    this.sanitarios = 0;
   }
-  
+
 }
 
 
