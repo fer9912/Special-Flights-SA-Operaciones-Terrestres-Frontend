@@ -153,6 +153,13 @@ export class CheckListCommissariatComponent implements OnInit {
 
 
     this.showLoadAnimation = true;
+    this.suppliesService.getSuppliesSanitario(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
+      this.insumos = response;
+      for (let insumo of this.insumos) {
+        this.sanitarios = this.sanitarios + insumo.InitialQuantity;
+      }
+
+    }),
     this.suppliesService.getSuppliesCatering(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
       this.insumos = response;
       for (let insumo of this.insumos) {
@@ -169,13 +176,7 @@ export class CheckListCommissariatComponent implements OnInit {
           this.estandar = this.estandar + insumo.InitialQuantity;
         }
       }
-      this.suppliesService.getSuppliesSanitario(this.idvuelo).subscribe((response: InsumoVueloDTOModel[]) => {
-        this.insumos = response;
-        for (let insumo of this.insumos) {
-          this.sanitarios = this.sanitarios + insumo.InitialQuantity;
-        }
 
-      }),
         this.showLoadAnimation = false;
 
     }, (error) => {
