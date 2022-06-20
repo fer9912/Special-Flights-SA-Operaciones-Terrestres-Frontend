@@ -98,7 +98,7 @@ export class CheckListCommissariatComponent implements OnInit {
   constructor(public suppliesService: SuppliesService, public checkFlightService: CheckFlightService, public checkCommissariatService: CheckCommissariatService) {
   }
   ngOnInit(): void {
-    let date: string = "21-06-2022"
+    let date: string = "22-06-2022"
     //let date: string = new Date().getDate() + '-' + (new Date().getMonth()) + '-' + new Date().getFullYear();
     console.log(date)
     this.showLoadAnimation = true;
